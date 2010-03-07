@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+  <head>
+    <title>Testing Hexmap View Javascript (with canvas tag)</title>
+    <!-- Load the jsunit functions -->
+    <script language="JavaScript" src="/jsunit/app/jsUnitCore.js" >
+    </script>
+
+    <!-- parseUri provided bt Steven Levithan 
+	 http://stevenlevithan.com/demo/parseuri/js/assets/parseuri.js
+    -->
+    <script type="text/javascript" src="../lib/parseuri.js"></script>
+
+    <!-- Load the code to be tested -->
+    
+    <script type="text/javascript" src="../src/Iterator.js" ></script>
+    <script type="text/javascript" src="../src/HexMap.js" ></script>
+    <script type="text/javascript" src="../src/Point.js" ></script>
+    <script type="text/javascript" src="../src/HexMapView.js" ></script>
+
+    <!-- -->
+    <script type="text/javascript" src="testHexMapView.js"></script>
+
+    <script type="text/javascript">
+      createMap();
+    </script>
+
+    <!-- -->
+    <style type="text/css">
+      canvas {
+        border-style: solid;
+        border-width: 2px;
+      }
+    </style>
+  </head>
+  <body style="text-align: center;" 
+	onload="map.setParent(document.getElementById('map')) ; map.draw();"
+	>
+
+    <!-- this has to be included in the body of the HTML document -->
+    <script type="text/javascript" src="../src/Geometry.js"></script>
+
+    <h1>Testing Hexmap View</h1>
+    <div id='map'></div>
+    <hr />
+    <h1>Status</h1>
+    <div id='status'></div>
+    <p>
+    Click Point: <span id="clickpoint">No click yet</span><br>
+    Canvas Corner: <span id="canvascorner">No click yet</span><br>
+    Scroll Corner: <span id="scrollcorner">No click yet</span><br>
+    Canvas Point: <span id="canvaspoint">No click yet</span><br>
+    Reference Hex: <span id="refhex">No click yet</span><br>
+    Reference Triangle: <span id="reftriangle">No click yet</span><br>
+    Click Hex: <span id="clickhex">No click yet</span>
+    </p>
+    
+  </body>
+</html>
