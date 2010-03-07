@@ -1,0 +1,43 @@
+* INTRODUCTION
+
+In the late 1970s and early 1980s, before computers and networks were
+widely available, people played war simulation games and role playing
+games using maps based on a field of hexagons. As computers with
+graphics became common these hexmap based games became less common.
+With the wide availability of network services, these old games all
+but died out.
+
+There are still a few people who are nostalgic for those games.
+
+The hexgame library is meant to provide a framework for developing
+networked graphical versions of those games.
+
+* A NOTE ON IMPLIMENTING COPYRIGHTED GAMES
+
+All of those old games are still under copyright, so they cannot be
+used without in any way permission.  This framework does not contain
+any unlicensed copyrighted material.  It is intended for developing
+services for the private use of players who are legal owners of hard
+copies if the games.  It is also available for use by game copyright
+holders under the conditions of the GNU Lesser General Public License
+(LGPL).
+
+MAKING AVAILABLE IMPLEMENTATIONS OF COPYRIGHTED GAMES WITHOUT EXPRESS
+PERMISSION OF THE COPYRIGHT HOLDERS IS FORBIDDEN BY LAW AND SUBJECT TO
+PROSECUTION.
+
+Don't Do it.
+
+* SUMMARY
+
+The framework is implemented in several different languages.  Client
+side elements intended to be run in a web browser are in Javascript.
+Server side components may be written in Python, Java or any other
+language that a contributor thinks might be useful.  Data exchange is
+done using XML.
+
+Mark Lamourine <markllama@gmail.com>
+
+- Mar 6 2010
+
+ 
