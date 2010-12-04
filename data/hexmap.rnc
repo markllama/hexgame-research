@@ -12,19 +12,22 @@ grammar {
    Terrain = element terrain {
       attribute type { text },
       attribute id { text },
-      attribute name { text ),
-      attribute all { text }?,
-      attribute not { text }?,
-      Vector*
+      attribute name { text },
+      Locations
    }
 
    Token = element token {
       attribute location { text }      
    }
 
+   Locations = element locations {
+      attribute all { text }?,
+      Vector*
+   }
+
    Vector = element vector {
-      attribute hx { xs:integer },
-      attribute hy { xs:integer }
+      attribute hx { xsd:integer },
+      attribute hy { xsd:integer }
    }
    
 }

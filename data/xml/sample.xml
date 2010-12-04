@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map size="14,22">
-  <terrain type="border" all="true"/>
+<map size="7,11">
+  <terrain type="HexMapView.Terrain.Border" id="border" name="border">
+    <locations all="true" />
+  </terrain>
 </map>
