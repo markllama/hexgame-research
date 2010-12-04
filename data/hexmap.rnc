@@ -5,20 +5,12 @@ grammar {
    Map = element map {
       attribute size { text }?,  # Hex Point
       attribute origin { text }?, # Hex Point
-      Terrains,
-      Tokens
-   }
-
-   Terrains = element terrains {
-      Terrain+
+      Terrain*,
+      Token*
    }
 
    Terrain = element terrain {
       attribute location { text }
-   }
-
-   Tokens = element tokens {
-      Token+
    }
 
    Token = element token {
