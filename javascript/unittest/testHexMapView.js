@@ -11,7 +11,7 @@ function testHexMapView() {
 defaults = {hx: 14, hy: 22, hexrun: 15};
 
 // get the sample map definition
-sampleUrl="https://lamourine.homeunix.org/~mark/hexgame/xml/sample.xml";
+sampleUrl="https://lamourine.homeunix.org/~mark/hexgame/data/xml/sample.xml";
       
 // you can get XML docs using document.load() in some browsers
 // but this is more universal and it really IS an XML document.
