@@ -10,11 +10,21 @@ grammar {
    }
 
    Terrain = element terrain {
-      attribute location { text }
+      attribute type { text },
+      attribute id { text },
+      attribute name { text ),
+      attribute all { text }?,
+      attribute not { text }?,
+      Vector*
    }
 
    Token = element token {
       attribute location { text }      
+   }
+
+   Vector = element vector {
+      attribute hx { xs:integer },
+      attribute hy { xs:integer }
    }
    
 }
