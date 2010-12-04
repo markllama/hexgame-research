@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map size="22,14">
-  <terrain/>
+  <terrains>
+  </terrains>
+  <tokens>
+  </tokens>
 </map>
