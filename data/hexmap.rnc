@@ -3,8 +3,10 @@ grammar {
    start = Map
 
    Map = element map {
+      attribute name { text }?,
       attribute size { text }?,  # Hex Point
       attribute origin { text }?, # Hex Point
+      element copyright { text }?,
       Terrain*,
       Token*
    }
