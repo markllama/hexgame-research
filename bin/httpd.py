@@ -76,25 +76,37 @@ class hello:
             name = 'World'
         return 'Hello, %s!\n' % name
 
+class favicon:
+    def GET(self, name=None):
+        f = open(opt.webroot + "/favicon.ico")
 class WebFile(object):
 
     def GET(self, name="/"):
         
+        content = ""
+
+        if name.endswith(".html"):
+            web.header("Content-Type", "text/html")
+        elif name.endswith(".js"):
+            web.header("Content-Type", "application/javascript")
+        elif name.endswith(".xml"):
+            web.header("Content-Type", "text/xml")
+                           
         # root = opt['webroot']
         fullname = opt.webroot + (name)
 
         if os.path.isfile(fullname):
             f = open(fullname)
             content = f.read()
-            return content
 
         if os.path.isdir(fullname):
             web.header("Content-Type", "text/html")
             filelist = os.listdir(fullname)
             content = "<html>\n<body>\n<table border='2'>\n  <tr><td>" + ("</td></tr>\n  <td>".join(filelist)) + "</td></tr>\n</table>\n</body>\n</html>"
-            return content
 
-        return "you found me: %s\n%s: %s" % (name, opt, fullname)
+
+
+        return content
 
     def HEAD(self, name=None):
         web.header("X-Debug: %s" % name)
