@@ -5,7 +5,8 @@ the HexMap represents a game map made up of a set of hexagons
 import math
 import numbers
 
-import xml.etree.ElementTree as etree
+#import xml.etree.ElementTree as etree
+import lxml.etree as etree
 
 class Vector(object):
     """
@@ -76,4 +77,11 @@ class Vector(object):
         """
         return Vector.fromelement(etree.fromstring(xmlstring))
 
-    
+    def element(self):
+        e = etree.Element("vector")
+        e.set('hx', str(self.hx))
+        e.set('hy', str(self.hy))
+        return e
+        
+    def xml(self):
+        return '<vector hx="%d" hy="%d" />' % (self.hx, self.hy)

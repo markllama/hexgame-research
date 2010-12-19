@@ -38,7 +38,8 @@ if opt.debug:
     logging.root.setLevel(logging.DEBUG)
 
 
-import xml.etree.ElementTree as etree
+#import xml.etree.ElementTree as etree
+import lxml.etree as etree
 
 from hexmap.vector import Vector
 
@@ -83,6 +84,17 @@ class TestVector(unittest.TestCase):
         v6 = Vector.fromxml('<vector hx="6" hy="-2"/>')
         self.assertEquals(6, v6.hx)
         self.assertEquals(-2, v6.hy)
+
+
+    def testElement(self):
+        v0 = Vector(5, 12)
+        e0 = v0.element()
+        self.assertEqual('<vector hx="5" hy="12"/>', etree.tostring(e0))
+
+    def testXml(self):
+        v0 = Vector(-9, -4)
+        s0 = v0.xml()
+        self.assertEqual('<vector hx="-9" hy="-4" />', s0)
 
 if __name__ == "__main__":
     unittest.main()
