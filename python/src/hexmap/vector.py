@@ -79,10 +79,10 @@ class Vector(object):
 
 
     def __repr__(self):
-        return self.__class__ + "(hx=%d, hy=%d)" % (self.hx, self.hy)
+        return self.__class__.__name__ + "(hx=%d, hy=%d)" % (self.hx, self.hy)
 
-    #def __str__(self):
-    #    return 
+#    def __str__(self):
+#        return repr(self)
 
     @property
     def element(self):
@@ -100,10 +100,11 @@ class Vector(object):
     # Math functions
     #
     def __len__(self):
-        return max( self.hx, self.hy, self.hz)
+        return max( abs(self.hx), abs(self.hy), abs(self.hz))
 
     def __eq__(self, other):
         assert(isinstance(other, Vector))
+        return self.hx == other.hx and self.hy == other.hy
         
     def __add__(self, other):
         assert(isinstance(other, Vector))
@@ -111,7 +112,10 @@ class Vector(object):
 
     def __sub__(self, other):
         assert(isinstance(other, Vector))
-        return Vector(other.hx - self.hx, other.hy - self.hy)
+        return Vector(self.hx - other.hx, self.hy - other.hy)
+
+    def __mul__(self, scalar):
+        return Vector(self.hx * scalar, self.hy * scalar)
 
     def distance(self, other):
         assert(isinstance(other, Vector))
@@ -129,11 +133,11 @@ class Vector(object):
         # Create a normalized vector
         hunit = Vector(ux, uy)
         for i in range(0, 6):
-            if hunit == UNIT[i] and hunit.hz == uz:
+            if hunit == Vector.UNIT[i] and hunit.hz == uz:
                 return i
 
         for i in range(0, 6):
-            c = HEXTANT[i]
+            c = Vector.HEXTANT[i]
             if ux == c[0] and uy == c[1] and uz == c[2]:
                 return i
 
@@ -146,9 +150,13 @@ class Vector(object):
 
     @property
     def bearing(self):
+        # determine the vector's hextant
         h = self.hextant
+
+        # rotate the vector back to the x axis
         n = self.rotate(-h)
-        f = abs(n.hx) / len(this)
+
+        f = float(abs(n.hx)) / len(self)
     
         return h + f
 
@@ -160,9 +168,9 @@ class Vector(object):
         if o < b: o += 6
         return o - b
 
-ORIGIN = Vector()
+Vector.ORIGIN = Vector()
 
-UNIT = (
+Vector.UNIT = (
     Vector(0, -1),
     Vector(1, 0),
     Vector(1, 1),
@@ -171,7 +179,7 @@ UNIT = (
     Vector(-1, -1)
     )
 
-HEXTANT = (
+Vector.HEXTANT = (
     ( 1, -1, -1),
     ( 1,  1, -1),
     ( 1,  1,  1),
