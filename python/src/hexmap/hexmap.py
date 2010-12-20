@@ -1,9 +1,19 @@
+"""
+"""
+import lxml.etree as etree
+
+from vector import Vector
+
 class HexMap(object):
     """
     This represents the state of a game map
     """
     
-    def __init__(self, size, origin, terrains={}, tokens={}):
+    def __init__(self, size, origin=Vector.ORIGIN, terrains={}, tokens={}):
+
+        # name
+        # game
+        # copyright
 
         self._size = size
         self._origin = origin
@@ -15,21 +25,27 @@ class HexMap(object):
         self._tokens = tokens
 
     # a factory from an XML map
+    @staticmethod
     def fromelement(eroot):
         pass
 
+    @staticmethod
     def fromstring(mapstring):
         pass
 
+    @property
+    def element(self):
+        pass
 
-    
-class Hex(object):
-    """
-    """
-    pass
+    @property
+    def xml(self):
+        pass
 
-class Terrain(object):
-    pass
+    @property
+    def size(self):
+        return self._size
 
-class Token(object):
-    pass
+    @property
+    def origin(self):
+        return self._origin
+
