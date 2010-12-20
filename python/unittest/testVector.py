@@ -53,21 +53,25 @@ class TestVector(unittest.TestCase):
         v0 = Vector()
         self.assertEquals(0, v0.hx)
         self.assertEquals(0, v0.hy)
+        self.assertEquals(0, v0.hz)
 
         # two integers
         v1 = Vector(4, 5)
         self.assertEquals(4, v1.hx)
         self.assertEquals(5, v1.hy)
+        self.assertEquals(1, v1.hz)
 
         # single vector
         v2 = Vector(v1)
         self.assertEquals(4, v2.hx)
         self.assertEquals(5, v2.hy)
+        self.assertEquals(1, v1.hz)
 
         # two integers
         v3 = Vector(hx=12, hy=-3)
         self.assertEquals(12, v3.hx)
         self.assertEquals(-3, v3.hy)
+        self.assertEquals(-15, v3.hz)
 
         # a single vector
         v4 = Vector(hv=v2)
@@ -88,12 +92,12 @@ class TestVector(unittest.TestCase):
 
     def testElement(self):
         v0 = Vector(5, 12)
-        e0 = v0.element()
+        e0 = v0.element
         self.assertEqual('<vector hx="5" hy="12"/>', etree.tostring(e0))
 
     def testXml(self):
         v0 = Vector(-9, -4)
-        s0 = v0.xml()
+        s0 = v0.xml
         self.assertEqual('<vector hx="-9" hy="-4" />', s0)
 
 if __name__ == "__main__":
