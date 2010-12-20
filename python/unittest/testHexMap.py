@@ -47,7 +47,7 @@ from hexmap import HexMap, Vector
 class TestHexMap(unittest.TestCase):
 
     def testHexMap(self):
-        hm0 = HexMap(Vector(15, 22))
+        hm0 = HexMap(Vector(15, 22), name="Sample", copyright="GPL")
 
         self.assertEquals(Vector.ORIGIN, hm0.origin)
         self.assertEquals(Vector(15,22), hm0.size)
