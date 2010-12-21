@@ -42,21 +42,25 @@ import lxml.etree as etree
 
 import unittest
 
-from hexmap import HexMap, Vector
+from hexmap.vector import Vector
+from hexmap.token import Token
 
-class TestHexMap(unittest.TestCase):
+class TestToken(unittest.TestCase):
+    
+    def testToken(self):
+        
+        t0 = Token("heavytank")
+        
+        print t0.xml
 
-    def testHexMap(self):
-        hm0 = HexMap(Vector(15, 22), name="Sample", copyright="GPL")
+        t1 = Token("commandpost")
+        t1.location=Vector(12, 14)
 
-        self.assertEquals(Vector.ORIGIN, hm0.origin)
-        self.assertEquals(Vector(15,22), hm0.size)
+        print t1.xml
 
-    def testElement(self):
-        hm0 = HexMap(Vector(15, 22), name="Sample", copyright="GPL")
+        t2 = Token("ogremk3", location=Vector(3, 5))
+        print t2.xml
 
-        e = hm0.element
-        print etree.tostring(e, pretty_print=True)
 
 if __name__ == "__main__":
     unittest.main()
