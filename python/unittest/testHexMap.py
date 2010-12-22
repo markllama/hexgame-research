@@ -111,8 +111,26 @@ class TestHexMap(unittest.TestCase):
         hm1.addToken(t0)
         self.assertEquals(1, len(hm1.tokens))
         self.assertEquals(hm1, t0.map)
+        self.assertEquals(None, t0.location)
+
+        t0.moveto(Vector(0, 0))
+        self.assertEquals(Vector.ORIGIN, t0.location)
+        
+        try:
+            t0.moveto(Vector(-1, 0))
+
+        except:
+            pass
+
+        self.assertEquals(Vector.ORIGIN, t0.location)
+
+        t0.move(1)
+        self.assertEquals(Vector.UNIT[1], t0.location)
+
         hm1.removeToken(t0)
         self.assertEquals(0, len(hm1.tokens))
+        self.assertEquals(None, t0.map)
+        self.assertEquals(None, t0.location)
 
 
 if __name__ == "__main__":
