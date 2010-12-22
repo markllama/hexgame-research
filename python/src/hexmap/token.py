@@ -27,7 +27,11 @@ class Token(object):
     @property
     def xml(self):
         return etree.tostring(self.element, pretty_print=True)
-        
+
+    @property
+    def location(self):
+        return self._location
+
     def move(self, direction, distance = 1):
         direction %= 6
         if direction < 0:

@@ -28,7 +28,7 @@ class HexMap(object):
     This represents the state of a game map
     """
     
-    def __init__(self, size, origin=Vector.ORIGIN, terrains={}, tokens={}, 
+    def __init__(self, size, origin=Vector.ORIGIN, terrains=None, tokens=None, 
                  name=None, game=None, copyright=None):
 
         # name
@@ -41,8 +41,8 @@ class HexMap(object):
         # check if the Hex constructor has been provided
         #self._hex = Hex;
 
-        self._terrains = terrains
-        self._tokens = tokens
+        self._terrains = terrains or []
+        self._tokens = tokens or []
 
         self._name = name
         self._game = game
@@ -105,7 +105,6 @@ class HexMap(object):
     @property
     def game(self): return self._game
 
-
     @property
     def copyright(self): return self._copyright
 
@@ -140,10 +139,10 @@ class HexMap(object):
     def addToken(self, token):
         # check that it's not already there.
         token.map = self
-        token.location = None
+        token._location = None
         self._tokens.append(token)
 
     def removeToken(self, token):
         self._tokens.remove(token)
-        token.location = None
+        token._location = None
         token.map = None

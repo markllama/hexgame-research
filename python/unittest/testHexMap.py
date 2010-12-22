@@ -42,7 +42,7 @@ import lxml.etree as etree
 
 import unittest
 
-from hexmap import HexMap, Vector
+from hexmap import HexMap, Vector, Token
 
 class TestHexMap(unittest.TestCase):
 
@@ -86,6 +86,34 @@ class TestHexMap(unittest.TestCase):
 
         self.assertEquals(False, Vector(6, 4) in hm0)
 
-        
+        # add tests with alternate origin
+
+    def testAddToken(self):
+        hm0 = HexMap(Vector(6,8))
+
+        t0 = Token("dummy1")
+
+        hm0.addToken(t0)
+
+        self.assertEquals(t0, hm0.tokens[0])
+        self.assertEquals(None, t0.location)
+        self.assertEquals(hm0, t0.map)
+
+        del hm0
+        del t0
+
+    def testDelToken(self):
+        hm1 = HexMap(Vector(6,8))
+
+        t0 = Token("dummy")
+
+        self.assertEquals(0, len(hm1.tokens))
+        hm1.addToken(t0)
+        self.assertEquals(1, len(hm1.tokens))
+        self.assertEquals(hm1, t0.map)
+        hm1.removeToken(t0)
+        self.assertEquals(0, len(hm1.tokens))
+
+
 if __name__ == "__main__":
     unittest.main()
