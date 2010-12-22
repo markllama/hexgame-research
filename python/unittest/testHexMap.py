@@ -58,5 +58,34 @@ class TestHexMap(unittest.TestCase):
         e = hm0.element
         print etree.tostring(e, pretty_print=True)
 
+
+    def testDimensions(self):
+
+        hm0 = HexMap(Vector(6,8))
+        self.assertEquals(None, hm0.hyfirst(Vector(-1, 0)))
+        self.assertEquals(0, hm0.hyfirst(Vector(0, 0)))
+        self.assertEquals(1, hm0.hyfirst(Vector(3, 0)))
+        self.assertEquals(2, hm0.hyfirst(Vector(5, 0)))
+        self.assertEquals(None, hm0.hyfirst(Vector(6, 0)))
+
+    def testContains(self):
+
+        hm0 = HexMap(Vector(6,8))
+
+        self.assertEquals(False, Vector(-1, 2) in hm0)
+        
+        self.assertEquals(False, Vector(0, -1) in hm0)
+        self.assertEquals(True, Vector(0, 0) in hm0)
+        self.assertEquals(True, Vector(0, 7) in hm0)
+        self.assertEquals(False, Vector(0, 8) in hm0)
+
+        self.assertEquals(False, Vector(5, 1) in hm0)
+        self.assertEquals(True, Vector(5, 2) in hm0)
+        self.assertEquals(True, Vector(5, 9) in hm0)
+        self.assertEquals(False, Vector(5, 10) in hm0)
+
+        self.assertEquals(False, Vector(6, 4) in hm0)
+
+        
 if __name__ == "__main__":
     unittest.main()

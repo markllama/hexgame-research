@@ -28,3 +28,13 @@ class Token(object):
     def xml(self):
         return etree.tostring(self.element, pretty_print=True)
         
+    def move(self, direction, distance = 1):
+        direction %= 6
+        if direction < 0:
+            direction += 6
+
+        self._location += (Vector.UNIT[direction] * distance)
+
+    def moveto(self, location):
+        self._location = location
+    

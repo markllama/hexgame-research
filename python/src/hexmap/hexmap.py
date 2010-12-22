@@ -109,12 +109,33 @@ class HexMap(object):
     @property
     def copyright(self): return self._copyright
 
-
     @property
     def terrains(self): return self._terrains
 
     @property
     def tokens(self): return self._tokens
+
+    def ybias(self, hx):
+        return int(hx / 2)
+
+    def hyfirst(self, hv):
+        # There is no valid hy if hx is out of range
+        if hv.hx < self.origin.hx or hv.hx >= self.origin.hx + self.size.hx: 
+            return None
+
+        return - self.origin.hy + self.ybias(hv.hx + self.origin.hx)
+
+    def __contains__(self, hv):
+        # check the hx boundaries
+
+        # check the hy boundaries
+        hyfirst = self.hyfirst(hv)
+        if hyfirst is None: return False
+
+        hylast = hyfirst + self.size.hy
+        if hv.hy < hyfirst or hv.hy >= hylast: return False
+
+        return True
 
     def addToken(self, token):
         # check that it's not already there.
