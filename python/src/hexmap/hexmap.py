@@ -169,20 +169,17 @@ class HexMap(object):
 
         return True
 
+    def addTerrain(self, terrain):
+        self._terrains.append(terrain)
+        terrain.map = self
+        
     def addToken(self, token):
         # check that it's not already there.
         token.map = self
         token._location = None
         self._tokens.append(token)
 
-<<<<<<< HEAD
-    def addTerrain(self, terrain):
-        self._terrains.append(terrain)
-        terrain.map = self
-        
-=======
     def removeToken(self, token):
         self._tokens.remove(token)
         token._location = None
         token.map = None
->>>>>>> 9c0a8217bcb08c649ae64659ab1dcd36e6c6ccd4
