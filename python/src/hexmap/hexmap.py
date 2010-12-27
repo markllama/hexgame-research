@@ -21,6 +21,7 @@
 import lxml.etree as etree
 
 from vector import Vector
+from terrain import Terrain
 
 class HexMapError(Exception): pass
 
@@ -95,12 +96,34 @@ class HexMap(object):
         if self.name:
             e.set('name', self.name)
         
+        if self.copyright:
+            e.set("copyright", self.copyright)
+
         s = etree.Element("size")
-        s.append()
+        s.append(self.size.element)
+        e.append(s)
+
+        o = etree.Element("origin")
+        o.append(self.origin.element)
+        e.append(o)
+
+        if len(self.terrains) > 0:
+            tlist = etree.Element("terrains")
+            for t in self.terrains:
+                tlist.append(t.element)
+            e.append(tlist)
+
+        if len(self.tokens) > 0:
+            tlist = etree.Element("tokens")
+            for t in self.tokens:
+                tlist.append(t.element)
+            e.append(tlist)
+
+        return e
 
     @property
     def xml(self):
-        pass
+        return etree.tostring(self.element, pretty_print=True)
 
     @property
     def size(self): return self._size
@@ -115,12 +138,51 @@ class HexMap(object):
     @property
     def game(self): return self._game
 
-
     @property
     def copyright(self): return self._copyright
 
+    @property
+    def terrains(self): return self._terrains
 
+    @property
+    def tokens(self): return self._tokens
+
+    def ybias(self, hx):
+        return int(hx / 2)
+
+    def hyfirst(self, hv):
+        # There is no valid hy if hx is out of range
+        if hv.hx < self.origin.hx or hv.hx >= self.origin.hx + self.size.hx: 
+            return None
+
+        return - self.origin.hy + self.ybias(hv.hx + self.origin.hx)
+
+    def __contains__(self, hv):
+        # check the hx boundaries
+
+        # check the hy boundaries
+        hyfirst = self.hyfirst(hv)
+        if hyfirst is None: return False
+
+        hylast = hyfirst + self.size.hy
+        if hv.hy < hyfirst or hv.hy >= hylast: return False
+
+        return True
+
+    def addToken(self, token):
+        # check that it's not already there.
+        token.map = self
+        token._location = None
+        self._tokens.append(token)
+
+<<<<<<< HEAD
     def addTerrain(self, terrain):
         self._terrains.append(terrain)
         terrain.map = self
         
+=======
+    def removeToken(self, token):
+        self._tokens.remove(token)
+        token._location = None
+        token.map = None
+>>>>>>> 9c0a8217bcb08c649ae64659ab1dcd36e6c6ccd4

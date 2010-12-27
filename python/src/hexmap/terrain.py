@@ -34,7 +34,6 @@ class Terrain(object):
     def xml(self):
         return etree.tostring(self.element, pretty_print=True)
 
-
     @classmethod
     def fromstring(cls, xmlstring):
         element = etree.fromstring(xmlstring)
@@ -45,5 +44,3 @@ class Terrain(object):
         # Create the RIGHT terrain?
         #terrain = 
         return cls(eterrain.tag)
-
-    
