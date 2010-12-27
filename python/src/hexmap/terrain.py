@@ -4,12 +4,17 @@ A terrain on a hex map
 
 import lxml.etree as etree
 
+from hexmap import Vector
+
 class Terrain(object):
+
+    name = "terrain"
 
     def __init__(self, name, locations=None, map=None):
         self.map = map
-        self._name = name
-        self.locations = locations
+        self._name = self.__class__.name
+        self._all = False
+        self.locations = locations or []
 
     @property
     def name(self): return self._name
@@ -17,8 +22,11 @@ class Terrain(object):
     @property
     def element(self):
         e = etree.Element("terrain")
+        e.set("type", self.__class__.__name__)
         e.set('name', self.name)
-        if self.locations is not None:
+        if self._all:
+            e.set("all", "true")
+        elif self.locations is not None:
             loclist = etree.Element("locations")
             if self.locations == "ALL":
                 loclist.set("all", "true")
@@ -41,6 +49,13 @@ class Terrain(object):
 
     @classmethod
     def fromelement(cls, eterrain):
-        # Create the RIGHT terrain?
-        #terrain = 
-        return cls(eterrain.tag)
+        t = cls(eterrain.tag)
+        eloclist = eterrain.find("locations")
+        if eloclist.get("all") == "true":
+            t._all = True
+        else:
+            for eloc in eloclist:
+                vloc = Vector.fromelement(eloc)
+                t.locations.append(vloc)
+
+        return t

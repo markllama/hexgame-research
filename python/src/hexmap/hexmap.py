@@ -103,10 +103,11 @@ class HexMap(object):
         s.append(self.size.element)
         e.append(s)
 
-        o = etree.Element("origin")
-        o.append(self.origin.element)
-        e.append(o)
-
+        if self.origin is not None:
+            o = etree.Element("origin")
+            o.append(self.origin.element)
+            e.append(o)
+            
         if len(self.terrains) > 0:
             tlist = etree.Element("terrains")
             for t in self.terrains:
