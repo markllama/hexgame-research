@@ -22,12 +22,14 @@ import lxml.etree as etree
 
 from vector import Vector
 
+class HexMapError(Exception): pass
+
 class HexMap(object):
     """
     This represents the state of a game map
     """
     
-    def __init__(self, size, origin=Vector.ORIGIN, terrains={}, tokens={}, 
+    def __init__(self, size, origin=Vector.ORIGIN, terrains=None, tokens=None, 
                  name=None, game=None, copyright=None):
 
         # name
@@ -40,8 +42,8 @@ class HexMap(object):
         # check if the Hex constructor has been provided
         #self._hex = Hex;
 
-        self._terrains = terrains
-        self._tokens = tokens
+        self._terrains = terrains or []
+        self._tokens = tokens or []
 
         self._name = name
         self._game = game
@@ -49,12 +51,43 @@ class HexMap(object):
 
     # a factory from an XML map
     @staticmethod
-    def fromelement(eroot):
-        pass
+    def fromelement(maptree, terrainmap=None, tokenmap=None):
+        
+        # get the size
+        esize = maptree.find("size")
+        if esize is None:
+            raise HexMapError("A map must have a size")
+        else:
+            evec = esize[0]
+            size = Vector.fromelement(evec)
+
+
+        # and the origin
+        eorigin = maptree.find("origin")
+        if eorigin is not None:
+            evec = eorigin[0]
+            origin = Vector.fromelement(evec) 
+        else:
+            origin = None
+
+        # and the name, game and copyright
+        hm = HexMap(size, origin)
+
+        # add the terrains
+        for eterrain in maptree.findall("terrain"):
+            tname = eterrain.get("type")
+            if tname in terrainmap:
+                terrain = terrainmap[tname].fromelement(eterrain)
+                hm.addTerrain(terrain)
+            else:
+                print "terrain name %s not in terrain map %s" % (tname, terrainmap)
+
+        return hm
 
     @staticmethod
-    def fromstring(mapstring):
-        pass
+    def fromstring(mapstring, terrainmap=None, tokenmap=None):
+        maptree = etree.fromstring(mapstring)
+        return HexMap.fromelement(maptree, terrainmap, tokenmap)
 
     @property
     def element(self):
@@ -87,3 +120,7 @@ class HexMap(object):
     def copyright(self): return self._copyright
 
 
+    def addTerrain(self, terrain):
+        self._terrains.append(terrain)
+        terrain.map = self
+        

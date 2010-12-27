@@ -42,15 +42,25 @@ import lxml.etree as etree
 
 import unittest
 
-from hexmap import HexMap, Vector
+from hexmap.vector import Vector
+from hexmap.terrain import Terrain
 
-class TestHexMap(unittest.TestCase):
-
-    def testHexMap(self):
-        hm0 = HexMap(Vector(15, 22), name="Sample", copyright="GPL")
-
-        self.assertEquals(Vector.ORIGIN, hm0.origin)
-        self.assertEquals(Vector(15,22), hm0.size)
+class TestTerrain(unittest.TestCase):
+    
+    def testTerrain(self):
         
+        t0 = Terrain("border")
+        
+        print t0.xml
+
+        t1 = Terrain("crater")
+        t1.locations=[Vector(12, 14), Vector(2, 3)]
+
+        print t1.xml
+
+        t2 = Terrain("hedge", locations="ALL")
+        print t2.xml
+
+
 if __name__ == "__main__":
     unittest.main()
