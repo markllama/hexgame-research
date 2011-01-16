@@ -18,6 +18,9 @@
   </tokens>
 </map>
 """
+
+import logging
+
 import lxml.etree as etree
 
 from vector import Vector
@@ -33,13 +36,14 @@ class HexMap(object):
     def __init__(self, size, origin=Vector.ORIGIN, terrains=None, tokens=None, 
                  name=None, game=None, copyright=None):
 
+        logger = logging.getLogger(self.__class__.__name__ + ".__init__")
         # name
         # game
         # copyright
 
         self._size = size
         self._origin = origin
-
+        logger.debug("New hex map origin = %s" % self._origin)
         # check if the Hex constructor has been provided
         #self._hex = Hex;
 
@@ -51,8 +55,8 @@ class HexMap(object):
         self._copyright = copyright
 
     # a factory from an XML map
-    @staticmethod
-    def fromelement(maptree, terrainmap=None, tokenmap=None):
+    @classmethod
+    def fromelement(cls, maptree, terrainmap=None, tokenmap=None):
         
         # get the size
         esize = maptree.find("size")
@@ -69,10 +73,10 @@ class HexMap(object):
             evec = eorigin[0]
             origin = Vector.fromelement(evec) 
         else:
-            origin = None
+            origin = Vector.ORIGIN
 
         # and the name, game and copyright
-        hm = HexMap(size, origin)
+        hm = cls(size, origin)
 
         # add the terrains
         for eterrain in maptree.findall("terrain"):
@@ -85,10 +89,10 @@ class HexMap(object):
 
         return hm
 
-    @staticmethod
-    def fromstring(mapstring, terrainmap=None, tokenmap=None):
+    @classmethod
+    def fromstring(cls, mapstring, terrainmap=None, tokenmap=None):
         maptree = etree.fromstring(mapstring)
-        return HexMap.fromelement(maptree, terrainmap, tokenmap)
+        return cls.fromelement(maptree, terrainmap, tokenmap)
 
     @property
     def element(self):

@@ -11,14 +11,20 @@ class Terrain(object):
     name = "terrain"
 
     def __init__(self, name, locations=None, map=None):
-        self.map = map
+        self._map = map
         self._name = self.__class__.name
         self._all = False
         self.locations = locations or []
 
     @property
-    def name(self): return self._name
+    def map(self): return self._map
 
+    @map.setter
+    def map(self, newmap): self._map = newmap
+
+    @property
+    def name(self): return self._name
+    
     @property
     def element(self):
         e = etree.Element("terrain")

@@ -7,7 +7,7 @@ import lxml.etree as etree
 
 class Point(object):
 
-    def __init__(x, y):
+    def __init__(self, x, y):
         self._x = x
         self._y = y
 
@@ -37,7 +37,7 @@ class Point(object):
 
     def __div__(self, other):
         assert(isinstance(other, int))
-        assert(other !== 0)
+        assert(other != 0)
         return Point(int(self.x / other), int(self.y / other))
         
     @property
