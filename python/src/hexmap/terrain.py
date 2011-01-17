@@ -13,7 +13,12 @@ class Terrain(object):
     def __init__(self, name, locations=None, map=None):
         self._map = map
         self._name = self.__class__.name
-        self._all = False
+
+        if locations == "ALL":
+            self._all = True
+        else:
+            self._all = False
+
         self.locations = locations or []
 
     @property

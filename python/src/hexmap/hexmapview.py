@@ -62,6 +62,7 @@ class HexMapView(HexMap, Frame):
 
         # install two scroll bars
 
+        self.repaint()
 
     # All of the hex dimensions are based off the hexrun
     @property
@@ -134,8 +135,20 @@ class HexMapView(HexMap, Frame):
         scrollcorner = Point(0, 0)
         return (eventpoint - canvascorner) + scrollcorner
 
-    def redraw(self):
-        pass
+    def repaint(self):
+        logger = logging.getLogger(self.__class__.__name__ + ".repaint")
+        logger.debug("Repainting map")
+
+        # remove all existing objects?
+
+        # draw all of the terrains
+        logger.debug("there are %d terrains" % len(self._terrains))
+        for terrain in self._terrains:
+            terrain.repaint()
+
+        # draw all of the tokens
+        for token in self._tokens:
+            token.repaint()
 
 
 class TerrainView(Terrain):
@@ -153,3 +166,14 @@ class TerrainView(Terrain):
         Draw itself on each location
         """
         print "adding a map to me: map = %s, I am %s" % (map, self.name)
+
+class BorderTerrainView(TerrainView):
+    """Draw the hex shape around the center"""
+
+    def repaint(self):
+        """Draw the border around the hex's location(s)"""
+        logger = logging.getLogger(self.__class__.__name__ + ".repaint")
+
+        logger.debug("Repainting")
+        for l in self.locations:
+            logger.debug("repainting border on %s at %s" % (self._map, l))

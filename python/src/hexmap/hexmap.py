@@ -47,8 +47,16 @@ class HexMap(object):
         # check if the Hex constructor has been provided
         #self._hex = Hex;
 
-        self._terrains = terrains or []
+        if terrains is None:
+            self._terrains = []
+        else:
+            self._terrains = terrains
+            for terrain in self._terrains:
+                terrain._map = self
+
         self._tokens = tokens or []
+        #for token in tokens:
+        #    token.map = self
 
         self._name = name
         self._game = game
