@@ -113,6 +113,10 @@ class Vector
 
   @@ORIGIN = Vector.new(0,0)
 
+  def ORIGIN
+    return @@ORIGIN
+  end
+
   @@UNIT = [
             Vector.new(0, -1),
             Vector.new(1, 0),
@@ -121,6 +125,10 @@ class Vector
             Vector.new(-1, 0),
             Vector.new(-1, -1)
            ]
+
+  def UNIT
+    return @@UNIT
+  end
 
   @@HEXTANT = [               
                [ 1, -1, -1],
