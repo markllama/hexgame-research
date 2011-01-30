@@ -82,4 +82,10 @@ class TestVector < Test::Unit::TestCase
     assert_equal(-44, hv1.hz)
   end
 
+  def testEqual
+    hv0 = Vector.new(5, -6)
+    hv1 = Vector.new(5, -6)
+
+    assertEqual(hv0, hv1)
+  end
 end
