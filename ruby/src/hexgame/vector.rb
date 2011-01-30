@@ -3,10 +3,20 @@
 #
 
 class Vector
-  def initialize(hx, hy)
-    @hx = hx
-    @hy = hy
-    @hz = hy - hx
+  def initialize(*args)
+    if args.length == 2
+      # TODO: check that both args are Fixnum
+      @hx, @hy = args
+    elsif args.length == 1
+      # TODO: check that the arg is a Vector
+      other = args[0]
+      @hx, @hy = other.hx, other.hy
+    elsif args.length == 0
+      @hx, @hy = 0, 0
+    else
+      raise ArgumentError, "Vector requires 0-2 arguments: #{args.length} given"
+    end
+    @hz = @hy - @hx
   end
 
   #
@@ -26,7 +36,7 @@ class Vector
 
   # Implicit
   def to_s
-    puts "Vector(#{@hx},#{@hy})"
+    "Vector(#{@hx},#{@hy})"
   end
 
   #
@@ -113,7 +123,7 @@ class Vector
 
   @@ORIGIN = Vector.new(0,0)
 
-  def ORIGIN
+  def self.ORIGIN
     return @@ORIGIN
   end
 
@@ -126,7 +136,7 @@ class Vector
             Vector.new(-1, -1)
            ]
 
-  def UNIT
+  def self.UNIT
     return @@UNIT
   end
 
@@ -140,6 +150,4 @@ class Vector
               ]
 
 end
-
-
 
