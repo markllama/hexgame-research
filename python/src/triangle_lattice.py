@@ -1,73 +1,117 @@
 #!/usr/bin/python
 """Generate a triangular lattice in a rectangular frame"""
 
+class Vector(object):
+
+    def __init__(self, hx, hy):
+        self.hx = hx
+        self.hy = hy
+
+    def __str__(self):
+        return "(%d, %d)" % (self.hx, self.hy)
+
+class Point(object):
+
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return "(%d, %d)" % (self.x, self.y)
+
 from Tkinter import *
+
 
 import math
 
 def sine60(a):
     return a * 8660 / 10000
 
-hexrun = 15
+mapdimensions = "550x550"
+
+hexrun = 50
 hexradius = hexrun * 2
 hexwidth = hexradius * 2
 hexrise = sine60(hexradius)
 hexheight = hexrise * 2
 
-porigin = (200, 200)
-horigin = (0, 0)
+mapradius = 1
 
-dim = {'hx': 14, 'hy': 22}
+porigin0 = Point(hexwidth, hexrise)
+porigin = Point(250, 250)
 
-def vertices(px, py):
-    return (px + hexradius, py,
-            px + hexrun, py + hexrise,
-            px - hexrun, py + hexrise,
-            px - hexradius, py,
-            px - hexrun, py - hexrise, 
-            px + hexrun, py - hexrise,
-            px + hexradius, py,
+def vertices(p):
+    # expects a Point
+    # Returns a list of x,y pairs for canvas.create_polygon
+    return (p.x + hexradius, p.y,
+            p.x + hexrun, p.y + hexrise,
+            p.x - hexrun, p.y + hexrise,
+            p.x - hexradius, p.y,
+            p.x - hexrun, p.y - hexrise, 
+            p.x + hexrun, p.y - hexrise,
+            p.x + hexradius, p.y
             )
 
-def square(px, py):
-    return(px, py, px + (hexrun * 3), py + hexheight)
+def rectangle(p0):
+    # Given the center point of a hex, find the vertices of the rectangle
+    # which defines the boundaries
+    # These rectangles fill the plane completely in the same way that the
+    # hexagons do.
 
-def hex2point(hx, hy):
-    px = (hx * hexrun * 3)
-    py = (hy * hexheight) - ((hx * hexheight) / 2) 
-    return (px, py)
+    v0 = Point(p0.x - hexwidth, p0.y - hexrise)
+    v1 = Point(v0.x, p0.y + hexrise)
+    v2 = Point(p0.x + hexrun, v1.y)
+    v3 = Point(v2.x, v0.y)
+    return(v0, v1, v2, v3)
 
+def hex2point(h, origin=Point(0, 0)):
+    px = (h.hx * hexrun * 3)
+    py = (h.hy * hexheight) - ((h.hx * hexheight) / 2) 
+    return Point(px + origin.x, py + origin.y)
 
-def point2hex(px, py):
-    # find the bounding hx columns
-    hx = int((px - porigin[0]) / (hexrun * 3))
-    hy = ((py - porigin[1]) + (hx * hexrise)) / hexheight
+def refhex(p):
+    # generate the base hex which contains a given point
+    # offset by the porigin + 1/2 hex ( to get the origin hex on the
+    # canvas
+    hx = ((p.x - porigin.x) + hexradius) / (hexrun * 3)
+    hy = ((p.y - porigin.y) + ((hx + 1) * hexrise)) / hexheight
+    return Vector(hx, hy)
 
-    # Technically, which ever hex center is closest to the point is the
-    # right one.
+def point2hex(p):
+    # Find the reference hex containing this point
+    h = refhex(p)
 
-    # Because of the nature of a triangular lattice on a cartesian plane
-    # We can decide with a few specific rules.
+    # find the center of that hex
+    c = hex2point(h, porigin)
 
-    # normalize the pixel point location within the square
-    qx = (px - porigin[0]) - (hx * (hexrun * 3))
-    qy = (py - porigin[1]) - (hy * hexheight) + (hexrise * hx)
-    print "p = (%d, %d), q = (%d, %d)" % (px, py, qx, qy)
+    # get the bounding rectangle of the expected hex
+    r = rectangle(c)
 
-    dl = (
-        {'d2': qx**2 + qy**2, 'hex': (hx, hy)},
-        {'d2': qx**2 + (hexheight - qy)**2, 'hex': (hx, hy+1)},
-        {'d2': ((hexrun * 3) - qx)**2 + (qy - hexrise)**2, 'hex': (hx+1, hy+1)}
-        )
+    # find the point inside a normalized rectangle
+    # offset by hexradius to make further tests easier
+    # the axis point is placed at 0,0 of the normalized rectangle containing
+    # the point
+    np = Point(p.x - r[0].x - hexradius, p.y - r[0].y - hexrise)
+    print "np = %s: hexwidth = %s" % (np , hexradius)
 
-    # return the hex who's center is nearest to the point passed in
-    return min(dl, key=lambda a: a['d2'])['hex']
+    if np.x <= hexrun and np.x * 2 < abs(np.y):
+        if np.y > 0:
+            # step UNIT[4]
+            h.hx -= 1
+        else:
+            # steop UNIT[5]
+            h.hx -= 1
+            h.hy -= 1
+
+    return h
+
     
+    # now adjust h if p lies in the upper or lower right triangles
+    return h
+
 def pressedWhere(event):
-    (hx, hy) = point2hex(event.x, event.y)
-    print "You clicked on pixel(%d, %d).  Thats in hex(%d, %d)" % (event.x, event.y, hx, hy)
-
-
+    h = point2hex(Point(event.x, event.y))
+    print "You clicked on pixel(%d, %d).  Thats in hex%s" % (event.x, event.y, h)
 
 class MenuBar(Frame):
     def __init__(self, master=None):
@@ -111,42 +155,23 @@ class TriMap(Frame):
         canvas.pack(fill=BOTH,expand=1)
 
 	# create a rectangular array        
-#        hexlist = self.rectangle(dim['hx'], dim['hy'])
-        hexlist = self.hexagon(4, (250, 250))
+        hexlist = self.hexagon(mapradius, porigin)
 
         colors = ('yellow', 'blue', 'green', 'pink', 'brown', 'red', 'white')
 
 
         for hex in hexlist:
             p = hex['p']
-            canvas.create_polygon(vertices(p[0], p[1]), outline='black', fill=colors[hex['hextant']])
-#            canvas.create_rectangle(p[0]-1,p[1]-1,p[0]+1, p[1]+1)
-#            canvas.create_line(vertices(p[0], p[1]))
-            #canvas.create_rectangle(square(p[0], p[1]), dash=(2, 2))
-            canvas.create_text(p[0], p[1], text=str(hex['h']))
+            canvas.create_polygon(vertices(p), outline='black', fill=colors[hex['hextant']])
+            canvas.create_text(p.x, p.y, text=str(hex['h']))
 
             
-    def rectangle(self, dim=(14,22), origin=(0,0)):
-        result = []
-
-        for col in range(0, dim[0]):
-            ybias = int(col / 2)
-            for row in range(ybias, dim[1] + ybias):
-                p = hex2point(col, row)
-                result.append({'h': (col, row), 
-                               'p': (p[0] + origin[0], p[1] + origin[1])})
-                print "creating node (%d, %d): %s" % (col, row, str(p))
-
-        return result
-
-
-    def hexagon(self, radius, origin=(0,0)):
+    def hexagon(self, radius, origin=Point(0, 0)):
         # create a full circle
-        result = [{'h': (0, 0), 'p': (origin[0], origin[1]), 'hextant': 6}]
+        result = [{'h': Vector(0, 0), 'p': origin, 'hextant': 6}]
         for circle in range(1,radius+1):
             print "creating hexes with length " + str(circle)
        
-
             for hex in range(0, circle):
                 hx = hex
                 hy = -circle + hex 
@@ -154,16 +179,10 @@ class TriMap(Frame):
 
                 hexloop = (hx, hy, hz, -hx, -hy, -hz, hx)
                 for hextant in range(0,6):
-                    h = (hexloop[hextant], hexloop[hextant+1])
-                    p = hex2point(hexloop[hextant], hexloop[hextant+1])
-                    print "creating node (%d, %d): %s" % (hexloop[hextant],
-                                                          hexloop[hextant+1],
-                                                          str(p))
-                
-                    result.append({'h': h, 
-                                   'p': (p[0] + origin[0], p[1] + origin[1]),
-                                   'hextant': hextant
-                                   })
+                    h = Vector(hexloop[hextant], hexloop[hextant+1])
+                    p = hex2point(h, origin)
+                    print "creating node (%d, %d): %s" % (h.hx, h.hy, str(p))
+                    result.append({'h': h, 'p': p,'hextant': hextant})
 
 
         return result
@@ -172,7 +191,7 @@ if __name__ == "__main__":
 
     root = Tk()
     root.title('Tri Lattace')
-    root.geometry("500x500")
+    root.geometry(mapdimensions)
 
 #    menubar = MenuBar(root)
 #    menubar.pack(side=TOP)
