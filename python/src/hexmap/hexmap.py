@@ -47,11 +47,9 @@ class HexMap(object):
         # check if the Hex constructor has been provided
         #self._hex = Hex;
 
-        if terrains is None:
-            self._terrains = []
-        else:
-            self._terrains = terrains
-            for terrain in self._terrains:
+        self._terrains = terrains
+        
+        for terrain in self._terrains:
                 terrain._map = self
 
         self._tokens = tokens or []
@@ -147,7 +145,6 @@ class HexMap(object):
     @property
     def name(self): return self._name
 
-
     @property
     def game(self): return self._game
 
@@ -155,7 +152,12 @@ class HexMap(object):
     def copyright(self): return self._copyright
 
     @property
-    def terrains(self): return self._terrains
+    def terrains(self):
+        if self._terrains is True:
+            return AllTerrains(self)
+        if self._terrains is None:
+            return []
+        return self._terrains
 
     @property
     def tokens(self): return self._tokens
@@ -163,18 +165,18 @@ class HexMap(object):
     def ybias(self, hx):
         return int(hx / 2)
 
-    def hyfirst(self, hv):
+    def hyfirst(self, hx):
         # There is no valid hy if hx is out of range
-        if hv.hx < self.origin.hx or hv.hx >= self.origin.hx + self.size.hx: 
+        if hx < -self.origin.hx or hx >= -self.origin.hx + self.size.hx: 
             return None
 
-        return - self.origin.hy + self.ybias(hv.hx + self.origin.hx)
+        return - self.origin.hy + self.ybias(hx + self.origin.hx)
 
     def __contains__(self, hv):
         # check the hx boundaries
 
         # check the hy boundaries
-        hyfirst = self.hyfirst(hv)
+        hyfirst = self.hyfirst(hv.hx)
         if hyfirst is None: return False
 
         hylast = hyfirst + self.size.hy
@@ -196,3 +198,44 @@ class HexMap(object):
         self._tokens.remove(token)
         token._location = None
         token.map = None
+
+    def __iter__(self):
+        return AllHexes(self)
+
+    @property
+    def allhexes(self):
+        return AllHexes(self)
+
+class AllHexes(object):
+    
+    def __init__(self, hm):
+        self._hexmap = hm
+        self._current = None
+
+    def __iter__(self): return self
+
+    def next(self):
+
+
+        if self._current is None:
+            """Set and return the first hex"""
+            hx = self._hexmap.origin.hx
+            hy = self._hexmap.hyfirst(hx)
+            self._current = Vector(hx, hy)
+            return self._current
+
+        """Step to the next location"""
+        next = self._current + Vector.UNIT[3]
+        if next in self._hexmap:
+            self._current = next
+            return self._current
+
+        # step to the next column
+        hx = next.hx + 1
+        hy = self._hexmap.hyfirst(hx)
+        next = Vector(hx, hy)
+        if next in self._hexmap:
+            self._current = next
+            return self._current
+
+        raise StopIteration

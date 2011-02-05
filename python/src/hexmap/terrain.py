@@ -1,6 +1,8 @@
 """
 A terrain on a hex map
 """ 
+import logging
+import collections
 
 import lxml.etree as etree
 
@@ -19,7 +21,7 @@ class Terrain(object):
         else:
             self._all = False
 
-        self.locations = locations or []
+        self.locations = locations
 
     @property
     def map(self): return self._map
@@ -27,6 +29,39 @@ class Terrain(object):
     @map.setter
     def map(self, newmap): self._map = newmap
 
+    @property
+    def locations(self):
+        logger = logging.getLogger(self.__class__.__name__ + ".locations.getter")
+        # if we're passed a callable, assume it's an iterator
+        if isinstance(self._locations, collections.Callable):
+            logger.debug("Locations is callable")
+            return self._locations(self._map)
+        elif isinstance(self._locations, list):
+            logger.debug("Locations is a list")
+            return self._locations 
+        elif self._locations is None:
+            logger.debug("Locations is None")
+            return []
+        else:
+            raise ValueError()
+
+
+    @locations.setter
+    def locations(self, locs):
+        logger = logging.getLogger(self.__class__.__name__ + ".locations.setter")
+        # if we're passed a callable, assume it's an iterator
+        if isinstance(locs, collections.Callable):
+            logger.debug("Locations is callable")
+            self._locations = locs
+        elif isinstance(locs, list):
+            logger.debug("Locations is a list")
+            self._locations = locs
+        elif locs is None:
+            logger.debug("Locations is None")
+            self._locations = None
+        else:
+            raise ValueError()
+        
     @property
     def name(self): return self._name
     
@@ -70,3 +105,4 @@ class Terrain(object):
                 t.locations.append(vloc)
 
         return t
+

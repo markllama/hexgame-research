@@ -18,9 +18,10 @@ from vector import Vector
 from point import Point
 from terrain import Terrain
 
-class HexMapView(HexMap, Frame):
+class HexMapView(HexMap, Canvas):
 
-    def __init__(self, size, origin=Vector.ORIGIN, terrains=None, tokens=None, 
+    def __init__(self, master, 
+                 size, origin=Vector.ORIGIN, terrains=None, tokens=None, 
                  name=None, game=None, copyright=None, hexrun=15):
 
         logger = logging.getLogger(self.__class__.__name__ + ".__init__")
@@ -34,35 +35,18 @@ class HexMapView(HexMap, Frame):
         self.porigin = Point(self.hexradius, self.hexheight)
         self.porigin = self.hexcenter(self.origin)
 
-        # create a frame
-        Frame.__init__(self)
-
-        self.grid_rowconfigure(0, weight=1)
-        self.grid_columnconfigure(0, weight=1)
-
-        xscrollbar = Scrollbar(self, orient=HORIZONTAL)
-        xscrollbar.grid(row=1, column=0, sticky=E+W)
-
-        yscrollbar = Scrollbar(self)
-        yscrollbar.grid(row=0, column=1, sticky=N+S)
-
         # bind the scroll bars to the canvas
         canvassize = self.canvasSize
 
-        canvas = Canvas(self, bd=0,
+        Canvas.__init__(self, master, bd=0,
                         width=canvassize.x, height=canvassize.y,
                         scrollregion = (0, 0, canvassize.x, canvassize.y),
-                        xscrollcommand=xscrollbar.set,
-                        yscrollcommand=yscrollbar.set)
+                        )
 
-        canvas.grid(row=0, column=0, sticky=N+S+E+W)
-
-        xscrollbar.config(command=canvas.xview)
-        yscrollbar.config(command=canvas.yview)
 
         # install two scroll bars
 
-        self.repaint()
+        #self.repaint()
 
     # All of the hex dimensions are based off the hexrun
     @property
@@ -96,6 +80,22 @@ class HexMapView(HexMap, Frame):
         px = ((vec.hx * 3) * self.hexrun) + self.porigin.x
         py = (((vec.hy * 2) - vec.hx) * self.hexrise) + self.porigin.y
         return Point(px, py)
+
+    def hexvertices(self, vec):
+        center = self.hexcenter(vec)
+        xpoints = [center.x - self.hexradius, center.x - self.hexrun,
+                   center.x + self.hexrun, center.x + self.hexradius]
+        ypoints = [center.y - self.hexrise, center.y, center.y + self.hexrise]
+
+        plist = [
+            Point(xpoints[1], ypoints[0]),
+            Point(xpoints[2], ypoints[0]),
+            Point(xpoints[3], ypoints[1]),
+            Point(xpoints[2], ypoints[2]),
+            Point(xpoints[1], ypoints[2]),
+            Point(xpoints[0], ypoints[1]),
+            ]
+        return plist
 
     def tokencenter(self, vec): return self.hexcenter(vec)
 
@@ -149,23 +149,22 @@ class HexMapView(HexMap, Frame):
         # draw all of the tokens
         for token in self._tokens:
             token.repaint()
-
-
+        
 class TerrainView(Terrain):
     """
     A Terrain that knows how to draw itself when it's added to map
     """
 
-    @property
-    def map(self): return self._map
+#    @property
+#    def map(self): return self._map
 
-    # map property is inherited from Terrain
-    @map.setter
-    def map(self, map):
-        """
-        Draw itself on each location
-        """
-        print "adding a map to me: map = %s, I am %s" % (map, self.name)
+#    # map property is inherited from Terrain
+#    @map.setter
+#    def map(self, map):
+#        """
+#        Draw itself on each location
+#        """
+#        print "adding a map to me: map = %s, I am %s" % (map, self.name)
 
 class BorderTerrainView(TerrainView):
     """Draw the hex shape around the center"""
@@ -174,6 +173,15 @@ class BorderTerrainView(TerrainView):
         """Draw the border around the hex's location(s)"""
         logger = logging.getLogger(self.__class__.__name__ + ".repaint")
 
-        logger.debug("Repainting")
+
         for l in self.locations:
-            logger.debug("repainting border on %s at %s" % (self._map, l))
+            center = self._map.hexcenter(l)
+            vertices = self._map.hexvertices(l)
+            coordinates = []
+            for v in vertices: coordinates.extend([v.x, v.y]) 
+            self._map.create_polygon(
+                coordinates, 
+                fill="white", 
+                outline="black", 
+                tag=["border", "(%d,%d)" % (l.hx, l.hy)]
+                )
