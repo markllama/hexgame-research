@@ -74,15 +74,14 @@ if __name__ == "__main__":
     yscrollbar = Scrollbar(fr)
     yscrollbar.grid(row=0, column=1, sticky=N+S)
 
-    borders = hexmap.BorderTerrainView("border")
+    borders = hexmap.BorderTerrainView("border", locations=hexmap.AllHexes)
+    centers = hexmap.CenterTerrainView("center", locations=hexmap.AllHexes)
 
     hm = hexmap.HexMapView(fr,
                            size=hexmap.Vector(15, 23),
-                           terrains=[borders,]
+                           terrains=[borders, centers]
         )
     
-    borders.locations = hexmap.AllHexes
-
     hm.repaint()
 
     hm.config(xscrollcommand=xscrollbar.set)

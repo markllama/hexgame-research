@@ -185,3 +185,19 @@ class BorderTerrainView(TerrainView):
                 outline="black", 
                 tag=["border", "(%d,%d)" % (l.hx, l.hy)]
                 )
+
+class CenterTerrainView(TerrainView):
+    """Draw a dot in the center of the hex"""
+
+    for l in self.locations:
+        center = self._map.hexcenter(l)
+        vertices = [
+            center.x - 1, center.y - 1, center.x + 1, center.y - 1,
+            center.x + 1, center.y + 1, center.x - 1, center.y + 1
+            ]
+        self._map.create_rectangle(
+            vertices, 
+            fill="black",
+            tag = ["center", "(%d,%d)" % (l.hx, l.hy)]
+            )
+                                   
