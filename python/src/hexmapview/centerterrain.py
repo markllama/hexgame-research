@@ -13,6 +13,6 @@ class CenterTerrain(Terrain):
         self._map.create_rectangle(
             vertices, 
             fill=self._color,
-            tag = ["center", "(%d,%d)" % (loc.hx, loc.hy)]
+            tag = [self.name, "(%d,%d)" % (loc.hx, loc.hy)]
             )
                                    
