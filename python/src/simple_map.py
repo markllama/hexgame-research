@@ -63,16 +63,38 @@ if __name__ == "__main__":
     root.title("Hex Map")
     #root.geometry("500x500")
 
-    borders = hexmap.BorderTerrainView(
-        "border", 
-        locations=[hexmap.Vector(4, 5)]
-        )
+    fr = Frame()
 
-    hm = hexmap.HexMapView(
-        size=hexmap.Vector(15, 23),
-        terrains=[borders]
-        )
+    fr.grid_rowconfigure(0, weight=1)
+    fr.grid_columnconfigure(0, weight=1)
 
-    hm.pack(fill=BOTH, expand=1)
+    xscrollbar = Scrollbar(fr, orient=HORIZONTAL)
+    xscrollbar.grid(row=1, column=0, sticky=E+W)
+
+    yscrollbar = Scrollbar(fr)
+    yscrollbar.grid(row=0, column=1, sticky=N+S)
+
+    borders = hexmap.BorderTerrainView("border")
+
+    hm = hexmap.HexMapView(fr,
+                           size=hexmap.Vector(15, 23),
+                           terrains=[borders,]
+        )
+    
+    borders.locations = hexmap.AllHexes
+
+    hm.repaint()
+
+    hm.config(xscrollcommand=xscrollbar.set)
+    hm.config(yscrollcommand=yscrollbar.set)
+
+    xscrollbar.config(command=hm.xview)
+    yscrollbar.config(command=hm.yview)
+
+    hm.grid(row=0, column=0, sticky=N+S+E+W)
+
+    fr.pack(fill=BOTH, expand=1)
+
+    #print [hex for hex in hm]
 
     root.mainloop()

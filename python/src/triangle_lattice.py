@@ -29,13 +29,13 @@ def sine60(a):
 
 mapdimensions = "550x550"
 
-hexrun = 50
+hexrun = 15
 hexradius = hexrun * 2
 hexwidth = hexradius * 2
 hexrise = sine60(hexradius)
 hexheight = hexrise * 2
 
-mapradius = 1
+mapradius = 4
 
 porigin0 = Point(hexwidth, hexrise)
 porigin = Point(250, 250)
@@ -139,8 +139,6 @@ class MenuBar(Frame):
 
         master.config(menu=self)
 
-
-
 class TriMap(Frame):
 
     def __init__(self, master=None):
@@ -151,6 +149,8 @@ class TriMap(Frame):
 
     def createWidgets(self):
         canvas = Canvas(self)
+        self.canvas = canvas
+
         canvas.bind('<Button-1>', pressedWhere)
         canvas.pack(fill=BOTH,expand=1)
 
