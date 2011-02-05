@@ -108,14 +108,14 @@ class Vector(object):
         
     def __add__(self, other):
         assert(isinstance(other, Vector))
-        return Vector(self.hx + other.hx, self.hy + other.hy)
+        return self.__class__(self.hx + other.hx, self.hy + other.hy)
 
     def __sub__(self, other):
         assert(isinstance(other, Vector))
-        return Vector(self.hx - other.hx, self.hy - other.hy)
+        return self.__class__(self.hx - other.hx, self.hy - other.hy)
 
     def __mul__(self, scalar):
-        return Vector(self.hx * scalar, self.hy * scalar)
+        return self.__class__(self.hx * scalar, self.hy * scalar)
 
     def distance(self, other):
         assert(isinstance(other, Vector))
