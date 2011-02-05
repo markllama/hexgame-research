@@ -6,7 +6,7 @@ import collections
 
 import lxml.etree as etree
 
-from hexmap import Vector
+from vector import Vector
 
 class Terrain(object):
 

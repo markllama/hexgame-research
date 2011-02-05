@@ -13,26 +13,23 @@ import math
 def sin60(a):
     return (a * 8660) / 10000
 
-from hexmap import HexMap
-from vector import Vector
-from point import Point
-from terrain import Terrain
+import hexmap
 
-class HexMapView(HexMap, Canvas):
+class Map(hexmap.Map, Canvas):
 
     def __init__(self, master, 
-                 size, origin=Vector.ORIGIN, terrains=None, tokens=None, 
+                 size, origin=hexmap.Vector.ORIGIN, terrains=None, tokens=None, 
                  name=None, game=None, copyright=None, hexrun=15):
 
         logger = logging.getLogger(self.__class__.__name__ + ".__init__")
 
         logger.debug("Origin = %s" % origin)
 
-        HexMap.__init__(self, size, origin, terrains, tokens, 
+        hexmap.Map.__init__(self, size, origin, terrains, tokens, 
                         name, game, copyright)
 
         self.hexrun = hexrun
-        self.porigin = Point(self.hexradius, self.hexheight)
+        self.porigin = hexmap.Point(self.hexradius, self.hexheight)
         self.porigin = self.hexcenter(self.origin)
 
         # bind the scroll bars to the canvas
@@ -73,13 +70,13 @@ class HexMapView(HexMap, Canvas):
     def canvasSize(self):
         x = (self.hexrun * 3 * self.size.hx) + self.hexrun
         y = (self.hexheight * self.size.hy) + self.hexrise
-        return Point(x, y)
+        return hexmap.Point(x, y)
 
     def hexcenter(self, vec):
         ybias = math.floor(vec.hx / 2)
         px = ((vec.hx * 3) * self.hexrun) + self.porigin.x
         py = (((vec.hy * 2) - vec.hx) * self.hexrise) + self.porigin.y
-        return Point(px, py)
+        return hexmap.Point(px, py)
 
     def hexvertices(self, vec):
         center = self.hexcenter(vec)
@@ -88,12 +85,12 @@ class HexMapView(HexMap, Canvas):
         ypoints = [center.y - self.hexrise, center.y, center.y + self.hexrise]
 
         plist = [
-            Point(xpoints[1], ypoints[0]),
-            Point(xpoints[2], ypoints[0]),
-            Point(xpoints[3], ypoints[1]),
-            Point(xpoints[2], ypoints[2]),
-            Point(xpoints[1], ypoints[2]),
-            Point(xpoints[0], ypoints[1]),
+            hexmap.Point(xpoints[1], ypoints[0]),
+            hexmap.Point(xpoints[2], ypoints[0]),
+            hexmap.Point(xpoints[3], ypoints[1]),
+            hexmap.Point(xpoints[2], ypoints[2]),
+            hexmap.Point(xpoints[1], ypoints[2]),
+            hexmap.Point(xpoints[0], ypoints[1]),
             ]
         return plist
 
@@ -117,7 +114,9 @@ class HexMapView(HexMap, Canvas):
 
     def refbox(self, p):
         refloc = self.refloc(p)
-        return [refloc,refloc + Vector.UNIT[2], refloc + Vector.UNIT[3]]
+        return [refloc,
+                refloc + hexmap.Vector.UNIT[2], 
+                refloc + hexmap.Vector.UNIT[3]]
 
     def point2vector(self, p):
         triangle = self.refbox(p)
@@ -131,8 +130,8 @@ class HexMapView(HexMap, Canvas):
         Convert a click point to a canvas point.  This is based on
         Javascript click behavior
         """
-        canvascorner = Point(0, 0)
-        scrollcorner = Point(0, 0)
+        canvascorner = hexmap.Point(0, 0)
+        scrollcorner = hexmap.Point(0, 0)
         return (eventpoint - canvascorner) + scrollcorner
 
     def repaint(self):
@@ -150,54 +149,3 @@ class HexMapView(HexMap, Canvas):
         for token in self._tokens:
             token.repaint()
         
-class TerrainView(Terrain):
-    """
-    A Terrain that knows how to draw itself when it's added to map
-    """
-
-#    @property
-#    def map(self): return self._map
-
-#    # map property is inherited from Terrain
-#    @map.setter
-#    def map(self, map):
-#        """
-#        Draw itself on each location
-#        """
-#        print "adding a map to me: map = %s, I am %s" % (map, self.name)
-
-class BorderTerrainView(TerrainView):
-    """Draw the hex shape around the center"""
-
-    def repaint(self):
-        """Draw the border around the hex's location(s)"""
-        logger = logging.getLogger(self.__class__.__name__ + ".repaint")
-
-
-        for l in self.locations:
-            center = self._map.hexcenter(l)
-            vertices = self._map.hexvertices(l)
-            coordinates = []
-            for v in vertices: coordinates.extend([v.x, v.y]) 
-            self._map.create_polygon(
-                coordinates, 
-                fill="white", 
-                outline="black", 
-                tag=["border", "(%d,%d)" % (l.hx, l.hy)]
-                )
-
-class CenterTerrainView(TerrainView):
-    """Draw a dot in the center of the hex"""
-
-    for l in self.locations:
-        center = self._map.hexcenter(l)
-        vertices = [
-            center.x - 1, center.y - 1, center.x + 1, center.y - 1,
-            center.x + 1, center.y + 1, center.x - 1, center.y + 1
-            ]
-        self._map.create_rectangle(
-            vertices, 
-            fill="black",
-            tag = ["center", "(%d,%d)" % (l.hx, l.hy)]
-            )
-                                   

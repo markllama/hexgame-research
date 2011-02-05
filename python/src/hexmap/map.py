@@ -26,9 +26,9 @@ import lxml.etree as etree
 from vector import Vector
 from terrain import Terrain
 
-class HexMapError(Exception): pass
+class MapError(Exception): pass
 
-class HexMap(object):
+class Map(object):
     """
     This represents the state of a game map
     """
@@ -67,7 +67,7 @@ class HexMap(object):
         # get the size
         esize = maptree.find("size")
         if esize is None:
-            raise HexMapError("A map must have a size")
+            raise MapError("A map must have a size")
         else:
             evec = esize[0]
             size = Vector.fromelement(evec)
