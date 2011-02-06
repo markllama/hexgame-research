@@ -56,7 +56,10 @@ class Map(object):
         #for token in tokens:
         #    token.map = self
 
-        self._name = name
+        logger.debug("name = %s" % name)
+        self.name = name
+        logger.debug("self.name = %s" % (self.name))
+
         self._game = game
         self._copyright = copyright
 
@@ -104,7 +107,7 @@ class Map(object):
     def element(self):
         e = etree.Element("map")
         if self.name:
-            e.set('name', self.name)
+            e.set('name', str(self._name))
         
         if self.copyright:
             e.set("copyright", self.copyright)
@@ -143,7 +146,15 @@ class Map(object):
     def origin(self): return self._origin
 
     @property
-    def name(self): return self._name
+    def name(self): 
+        if self._name is None:
+            return "UNSET"
+
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._name = name
 
     @property
     def game(self): return self._game

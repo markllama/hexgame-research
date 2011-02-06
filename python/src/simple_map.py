@@ -79,10 +79,13 @@ if __name__ == "__main__":
 
     hm = hexmapview.Map(
         fr,
+        name="simple",
         size=hexmapview.Vector(15, 22),
         terrains=[borders, centers],
         hexrun=15
         )
+
+    print "map name = %s (%s)" % (hm.name, hm._name)
     
     hm.repaint()
 
@@ -108,4 +111,5 @@ if __name__ == "__main__":
     #print [hex for hex in hm]
     print "--- starting ---"
 
+    print hm.xml
     root.mainloop()

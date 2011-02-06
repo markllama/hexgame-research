@@ -7,6 +7,7 @@ import collections
 import lxml.etree as etree
 
 from vector import Vector
+import map
 
 class Terrain(object):
 
@@ -14,7 +15,8 @@ class Terrain(object):
 
     def __init__(self, name, locations=None, map=None):
         self._map = map
-        self._name = self.__class__.name
+        self._name = name
+        #self._type = self.__class__.name
 
         if locations == "ALL":
             self._all = True
@@ -69,12 +71,16 @@ class Terrain(object):
     def element(self):
         e = etree.Element("terrain")
         e.set("type", self.__class__.__name__)
-        e.set('name', self.name)
+        try:
+            e.set('name', self.name)
+        except TypeError:
+            print "Cannot set name to %s" % self.name
+            e.set('name', 'ERROR')
         if self._all:
             e.set("all", "true")
         elif self.locations is not None:
             loclist = etree.Element("locations")
-            if self.locations == "ALL":
+            if self._locations == map.AllHexes:
                 loclist.set("all", "true")
             else:
                 for l in self.locations:

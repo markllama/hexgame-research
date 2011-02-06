@@ -28,6 +28,8 @@ class Map(hexmap.Map, Canvas):
         hexmap.Map.__init__(self, size, origin, terrains, tokens, 
                         name, game, copyright)
 
+        logger.debug("name = %s" % self.name)
+
         self.hexrun = hexrun
         self.porigin = hexmap.Point(self.hexradius, self.hexheight)
         self.porigin = self.hexcenter(self.origin)
@@ -35,7 +37,7 @@ class Map(hexmap.Map, Canvas):
         # bind the scroll bars to the canvas
         canvassize = self.canvasSize
 
-        Canvas.__init__(self, master, bd=0,
+        Canvas.__init__(self, master, bd=0, name=self.name,
                         width=canvassize.x, height=canvassize.y,
                         scrollregion = (0, 0, canvassize.x, canvassize.y),
                         )
