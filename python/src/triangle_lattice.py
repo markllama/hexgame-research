@@ -105,10 +105,6 @@ def point2hex(p):
 
     return h
 
-    
-    # now adjust h if p lies in the upper or lower right triangles
-    return h
-
 def pressedWhere(event):
     h = point2hex(Point(event.x, event.y))
     print "You clicked on pixel(%d, %d).  Thats in hex%s" % (event.x, event.y, h)

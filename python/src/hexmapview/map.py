@@ -59,7 +59,10 @@ class Map(hexmap.Map, Canvas):
 
     @property
     def hexradius(self): return self._hexradius
-        
+
+    @property
+    def hexwidth(self): return self._hexwidth
+
     @property
     def hexrise(self): return self._hexrise
 
@@ -106,33 +109,65 @@ class Map(hexmap.Map, Canvas):
     def inrange(self, p, vec):
         return self.clickdistance(p, vec) < self.clickrange(vec)
 
-    def refloc(self, p):
-        hx = math.floor((p.x, self.porigin.x) / self.hexrun + 3)
-        hy = math.floor(
-            ((p.y - self.porigin.y) + (hx * self.hexrise))
-            / self.hexheight)
+    def rectangle(self, p0, offset=hexmap.Point(0, 0)):
+        # Given the center point of a hex, find the vertices of the rectangle
+        # which defines the boundaries
+        # These rectangles fill the plane completely in the same way that the
+        # hexagons do.
 
-    def refbox(self, p):
-        refloc = self.refloc(p)
-        return [refloc,
-                refloc + hexmap.Vector.UNIT[2], 
-                refloc + hexmap.Vector.UNIT[3]]
+        v0 = hexmap.Point(p0.x - self.hexradius + offset.x, 
+                          p0.y - self.hexrise + offset.y)
+        v1 = hexmap.Point(v0.x, p0.y + self.hexrise + offset.y)
+        v2 = hexmap.Point(p0.x + self.hexrun + offset.x, v1.y)
+        v3 = hexmap.Point(v2.x, v0.y)
+        #self.create_rectangle(v0.x, v0.y, v2.x, v2.y)
 
-    def point2vector(self, p):
-        triangle = self.refbox(p)
-        m = self
-        bydist = lambda a, b: m.clickdistance(p, a) - m.clickdistance(p, b)
-        triangle.sort(bydist)
-        return triangle[0]
+        vertices = (v0, v1, v2, v3)
+        return vertices
+
+    def refhex(self, p):
+        # generate the base hex which contains a given point
+        # offset by the porigin + 1/2 hex ( to get the origin hex on the
+        # canvas
+        hx = ((p.x - self.porigin.x) + self.hexradius) / (self.hexrun * 3)
+        hy = ((p.y - self.porigin.y) + ((hx + 1) * self.hexrise)) / self.hexheight
+        return hexmap.Vector(hx, hy)
+
+    def point2hex(self, p):
+        # Find the reference hex containing this point
+        h = self.refhex(p)
+
+        # find the center of that hex
+        c = self.hexcenter(h)
+
+        # get the bounding rectangle of the expected hex
+        # offset the rectangle by -hexradius to make the slope calculation
+        # simpler
+        r = self.rectangle(c, offset=hexmap.Point(-self.hexradius, 0))
+
+        # find the point inside a normalized rectangle
+        # offset by hexradius to make further tests easier
+        # the axis point is placed at 0,0 of the normalized rectangle containing
+        # the point
+        np = hexmap.Point(p.x - r[0].x - self.hexradius, p.y - r[0].y - self.hexrise)
+        if np.x <= self.hexrun and np.x * 2 < abs(np.y):
+            if np.y > 0:
+                h += hexmap.Vector.UNIT[4]
+            else:
+                h += hexmap.Vector.UNIT[5]
+
+        return h
 
     def canvaspoint(self, eventpoint):
         """
-        Convert a click point to a canvas point.  This is based on
-        Javascript click behavior
+        Convert a click point to a canvas point, accounting for scrolling
         """
-        canvascorner = hexmap.Point(0, 0)
-        scrollcorner = hexmap.Point(0, 0)
-        return (eventpoint - canvascorner) + scrollcorner
+
+        return hexmap.Point(
+            self.canvasx(eventpoint.x),
+            self.canvasy(eventpoint.y)
+            )
+
 
     def repaint(self):
         logger = logging.getLogger(self.__class__.__name__ + ".repaint")

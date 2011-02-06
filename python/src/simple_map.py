@@ -79,8 +79,9 @@ if __name__ == "__main__":
 
     hm = hexmapview.Map(
         fr,
-        size=hexmapview.Vector(15, 23),
-        terrains=[borders, centers]
+        size=hexmapview.Vector(4, 4),
+        terrains=[borders, centers],
+        hexrun=30
         )
     
     hm.repaint()
@@ -90,6 +91,16 @@ if __name__ == "__main__":
 
     xscrollbar.config(command=hm.xview)
     yscrollbar.config(command=hm.yview)
+
+    def pressedWhere(event):
+        framepoint = hexmapview.Point(event.x, event.y)
+        canvaspoint = hm.canvaspoint(framepoint)
+        h = hm.point2hex(framepoint)
+        #h = hm.point2hex(canvaspoint)
+        print "You clicked on pixel(%d,%d), canvas(%d,%d).  Thats in hex%s" % \
+            (framepoint.x, framepoint.y, canvaspoint.x, canvaspoint.y, h)
+
+    hm.bind('<Button-1>', pressedWhere)
 
     hm.grid(row=0, column=0, sticky=N+S+E+W)
 
