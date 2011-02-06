@@ -76,10 +76,16 @@ class Map(hexmap.Map, Canvas):
         return hexmap.Point(x, y)
 
     def hexcenter(self, vec):
+        logger = logging.getLogger(self.__class__.__name__ + ".hexcenter")
+
         ybias = math.floor(vec.hx / 2)
-        px = ((vec.hx * 3) * self.hexrun) + self.porigin.x
+
+        px = ((vec.hx * 3) * self.hexrun) + self.porigin.x 
         py = (((vec.hy * 2) - vec.hx) * self.hexrise) + self.porigin.y
-        return hexmap.Point(px, py)
+
+        center = hexmap.Point(px, py)
+
+        return center
 
     def hexvertices(self, vec):
         center = self.hexcenter(vec)
@@ -120,7 +126,6 @@ class Map(hexmap.Map, Canvas):
         v1 = hexmap.Point(v0.x, p0.y + self.hexrise + offset.y)
         v2 = hexmap.Point(p0.x + self.hexrun + offset.x, v1.y)
         v3 = hexmap.Point(v2.x, v0.y)
-        #self.create_rectangle(v0.x, v0.y, v2.x, v2.y)
 
         vertices = (v0, v1, v2, v3)
         return vertices
@@ -134,7 +139,10 @@ class Map(hexmap.Map, Canvas):
         return hexmap.Vector(hx, hy)
 
     def point2hex(self, p):
+        logger = logging.getLogger(self.__class__.__name__ + ".point2hex")
+        
         # Find the reference hex containing this point
+        logger.debug("You want the hex at %s" % p)
         h = self.refhex(p)
 
         # find the center of that hex
@@ -164,10 +172,9 @@ class Map(hexmap.Map, Canvas):
         """
 
         return hexmap.Point(
-            self.canvasx(eventpoint.x),
-            self.canvasy(eventpoint.y)
+            int(self.canvasx(eventpoint.x)),
+            int(self.canvasy(eventpoint.y))
             )
-
 
     def repaint(self):
         logger = logging.getLogger(self.__class__.__name__ + ".repaint")

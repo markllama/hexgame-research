@@ -79,9 +79,9 @@ if __name__ == "__main__":
 
     hm = hexmapview.Map(
         fr,
-        size=hexmapview.Vector(4, 4),
+        size=hexmapview.Vector(15, 22),
         terrains=[borders, centers],
-        hexrun=30
+        hexrun=15
         )
     
     hm.repaint()
@@ -95,10 +95,9 @@ if __name__ == "__main__":
     def pressedWhere(event):
         framepoint = hexmapview.Point(event.x, event.y)
         canvaspoint = hm.canvaspoint(framepoint)
-        h = hm.point2hex(framepoint)
-        #h = hm.point2hex(canvaspoint)
-        print "You clicked on pixel(%d,%d), canvas(%d,%d).  Thats in hex%s" % \
-            (framepoint.x, framepoint.y, canvaspoint.x, canvaspoint.y, h)
+        hc = hm.point2hex(canvaspoint)
+        print "You clicked on canvas(%d,%d), Thats in hex%s" % \
+            (canvaspoint.x, canvaspoint.y, hc)
 
     hm.bind('<Button-1>', pressedWhere)
 
@@ -107,5 +106,6 @@ if __name__ == "__main__":
     fr.pack(fill=BOTH, expand=1)
 
     #print [hex for hex in hm]
+    print "--- starting ---"
 
     root.mainloop()
