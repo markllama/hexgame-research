@@ -109,7 +109,11 @@ if __name__ == "__main__":
     fr.pack(fill=BOTH, expand=1)
 
     #print [hex for hex in hm]
-    print "--- starting ---"
+    #print "--- starting ---"
 
-    print hm.xml
+    #print hm.xml
+
+    circle = PhotoImage("data/circle.png")
+    hm.create_image(200, 200, image=circle)
+
     root.mainloop()
