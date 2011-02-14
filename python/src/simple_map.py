@@ -96,11 +96,18 @@ if __name__ == "__main__":
     yscrollbar.config(command=hm.yview)
 
     def pressedWhere(event):
+
         framepoint = hexmapview.Point(event.x, event.y)
         canvaspoint = hm.canvaspoint(framepoint)
         hc = hm.point2hex(canvaspoint)
         print "You clicked on canvas(%d,%d), Thats in hex%s" % \
             (canvaspoint.x, canvaspoint.y, hc)
+
+        idlist = hm.find_withtag(CURRENT)
+        idlist += hm.find_below(idlist[0])
+        print "there are %d items there" % len(idlist)
+        for id in idlist:
+            print "-- " + str(hm.gettags(id))
 
     hm.bind('<Button-1>', pressedWhere)
 
@@ -114,6 +121,11 @@ if __name__ == "__main__":
     #print hm.xml
 
     circle = PhotoImage("data/circle.png")
-    hm.create_image(200, 200, image=circle)
+    imageitem = hm.create_image(200, 200, image=circle, tags=['image', 'circle'], state=NORMAL)
 
+    h = hexmapview.Hex(4, 4, map=hm)
+    print h.terrains
+    print h.tokens
+    print h
+    
     root.mainloop()

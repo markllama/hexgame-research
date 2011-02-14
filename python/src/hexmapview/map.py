@@ -14,8 +14,11 @@ def sin60(a):
     return (a * 8660) / 10000
 
 import hexmap
+from hex import Hex
 
 class Map(hexmap.Map, Canvas):
+
+    _hexclass = Hex
 
     def __init__(self, master, 
                  size, origin=hexmap.Vector.ORIGIN, terrains=None, tokens=None, 
@@ -183,13 +186,7 @@ class Map(hexmap.Map, Canvas):
         logger.debug("Repainting map")
 
         # remove all existing objects?
-
-        # draw all of the terrains
-        logger.debug("there are %d terrains" % len(self._terrains))
-        for terrain in self._terrains:
-            terrain.repaint()
-
-        # draw all of the tokens
-        for token in self._tokens:
-            token.repaint()
+        for h in self.hexes:
+            logger.debug("Repainting hex %s" % h)
+            h.repaint()
         

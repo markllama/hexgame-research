@@ -9,7 +9,7 @@ from hexmap import Point, Vector, AllHexes
 from map import Map
 from terrain import Terrain
 # from token import Token
-# from hex import Hex ??
+from hexmap import Hex
 
 # these are new, used to help draw the map
 from centerterrain import CenterTerrain

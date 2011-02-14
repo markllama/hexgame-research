@@ -6,8 +6,10 @@ import collections
 
 import lxml.etree as etree
 
+import hexmap
 from vector import Vector
 import map
+
 
 class Terrain(object):
 
@@ -63,7 +65,16 @@ class Terrain(object):
             self._locations = None
         else:
             raise ValueError()
-        
+
+    def __contains__(self, loc):
+        logger = logging.getLogger(self.__class__.__name__ + ".__contains__")
+
+        logger.debug("checking %s in locations: %s" % (loc, self._locations))
+        if self._locations is hexmap.map.AllHexes:
+            return loc in self._map
+
+        return loc in self.locations
+
     @property
     def name(self): return self._name
     

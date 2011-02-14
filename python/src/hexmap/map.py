@@ -24,6 +24,7 @@ import logging
 import lxml.etree as etree
 
 from vector import Vector
+from hex import Hex
 from terrain import Terrain
 
 class MapError(Exception): pass
@@ -32,7 +33,9 @@ class Map(object):
     """
     This represents the state of a game map
     """
-    
+
+    _hexclass = Hex
+
     def __init__(self, size, origin=Vector.ORIGIN, terrains=None, tokens=None, 
                  name=None, game=None, copyright=None):
 
@@ -163,6 +166,12 @@ class Map(object):
     def copyright(self): return self._copyright
 
     @property
+    def hexclass(self): return self._hexclass
+    
+    @property
+    def hexes(self): return AllHexes(self)
+
+    @property
     def terrains(self):
         if self._terrains is True:
             return AllTerrains(self)
@@ -227,26 +236,29 @@ class AllHexes(object):
 
     def next(self):
 
+        logger = logging.getLogger(self.__class__.__name__ + ".next")
 
         if self._current is None:
             """Set and return the first hex"""
             hx = self._hexmap.origin.hx
             hy = self._hexmap.hyfirst(hx)
-            self._current = Vector(hx, hy)
-            return self._current
+            self._current = self._hexmap.hexclass(hx, hy, map=self._hexmap)
 
-        """Step to the next location"""
-        next = self._current + Vector.UNIT[3]
-        if next in self._hexmap:
-            self._current = next
-            return self._current
+        else: 
+            """Step to the new location"""
+            try:
+                newloc =  self._current + Vector.UNIT[3]
+                self._current = newloc
+            except KeyError:
+                hx = self._current.hx + 1
+                hy = self._hexmap.hyfirst(hx)
+                if hy is not None:
+                    newhex = self._current.__class__(hx, hy, map=self._hexmap)
+                    
+                    self._current = self._current.__class__(hx, hy, map=self._hexmap)
+                else:
+                    raise StopIteration
 
-        # step to the next column
-        hx = next.hx + 1
-        hy = self._hexmap.hyfirst(hx)
-        next = Vector(hx, hy)
-        if next in self._hexmap:
-            self._current = next
-            return self._current
+        return self._current
 
-        raise StopIteration
+
