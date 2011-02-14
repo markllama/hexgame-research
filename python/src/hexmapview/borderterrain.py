@@ -14,5 +14,5 @@ class BorderTerrain(Terrain):
             coordinates, 
             fill="white", 
             outline="black", 
-            tag=[self.name, "(%d,%d)" % (loc.hx, loc.hy)]
+            tag=[self.name, "terrain", "(%d,%d)" % (loc.hx, loc.hy)]
             )
