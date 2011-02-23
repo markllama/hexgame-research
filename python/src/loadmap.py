@@ -86,5 +86,11 @@ if __name__ == "__main__":
 
     mapstring = file(opt.mapspec).read()
     hm = hexmapview.Map.fromstring(fr, mapstring)
-
     
+    #hm.repaint()
+
+    hm.grid(row=0, column=0, sticky=N+S+E+W)
+
+    fr.pack(fill=BOTH, expand=1)
+    
+    root.mainloop()
