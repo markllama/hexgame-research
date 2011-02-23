@@ -50,6 +50,47 @@ class Map(hexmap.Map, Canvas):
 
         #self.repaint()
 
+    @classmethod
+    def fromelement(cls, master, maptree, terrainmap=None, tokenmap=None):
+                
+        name = maptree.get('name')
+
+        # get the size
+        esize = maptree.find("size")
+        if esize is None:
+            raise MapError("A map must have a size")
+        else:
+            evec = esize[0]
+            size = hexmap.Vector.fromelement(evec)
+
+
+        # and the origin
+        eorigin = maptree.find("origin")
+        if eorigin is not None:
+            evec = eorigin[0]
+            origin = hexmap.Vector.fromelement(evec) 
+        else:
+            origin = hexmap.Vector.ORIGIN
+
+        # and the name, game and copyright
+        hm = cls(master, size, origin, name=name)
+
+        # add the terrains
+        for eterrain in maptree.findall("terrain"):
+            tname = eterrain.get("type")
+            if tname in terrainmap:
+                terrain = terrainmap[tname].fromelement(eterrain)
+                hm.addTerrain(terrain)
+            else:
+                print "terrain name %s not in terrain map %s" % (tname, terrainmap)
+
+        return hm
+
+    @classmethod
+    def fromstring(cls, master, mapstring, terrainmap=None, tokenmap=None):
+        maptree = etree.fromstring(mapstring)
+        return cls.fromelement(master, maptree, terrainmap, tokenmap)
+        
     # All of the hex dimensions are based off the hexrun
     @property
     def hexrun(self): return self._hexrun

@@ -52,7 +52,8 @@ class Map(object):
 
         self._terrains = terrains
         
-        for terrain in self._terrains:
+        if self._terrains is not None:
+            for terrain in self._terrains:
                 terrain._map = self
 
         self._tokens = tokens or []
