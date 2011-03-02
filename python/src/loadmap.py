@@ -62,6 +62,18 @@ if opt.verbose:
 if opt.debug:
     logging.root.setLevel(logging.DEBUG)
 
+
+# Map the terrain types in the XML file to python classes
+terrainmap = {
+    "HexMapView.Terrain.Border": hexmapview.BorderTerrain,
+    "HexMapView.Terrain.Center": hexmapview.CenterTerrain
+}
+
+# map the token types in the XML file to python classes
+tokenmap = {
+
+}
+
 if __name__ == "__main__":
     
     print "Loading XML file: %s" % opt.mapspec
@@ -85,9 +97,9 @@ if __name__ == "__main__":
     yscrollbar.grid(row=0, column=1, sticky=N+S)
 
     mapstring = file(opt.mapspec).read()
-    hm = hexmapview.Map.fromstring(fr, mapstring)
+    hm = hexmapview.Map.fromstring(fr, mapstring, terrainmap)
     
-    #hm.repaint()
+    hm.repaint()
 
     hm.grid(row=0, column=0, sticky=N+S+E+W)
 

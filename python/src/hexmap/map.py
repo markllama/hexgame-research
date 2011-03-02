@@ -50,7 +50,7 @@ class Map(object):
         # check if the Hex constructor has been provided
         #self._hex = Hex;
 
-        self._terrains = terrains
+        self._terrains = terrains or []
         
         if self._terrains is not None:
             for terrain in self._terrains:
@@ -58,7 +58,7 @@ class Map(object):
 
         self._tokens = tokens or []
         #for token in tokens:
-        #    token.map = self
+        #    token._map = self
 
         logger.debug("name = %s" % name)
         self.name = name

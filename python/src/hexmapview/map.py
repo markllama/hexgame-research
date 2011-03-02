@@ -39,20 +39,20 @@ class Map(hexmap.Map, Canvas):
 
         # bind the scroll bars to the canvas
         canvassize = self.canvasSize
+        logger.debug("canvassize = %s" % canvassize)
 
         Canvas.__init__(self, master, bd=0, name=self.name,
                         width=canvassize.x, height=canvassize.y,
                         scrollregion = (0, 0, canvassize.x, canvassize.y),
                         )
-
-
+        
         # install two scroll bars
 
         #self.repaint()
 
     @classmethod
     def fromelement(cls, master, maptree, terrainmap=None, tokenmap=None):
-                
+        logger = logging.getLogger(cls.__name__ + ".fromelement")
         name = maptree.get('name')
 
         # get the size
@@ -63,12 +63,11 @@ class Map(hexmap.Map, Canvas):
             evec = esize[0]
             size = hexmap.Vector.fromelement(evec)
 
-
         # and the origin
         eorigin = maptree.find("origin")
         if eorigin is not None:
             evec = eorigin[0]
-            origin = hexmap.Vector.fromelement(evec) 
+            origin = hexmap.Vector.fromelement(evec)
         else:
             origin = hexmap.Vector.ORIGIN
 
@@ -76,8 +75,12 @@ class Map(hexmap.Map, Canvas):
         hm = cls(master, size, origin, name=name)
 
         # add the terrains
-        for eterrain in maptree.findall("terrain"):
+        terrainlist = maptree.find("terrains")
+        terrains = terrainlist.findall("terrain")
+        logger.debug("there are %d terrains" % len(terrains))
+        for eterrain in terrains:
             tname = eterrain.get("type")
+            logger.debug("new terrain: %s" % tname)
             if tname in terrainmap:
                 terrain = terrainmap[tname].fromelement(eterrain)
                 hm.addTerrain(terrain)

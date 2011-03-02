@@ -31,12 +31,18 @@ class Hex(Vector):
             raise LookupError("No map set")
 
         # search all the terrains for membership in this hex
+        if self.map._terrains is None:
+            return None
+
         return [t for t in self._map._terrains if self in t]
 
     @property
     def tokens(self):
         if self.map is None:
             raise LookupError("No map set")
+
+        if self.map._tokens is None:
+            return None
 
         # search all the terrains for membership in this hex
         return [t for t in self._map._tokens if t.location == self]
