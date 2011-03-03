@@ -101,6 +101,12 @@ if __name__ == "__main__":
     
     hm.repaint()
 
+    hm.config(xscrollcommand=xscrollbar.set)
+    hm.config(yscrollcommand=yscrollbar.set)
+
+    xscrollbar.config(command=hm.xview)
+    yscrollbar.config(command=hm.yview)
+
     hm.grid(row=0, column=0, sticky=N+S+E+W)
 
     fr.pack(fill=BOTH, expand=1)
