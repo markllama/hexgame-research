@@ -81,8 +81,10 @@ class Map(hexmap.Map, Canvas):
         for eterrain in terrains:
             tname = eterrain.get("type")
             logger.debug("new terrain: %s" % tname)
+            logger.debug(etree.tostring(eterrain))
             if tname in terrainmap:
                 terrain = terrainmap[tname].fromelement(eterrain)
+                logger.debug("new terrain = %s" % terrain)
                 hm.addTerrain(terrain)
             else:
                 print "terrain name %s not in terrain map %s" % (tname, terrainmap)

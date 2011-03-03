@@ -115,7 +115,7 @@ class Terrain(object):
         t = cls(eterrain.tag)
         eloclist = eterrain.find("locations")
         if eloclist.get("all") == "true":
-            t._all = True
+            t._locations=map.AllHexes
         else:
             for eloc in eloclist:
                 vloc = Vector.fromelement(eloc)
