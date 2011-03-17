@@ -168,6 +168,9 @@ class Vector(object):
         if o < b: o += 6
         return o - b
 
+    def neighbors(self):
+        [self + offset for offset in Vector.UNIT]
+
 Vector.ORIGIN = Vector()
 
 Vector.UNIT = (
