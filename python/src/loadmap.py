@@ -24,6 +24,7 @@ from optparse import OptionParser, Option
 # Define user controllable defaults
 defaults = {
     "mapspec": None,
+    "hexrun": None
 }
 
 # Override defaults from environment variables (upper case) if provided
@@ -35,13 +36,13 @@ for key in defaults:
 # Define normal control options for any script
 standard_options = (
     Option("-d", "--debug", action="store_true"),
-    Option("-n", "--dryrun", dest="liverun", action="store_false", default=True)
-,
+    Option("-n", "--dryrun", dest="liverun", action="store_false", default=True),
     Option("-v", "--verbose", action="store_true")
 )
 
 app_options = (
     Option("-m", "--mapspec", default=defaults['mapspec']),
+    Option("-r", "--hexrun", default=defaults['hexrun'], type=int)
 )
 
 all_options = standard_options + app_options
@@ -97,7 +98,7 @@ if __name__ == "__main__":
     yscrollbar.grid(row=0, column=1, sticky=N+S)
 
     mapstring = file(opt.mapspec).read()
-    hm = hexmapview.Map.fromstring(fr, mapstring, terrainmap)
+    hm = hexmapview.Map.fromstring(fr, mapstring, terrainmap, hexrun=opt.hexrun)
 
     hm.config(xscrollcommand=xscrollbar.set)
     hm.config(yscrollcommand=yscrollbar.set)

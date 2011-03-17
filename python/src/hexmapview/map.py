@@ -16,13 +16,15 @@ def sin60(a):
 import hexmap
 from hex import Hex
 
+default_hexrun = 15
+
 class Map(hexmap.Map, Canvas):
 
     _hexclass = Hex
 
     def __init__(self, master, 
                  size, origin=hexmap.Vector.ORIGIN, terrains=None, tokens=None, 
-                 name=None, game=None, copyright=None, hexrun=15):
+                 name=None, game=None, copyright=None, hexrun=None):
 
         logger = logging.getLogger(self.__class__.__name__ + ".__init__")
 
@@ -33,7 +35,7 @@ class Map(hexmap.Map, Canvas):
 
         logger.debug("name = %s" % self.name)
 
-        self.hexrun = hexrun
+        self.hexrun = hexrun or default_hexrun
         self.porigin = hexmap.Point(self.hexradius, self.hexheight)
         self.porigin = self.hexcenter(self.origin)
 
@@ -51,7 +53,7 @@ class Map(hexmap.Map, Canvas):
         #self.repaint()
 
     @classmethod
-    def fromelement(cls, master, maptree, terrainmap=None, tokenmap=None):
+    def fromelement(cls, master, maptree, terrainmap=None, tokenmap=None, hexrun=None):
         logger = logging.getLogger(cls.__name__ + ".fromelement")
         name = maptree.get('name')
 
@@ -72,7 +74,7 @@ class Map(hexmap.Map, Canvas):
             origin = hexmap.Vector.ORIGIN
 
         # and the name, game and copyright
-        hm = cls(master, size, origin, name=name)
+        hm = cls(master, size, origin, name=name, hexrun=hexrun)
 
         # add the terrains
         terrainlist = maptree.find("terrains")
@@ -92,9 +94,9 @@ class Map(hexmap.Map, Canvas):
         return hm
 
     @classmethod
-    def fromstring(cls, master, mapstring, terrainmap=None, tokenmap=None):
+    def fromstring(cls, master, mapstring, terrainmap=None, tokenmap=None, hexrun=None):
         maptree = etree.fromstring(mapstring)
-        return cls.fromelement(master, maptree, terrainmap, tokenmap)
+        return cls.fromelement(master, maptree, terrainmap, tokenmap, hexrun=hexrun)
         
     # All of the hex dimensions are based off the hexrun
     @property
