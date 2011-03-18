@@ -25,7 +25,7 @@ class Terrain(object):
         else:
             self._all = False
 
-        self.locations = locations
+        self._locations = locations or []
 
     @property
     def map(self): return self._map
@@ -35,36 +35,40 @@ class Terrain(object):
 
     @property
     def locations(self):
-        logger = logging.getLogger(self.__class__.__name__ + ".locations.getter")
+        return self._locations
+
+    #@property
+    #def locations(self):
+    #    logger = logging.getLogger(self.__class__.__name__ + ".locations.getter")
         # if we're passed a callable, assume it's an iterator
-        if isinstance(self._locations, collections.Callable):
-            logger.debug("Locations is callable")
-            return self._locations(self._map)
-        elif isinstance(self._locations, list):
-            logger.debug("Locations is a list")
-            return self._locations 
-        elif self._locations is None:
-            logger.debug("Locations is None")
-            return []
-        else:
-            raise ValueError()
+     #   if isinstance(self._locations, collections.Callable):
+     #       logger.debug("Locations is callable")
+     #       return self._locations(self._map)
+     #   elif isinstance(self._locations, list):
+     #       logger.debug("Locations is a list")
+     #       return self._locations 
+     #   elif self._locations is None:
+     #       logger.debug("Locations is None")
+     #       return []
+     #   else:
+     #       raise ValueError()
 
 
-    @locations.setter
-    def locations(self, locs):
-        logger = logging.getLogger(self.__class__.__name__ + ".locations.setter")
+    #@locations.setter
+    #def locations(self, locs):
+    #    logger = logging.getLogger(self.__class__.__name__ + ".locations.setter")
         # if we're passed a callable, assume it's an iterator
-        if isinstance(locs, collections.Callable):
-            logger.debug("Locations is callable")
-            self._locations = locs
-        elif isinstance(locs, list):
-            logger.debug("Locations is a list")
-            self._locations = locs
-        elif locs is None:
-            logger.debug("Locations is None")
-            self._locations = None
-        else:
-            raise ValueError()
+    #    if isinstance(locs, collections.Callable):
+    #        logger.debug("Locations is callable")
+    #        self._locations = locs
+    #    elif isinstance(locs, list):
+    #        logger.debug("Locations is a list")
+    #        self._locations = locs
+    #    elif locs is None:
+    #        logger.debug("Locations is None")
+    #        self._locations = None
+    #    else:
+    #        raise ValueError()
 
     def __contains__(self, loc):
         logger = logging.getLogger(self.__class__.__name__ + ".__contains__")
@@ -112,14 +116,19 @@ class Terrain(object):
 
     @classmethod
     def fromelement(cls, eterrain):
+        logger = logging.getLogger(cls.__name__ + ".fromelement")
         t = cls(eterrain.tag)
         eloclist = eterrain.find("locations")
         if eloclist.get("all") == "true":
             t._locations=map.AllHexes
         else:
+            logger.debug("Not all hexes")
             for eloc in eloclist:
+                logger.debug("new location %s" % eloc)
                 vloc = Vector.fromelement(eloc)
                 t.locations.append(vloc)
+
+            logger.debug("locations: %s" % t.locations)
 
         return t
 
