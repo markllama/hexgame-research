@@ -9,7 +9,7 @@ class Vertex(Terrain):
 
     def repaint_location(self, loc):
         center = self._map.hexcenter(loc)
-        vertices = [center.x - 4, center.y - 4, center.x - 4, center.y + 4]
+        vertices = [center.x - 4, center.y - 4, center.x + 4, center.y + 4]
         self._map.create_rectangle(
             vertices, 
             fill=self._color,

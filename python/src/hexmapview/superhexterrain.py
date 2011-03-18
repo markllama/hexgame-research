@@ -7,7 +7,7 @@ class SuperHex(Terrain):
         """Draw the border around the hex's location(s)"""
 
         center = self._map.hexcenter(loc)
-        vertices = [n.center for n in loc.neighbors]
+        vertices = [self._map.hexcenter(n) for n in loc.neighbors]
         coordinates = []
         for v in vertices: coordinates.extend([v.x, v.y]) 
         self._map.create_polygon(
