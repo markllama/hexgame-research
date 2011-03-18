@@ -14,3 +14,5 @@ from hexmap import Hex
 # these are new, used to help draw the map
 from centerterrain import CenterTerrain
 from borderterrain import BorderTerrain
+from superhexterrain import SuperHex
+from vertexterrain import Vertex

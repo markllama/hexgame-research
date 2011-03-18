@@ -67,7 +67,10 @@ if opt.debug:
 # Map the terrain types in the XML file to python classes
 terrainmap = {
     "HexMapView.Terrain.Border": hexmapview.BorderTerrain,
-    "HexMapView.Terrain.Center": hexmapview.CenterTerrain
+    "HexMapView.Terrain.Center": hexmapview.CenterTerrain,
+    "HexMapView.Terrain.SuperHex": hexmapview.SuperHex,
+    "HexMapView.Terrain.Vertex": hexmapview.Vertex
+
 }
 
 # map the token types in the XML file to python classes
@@ -83,8 +86,6 @@ if __name__ == "__main__":
     root = Tk()
     root.title("Hex Map")
     #root.geometry("500x500")
-
-    
 
     fr = Frame()
 
