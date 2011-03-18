@@ -199,6 +199,20 @@ class TestVector(unittest.TestCase):
         
         self.assertEquals(5.8, v0.bearing)
 
+    def testNeighbors(self):
+
+        v0 = Vector(5, 8)
+        neighbors = [
+            Vector(5, 7),
+            Vector(6, 8),
+            Vector(6, 9),
+            Vector(5, 9),
+            Vector(4, 8),
+            Vector(4, 7)
+            ]
+
+        self.assertEquals(neighbors, v0.neighbors)
+        
 if __name__ == "__main__":
     unittest.main()
 
