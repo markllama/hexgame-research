@@ -206,8 +206,10 @@ class Map(object):
         return True
 
     def addTerrain(self, terrain):
+        # terrains should be sorted by depth, deepest first
         self._terrains.append(terrain)
         terrain.map = self
+
         
     def addToken(self, token):
         # check that it's not already there.

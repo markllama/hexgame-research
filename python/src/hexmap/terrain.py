@@ -15,10 +15,11 @@ class Terrain(object):
 
     name = "terrain"
 
-    def __init__(self, name, locations=None, map=None):
+    def __init__(self, name, locations=None, depth=0, map=None):
         self._map = map
         self._name = name
         #self._type = self.__class__.name
+        self._depth = depth
 
         if locations == "ALL":
             self._all = True
@@ -83,6 +84,9 @@ class Terrain(object):
     def name(self): return self._name
     
     @property
+    def depth(self): return self._depth
+
+    @property
     def element(self):
         e = etree.Element("terrain")
         e.set("type", self.__class__.__name__)
@@ -118,6 +122,7 @@ class Terrain(object):
     def fromelement(cls, eterrain):
         logger = logging.getLogger(cls.__name__ + ".fromelement")
         t = cls(eterrain.tag)
+        depth = eterrain.get("depth") or 0
         eloclist = eterrain.find("locations")
         if eloclist.get("all") == "true":
             t._locations=map.AllHexes

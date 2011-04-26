@@ -234,7 +234,8 @@ class Map(hexmap.Map, Canvas):
         logger.debug("Repainting map")
 
         # remove all existing objects?
-        for h in self.hexes:
-            logger.debug("Repainting hex %s" % h)
-            h.repaint()
-        
+        #for h in self.hexes:
+        #    logger.debug("Repainting hex %s" % h)
+        #    h.repaint()
+        for t in self.terrains:
+            t.repaint()
