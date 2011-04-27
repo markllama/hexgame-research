@@ -5,7 +5,7 @@
   <origin><vector hx="0" hy="0" /></origin>
 
   <terrains>
-    <terrain type="HexMapView.Terrain.SuperHex" id="border" name="border">
+    <terrain type="HexMapView.Terrain.SuperHex" id="border" name="border" depth="1">
       <locations>
 
 	<vector hx="2" hy="5"/>
@@ -38,7 +38,7 @@
 
       </locations>
     </terrain>
-    <terrain type="HexMapView.Terrain.Vertex" id="center" name="center">
+    <terrain type="HexMapView.Terrain.Vertex" id="center" name="center" depth="0">
       <locations>
 	<vector hx="5" hy="4"/>
       </locations>

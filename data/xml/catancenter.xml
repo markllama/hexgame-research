@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map name="center" game="center">
+  <copyright>reserved</copyright>
+  <size><vector hx="13" hy="11" /></size>
+  <origin><vector hx="6" hy="7" /></origin>
+
+  <terrains>
+    <terrain type="HexMapView.Terrain.SuperHex" id="border" name="border" depth="1">
+      <locations>
+
+	<vector hx="-4" hy="-2"/>
+
+	<vector hx="-3" hy="-3"/>
+	<vector hx="-3" hy="0"/>
+
+	<vector hx="-2" hy="-4"/>
+	<vector hx="-2" hy="-1"/>
+	<vector hx="-2" hy="2"/>
+
+	<vector hx="-1" hy="-2"/>
+	<vector hx="-1" hy="1"/>
+
+	<vector hx="0" hy="-3"/>
+	<vector hx="0" hy="0"/>
+	<vector hx="0" hy="3"/>
+
+	<vector hx="1" hy="-1"/>
+	<vector hx="1" hy="2"/>
+
+	<vector hx="2" hy="-2"/>
+	<vector hx="2" hy="1"/>
+	<vector hx="2" hy="4"/>
+
+	<vector hx="3" hy="0"/>
+	<vector hx="3" hy="3"/>
+
+	<vector hx="4" hy="2"/>
+
+      </locations>
+    </terrain>
+    <terrain type="HexMapView.Terrain.Vertex" id="center" name="center" depth="0">
+      <locations>
+	<vector hx="-1" hy="-3"/>
+      </locations>
+    </terrain>
+  </terrains>
+</map>
