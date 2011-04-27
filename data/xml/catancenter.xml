@@ -40,7 +40,71 @@
     </terrain>
     <terrain type="HexMapView.Terrain.Vertex" id="center" name="center" depth="0">
       <locations>
+	<vector hx="-5" hy="-3"/>
+	<vector hx="-5" hy="-2"/>
+	
+	<vector hx="-4" hy="-4"/>
+	<vector hx="-4" hy="-3"/>
+	<vector hx="-4" hy="-1"/>
+	<vector hx="-4" hy="0"/>
+
+	<vector hx="-3" hy="-5"/>
+	<vector hx="-3" hy="-4"/>
+	<vector hx="-3" hy="-2"/>
+	<vector hx="-3" hy="-1"/>
+	<vector hx="-3" hy="1"/>
+	<vector hx="-3" hy="2"/>
+
+	<vector hx="-2" hy="-5"/>
+	<vector hx="-2" hy="-3"/>
+	<vector hx="-2" hy="-2"/>
+	<vector hx="-2" hy="0"/>
+	<vector hx="-2" hy="1"/>
+	<vector hx="-2" hy="3"/>
+
+	<vector hx="-1" hy="-4"/>
 	<vector hx="-1" hy="-3"/>
+	<vector hx="-1" hy="-1"/>
+	<vector hx="-1" hy="0"/>
+	<vector hx="-1" hy="2"/>
+	<vector hx="-1" hy="3"/>
+
+	<vector hx="0" hy="-4"/>
+	<vector hx="0" hy="-2"/>
+	<vector hx="0" hy="-1"/>
+	<vector hx="0" hy="1"/>
+	<vector hx="0" hy="2"/>
+	<vector hx="0" hy="4"/>
+
+	<vector hx="1" hy="-3"/>
+	<vector hx="1" hy="-2"/>
+	<vector hx="1" hy="0"/>
+	<vector hx="1" hy="1"/>
+	<vector hx="1" hy="3"/>
+	<vector hx="1" hy="4"/>
+
+	<vector hx="2" hy="-3"/>
+	<vector hx="2" hy="-1"/>
+	<vector hx="2" hy="0"/>
+	<vector hx="2" hy="2"/>
+	<vector hx="2" hy="3"/>
+	<vector hx="2" hy="5"/>
+
+	<vector hx="3" hy="-2"/>
+	<vector hx="3" hy="-1"/>
+	<vector hx="3" hy="1"/>
+	<vector hx="3" hy="2"/>
+	<vector hx="3" hy="4"/>
+	<vector hx="3" hy="5"/>
+
+	<vector hx="4" hy="0"/>
+	<vector hx="4" hy="1"/>
+	<vector hx="4" hy="3"/>
+	<vector hx="4" hy="4"/>
+
+	<vector hx="5" hy="2"/>
+	<vector hx="5" hy="3"/>
+	
       </locations>
     </terrain>
   </terrains>
