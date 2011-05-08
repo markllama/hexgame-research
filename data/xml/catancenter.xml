@@ -5,9 +5,35 @@
   <origin><vector hx="6" hy="7" /></origin>
 
   <terrains>
-    <terrain type="HexMapView.Terrain.SuperHex" id="border" name="border" depth="1">
-      <locations>
 
+    <terrain type="HexMapView.Terrain.SuperEdge" id="sea" name="sea" depth="0">
+      <locations>
+	<vector hx="-6" hy="-3"/>
+
+	<vector hx="-5" hy="-4"/>
+	<vector hx="-5" hy="-1"/>
+
+	<vector hx="-4" hy="-5"/>
+	<vector hx="-4" hy="1"/>
+
+	<vector hx="-3" hy="-6"/>
+	<vector hx="-3" hy="3"/>
+	
+	<vector hx="-1" hy="-5"/>
+	<vector hx="-1" hy="4"/>
+
+	<vector hx="1" hy="-4"/>
+	<vector hx="1" hy="5"/>
+
+	<vector hx="3" hy="-3"/>
+	<vector hx="3" hy="6"/>
+	
+      </locations>
+    </terrain>
+
+
+    <terrain type="HexMapView.Terrain.SuperHex" id="superhex" name="superhex" depth="1">
+      <locations>
 	<vector hx="-4" hy="-2"/>
 
 	<vector hx="-3" hy="-3"/>
@@ -38,7 +64,7 @@
 
       </locations>
     </terrain>
-    <terrain type="HexMapView.Terrain.Vertex" id="center" name="center" depth="0">
+    <terrain type="HexMapView.Terrain.Vertex" id="vertex" name="vertex" depth="0">
       <locations>
 	<vector hx="-5" hy="-3"/>
 	<vector hx="-5" hy="-2"/>
@@ -107,5 +133,6 @@
 	
       </locations>
     </terrain>
+
   </terrains>
 </map>
