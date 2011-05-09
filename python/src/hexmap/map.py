@@ -79,7 +79,6 @@ class Map(object):
             evec = esize[0]
             size = Vector.fromelement(evec)
 
-
         # and the origin
         eorigin = maptree.find("origin")
         if eorigin is not None:
@@ -95,7 +94,7 @@ class Map(object):
         for eterrain in maptree.findall("terrain"):
             tname = eterrain.get("type")
             if tname in terrainmap:
-                terrain = terrainmap[tname].fromelement(eterrain)
+                terrain = terrainmap[tname].fromelement(eterrain, hm)
                 hm.addTerrain(terrain)
             else:
                 print "terrain name %s not in terrain map %s" % (tname, terrainmap)

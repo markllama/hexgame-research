@@ -119,13 +119,13 @@ class Terrain(object):
         return cls.fromelement(element)
 
     @classmethod
-    def fromelement(cls, eterrain):
+    def fromelement(cls, eterrain, hm=None):
         logger = logging.getLogger(cls.__name__ + ".fromelement")
         t = cls(eterrain.tag)
         depth = eterrain.get("depth") or 0
         eloclist = eterrain.find("locations")
         if eloclist.get("all") == "true":
-            t._locations=map.AllHexes(t)
+            t._locations=map.AllHexes(hm)
         else:
             logger.debug("Not all hexes")
             for eloc in eloclist:

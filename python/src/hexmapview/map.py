@@ -85,7 +85,7 @@ class Map(hexmap.Map, Canvas):
             logger.debug("new terrain: %s" % tname)
             logger.debug(etree.tostring(eterrain))
             if tname in terrainmap:
-                terrain = terrainmap[tname].fromelement(eterrain)
+                terrain = terrainmap[tname].fromelement(eterrain, hm)
                 logger.debug("new terrain = %s" % terrain)
                 hm.addTerrain(terrain)
             else:
