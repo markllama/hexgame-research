@@ -125,7 +125,7 @@ class Terrain(object):
         depth = eterrain.get("depth") or 0
         eloclist = eterrain.find("locations")
         if eloclist.get("all") == "true":
-            t._locations=map.AllHexes
+            t._locations=map.AllHexes(t)
         else:
             logger.debug("Not all hexes")
             for eloc in eloclist:
