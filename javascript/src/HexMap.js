@@ -188,7 +188,7 @@ HexMap.Vector.prototype.equals = function(other) {
  * @return {String} A string representation of the hex vector
  */
 HexMap.Vector.prototype.toString = function() {
-    return "new HexMap.Vector(" + this.hx + ", " + this.hy + ")";
+    return "HexMap.Vector(" + this.hx + ", " + this.hy + ")";
 };
 
 /**
