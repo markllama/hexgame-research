@@ -47,6 +47,14 @@ function testHexMapVectorUNIT() {
 // fromDOM
 
 // equals
+function testHexMapVectorEquals() {
+    hv0 = new HexMap.Vector(3, 4);
+    hv1 = new HexMap.Vector(3, 4);
+    hv2 = new HexMap.Vector(-5, 12);
+
+    assertTrue(hv0.equals(hv1));
+    assertFalse(hv0.equals(hv2));
+};
 
 // toString
 
