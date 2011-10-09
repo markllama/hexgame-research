@@ -115,17 +115,46 @@ function testHexMapVectorLength() {
     assertEquals(1, HexMap.Vector.UNIT[5].length());
 
     // check a circle
-    assertEquals(3, new HexMap.Vector(0, -3).length());
+    assertEquals("0, -3", 3, new HexMap.Vector(0, -3).length());
+    assertEquals("1, -2", 3, new HexMap.Vector(1, -2).length());
+    assertEquals("2, -1", 3, new HexMap.Vector(2, -1).length());
 
+    assertEquals("3, 0", 3, new HexMap.Vector(3, 0).length());
+    assertEquals("3, 1", 3, new HexMap.Vector(3, 1).length());
+    assertEquals("3, 2", 3, new HexMap.Vector(3, 2).length());
 
-    //assert(false);
+    assertEquals("3, 3", 3, new HexMap.Vector(3, 3).length());
+    assertEquals("2, 3", 3, new HexMap.Vector(2, 3).length());
+    assertEquals("1, 3", 3, new HexMap.Vector(1, 3).length());
+
+    assertEquals("0, 3", 3, new HexMap.Vector(0, 3).length());
+    assertEquals("-1, 3", 3, new HexMap.Vector(-1, 2).length());
+    assertEquals("-2, 3", 3, new HexMap.Vector(-2, 1).length());
+
+    assertEquals("-3, 3", 3, new HexMap.Vector(-3, 0).length());
+    assertEquals("-3, 2", 3, new HexMap.Vector(-3, -1).length());
+    assertEquals("-3, 1", 3, new HexMap.Vector(-3, -2).length());
+
+    assertEquals("-3, 0", 3, new HexMap.Vector(-3, -3).length());
+    assertEquals("-2, -1", 3, new HexMap.Vector(-2, -3).length());
+    assertEquals("-1, -2", 3, new HexMap.Vector(-1, -3).length());
 
 };
 
 // distance
 function testHexMapVectorDistance() {
-    assert(false);
 
+    // check distance from origin
+    // check origin
+    assertEquals(0, HexMap.Vector.ORIGIN.distance(HexMap.Vector.ORIGIN));
+
+    // check unit
+    assertEquals(1, HexMap.Vector.UNIT[0].distance(HexMap.Vector.ORIGIN));
+    assertEquals(1, HexMap.Vector.UNIT[1].distance(HexMap.Vector.ORIGIN));
+    assertEquals(1, HexMap.Vector.UNIT[2].distance(HexMap.Vector.ORIGIN));
+    assertEquals(1, HexMap.Vector.UNIT[3].distance(HexMap.Vector.ORIGIN));
+    assertEquals(1, HexMap.Vector.UNIT[4].distance(HexMap.Vector.ORIGIN));
+    assertEquals(1, HexMap.Vector.UNIT[5].distance(HexMap.Vector.ORIGIN));
 };
 
 // hextant
