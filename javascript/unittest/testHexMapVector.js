@@ -155,6 +155,16 @@ function testHexMapVectorDistance() {
     assertEquals(1, HexMap.Vector.UNIT[3].distance(HexMap.Vector.ORIGIN));
     assertEquals(1, HexMap.Vector.UNIT[4].distance(HexMap.Vector.ORIGIN));
     assertEquals(1, HexMap.Vector.UNIT[5].distance(HexMap.Vector.ORIGIN));
+
+    hv0 = new HexMap.Vector(6, -2);
+    assertEquals("UNIT 0 to (6, -2)", 6, HexMap.Vector.UNIT[0].distance(hv0));
+    assertEquals("UNIT 1 to (6, -2)", 6, HexMap.Vector.UNIT[0].distance(hv0));
+    assertEquals("UNIT 2 to (6, -2)", 6, HexMap.Vector.UNIT[0].distance(hv0));
+    assertEquals("UNIT 3 to (6, -2)", 6, HexMap.Vector.UNIT[0].distance(hv0));
+    assertEquals("UNIT 4 to (6, -2)", 6, HexMap.Vector.UNIT[0].distance(hv0));
+    assertEquals("UNIT 5 to (6, -2)", 6, HexMap.Vector.UNIT[0].distance(hv0));
+
+    
 };
 
 // hextant
