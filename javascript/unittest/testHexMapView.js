@@ -35,8 +35,13 @@ coords = size.split(',');
 mapsize = new HexMap.Vector(Number(coords[0]), Number(coords[1]));
 
 //
-terrainspecs = sample.evaluate('map/terrain', sample, null,
-			       XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null);
+terrainspecs = sample.evaluate(
+    'map/terrains/terrain', 
+    sample, 
+    null,
+    XPathResult.UNORDERED_NODE_ITERATOR_TYPE, 
+    null
+);
 
 //
 function getArgs(defaults) {
