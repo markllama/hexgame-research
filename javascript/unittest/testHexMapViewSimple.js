@@ -1,22 +1,9 @@
-defaults = {hexrun: 15};
-
 // get the sample map definition
 sampleUrl="https://lamourine.homeunix.org/~mark/hexgame/data/xml/sample.xml";
-      
-// you can get XML docs using document.load() in some browsers
-// but this is more universal and it really IS an XML document.
-// AND you can request XML documents from locations outside the
-// document domain.
-try {
-    sampleRequest = new window.XMLHttpRequest();
-    sampleRequest.open('GET', sampleUrl, false);
-    sampleRequest.send(null);
-    sample = sampleRequest.responseXML;
-} catch (e) {
-    error(e);
-}
 
-mapelement = sample.getElementsByTagName("map")[0];
+defaults = {hexrun: 15, mapurl: sampleUrl};
+
+      
 
 // now create the map view
 function getArgs(defaults) {
@@ -102,7 +89,24 @@ function canvasclick(event) {
     }
 };
 
+
 args = getArgs(defaults);
+
+// you can get XML docs using document.load() in some browsers
+// but this is more universal and it really IS an XML document.
+// AND you can request XML documents from locations outside the
+// document domain.
+try {
+    sampleRequest = new window.XMLHttpRequest();
+    sampleRequest.open('GET', args.mapurl, false);
+    sampleRequest.send(null);
+    sample = sampleRequest.responseXML;
+} catch (e) {
+    error(e);
+}
+
+mapelement = sample.getElementsByTagName("map")[0];
+
 mapview = new HexMapView(args.hexrun, mapelement);
 mapview.canvas.onmousemove=canvasclick;
 
