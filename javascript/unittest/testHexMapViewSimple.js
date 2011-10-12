@@ -16,6 +16,8 @@ try {
     error(e);
 }
 
+mapelement = sample.getElementsByTagName("map")[0];
+
 // extract the map size from the map document.
 sizeVectorElement = sample.evaluate(
     'map/size', 
@@ -46,6 +48,7 @@ while (t) {
 
 delete t;
 delete terrainnodes;
+
 
 // now create the map view
 function getArgs(defaults) {
@@ -133,7 +136,11 @@ function canvasclick(event) {
 
 args = getArgs(defaults);
 mapview = new HexMapView(args.hexrun, mapsize);
+mapview.initDOM(mapelement);
 mapview.canvas.onmousemove=canvasclick;
+
+// create and add the standard terrains
+
 
 // create a blue and a red center terrain
 var blue = new HexMapView.Terrain.Center(mapview);
