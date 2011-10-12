@@ -32,6 +32,8 @@ HexMap = function(size, origin) {
 
     if (arguments[0] instanceof Element) {
 	this.initDOM(arguments[0]);
+    } else if (arguments[0] instanceof Document) {
+        this.initDOM(arguments[0].documentElement)
     } else {
 	/** 
 	 * @private 
@@ -350,6 +352,10 @@ HexMap.DEFAULT_ORIGIN = HexMap.Vector.ORIGIN;
  * @param {element} the map element of the document
  */
 HexMap.prototype.initDOM = function(element) {
+    if (element instanceof Document) {
+        element = element.documentElement;
+    }
+
     if (!(element instanceof Element) || element.tagName.toLowerCase() != 'map') {
 	throw "HexMap.initDOM: element must be a map, not" + element.toString() + " ," + element.tagName ;
     }
@@ -395,13 +401,18 @@ HexMap.prototype.initDOM = function(element) {
 	var telement = terrains[i];
 	
 	if (telement.hasAttribute('type')) {
-	    var ttype = eval(telement.getAttribute('type'));
+            ttypestr = telement.getAttribute('type');
+	    var ttype = eval(ttypestr);
 	} else {
 	    ttype = HexMap.Terrain;
 	}
 
-	var tname = telement.getAttribute('name');
-	var terrain = new ttype(this, telement);
+        if (ttype) {
+	    var tname = telement.getAttribute('name');
+	    var terrain = new ttype(this, telement);
+        } else {
+            throw "No such terrain class: " + ttypestr;
+        }
 	
 	this.terrains[tname] = terrain;
     }
