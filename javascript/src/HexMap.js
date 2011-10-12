@@ -365,6 +365,10 @@ HexMap.prototype.initDOM = function(element) {
 	var sizestr = element.getAttribute('size');
 	var size = sizestr.split(',');
 	this.size = new HexMap.Vector(Number(size[0]), Number(size[1]));
+    } else {
+        sizeelement = element.getElementsByTagName('size')[0];
+        sizevector = sizeelement.getElementsByTagName('vector')[0];
+        this.size = HexMap.Vector.fromDOM(sizevector);
     }
 
     if (element.hasAttribute('origin')) {

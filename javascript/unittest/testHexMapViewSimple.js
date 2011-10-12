@@ -18,38 +18,6 @@ try {
 
 mapelement = sample.getElementsByTagName("map")[0];
 
-// extract the map size from the map document.
-sizeVectorElement = sample.evaluate(
-    'map/size', 
-    sample, 
-    null, 
-    XPathResult.FIRST_ORDERED_NODE_TYPE, 
-    null
-).singleNodeValue;
-
-// really should check that the size has a single vectorl
-mapsize = HexMap.Vector.fromDOM(sizeVectorElement.firstChild)
-
-// this should be a function
-terrainnodes = sample.evaluate(
-    'map/terrains/terrain', 
-    sample, 
-    null,
-    XPathResult.UNORDERED_NODE_LIST_TYPE, 
-    null
-);
-
-terrains = [];
-t = terrainnodes.iterateNext();
-while (t) {
-    terrains.push(t);
-    t = terrainnodes.iterateNext();
-}
-
-delete t;
-delete terrainnodes;
-
-
 // now create the map view
 function getArgs(defaults) {
     var args = defaults || new Object();
@@ -135,8 +103,7 @@ function canvasclick(event) {
 };
 
 args = getArgs(defaults);
-mapview = new HexMapView(args.hexrun, mapsize);
-mapview.initDOM(mapelement);
+mapview = new HexMapView(args.hexrun, mapelement);
 mapview.canvas.onmousemove=canvasclick;
 
 // create and add the standard terrains
