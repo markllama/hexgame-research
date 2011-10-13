@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map name="sample" game="sample">
+  <copyright>reserved</copyright>
+  <size><vector hx="7" hy="7" /></size>
+  <origin><vector hx="3" hy="3" /></origin>
+
+  <terrains>
+    <terrain type="HexMapView.Terrain.Border" id="border" name="border">
+      <locations all="true" />
+    </terrain>
+    <terrain type="HexMapView.Terrain.Center" id="center" name="center">
+      <locations all="true" />
+    </terrain>
+  </terrains>
+</map>
