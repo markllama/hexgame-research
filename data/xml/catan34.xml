@@ -18,10 +18,7 @@ else
 <map name="catan" game="Settlers of Catan">
   <copyright>reserved</copyright>
   <size><vector hx="13" hy="9" /></size>
-  <origin><vector hx="0" hy="0" /></origin>
-  <!--
   <origin><vector hx="6" hy="7" /></origin>
-  -->
   <terrains>
     <terrain type="HexMapView.Terrain.SuperBorder" id="superborder" name="superborder">
       <locations>
@@ -56,6 +53,8 @@ else
 
       </locations>
     </terrain>
+
+    <!--
     <terrain type="HexMapView.Terrain.Vertex" id="vertex" name="vertex">
       <locations>
 	<!-- center -->
@@ -77,6 +76,8 @@ else
 
       </locations>
     </terrain>
+    
+    -->
 
     <!--
     <terrain type="Catan.Terrain.Sea" id="sea" name="sea">
