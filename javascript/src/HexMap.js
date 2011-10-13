@@ -382,6 +382,11 @@ HexMap.prototype.initDOM = function(element) {
 	var originstr = element.getAttribute('origin');
 	var origin = originstr.split(',');
 	this.origin = new HexMap.Vector(Number(origin[0]), Number(origin[1]));
+    } else {
+        originelement = element.getElementsByTagName('origin')[0];
+        originvector = originelement.getElementsByTagName('vector')[0];
+        this.origin = HexMap.Vector.fromDOM(originvector);
+
     }
 
     this.fill();
@@ -537,14 +542,20 @@ HexMap.prototype.toXml = function() {
   * @return {Boolean} true if the hex location is in the array
   */
  HexMap.prototype.contains = function(hv) {
+     // acount for origin
+
+     //
+     normal = hv.sub(this.origin);
+     //normal = hv;
+
      /* This could be more elegent */
-     if (hv.hx < this.hxfirst() ||
- 	hv.hx >= this.hxfirst() + this.hxcount()) {
+     if (normal.hx < this.hxfirst() ||
+ 	  normal.hx >= this.hxfirst() + this.hxcount()) {
  	return false;
      }
 
-     if (hv.hy < this.hyfirst(hv.hx) || 
- 	hv.hy >= this.hyfirst(hv.hx) + this.hycount(hv.hx)) {
+     if (normal.hy < this.hyfirst(normal.hx) || 
+ 	normal.hy >= this.hyfirst(normal.hx) + this.hycount(normal.hx)) {
  	return false;
      }
 
@@ -567,10 +578,12 @@ HexMap.prototype.toXml = function() {
  	return null;
      }
 
-     if (!this[location.hx]) {
+     normal = location.add(this.origin);
+     if (!this[normal.hx]) {
 	 throw "getHex: hx is not a valid column: " + location.toString();
      }
-     return this[location.hx][location.hy];
+     // unbias hy MAL FIX
+     return this[normal.hx][normal.hy];
 
  };
 
