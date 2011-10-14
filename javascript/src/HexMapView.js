@@ -133,9 +133,10 @@ HexMapView.prototype.canvasSize = function() {
 HexMapView.prototype.hexcenter = function(vector) {
     // 0,0 is at map.hexwidth, map.hexheight
     // (fx, fy)
-    var ybias = Math.floor(vector.hx / 2);
-    var px = ((vector.hx * 3) * this.hexrun) + this.porigin.x;
-    var py = ((((vector.hy) * 2) - vector.hx) * this.hexrise) + this.porigin.y;
+    var normal = vector.add(this.origin);
+    var ybias = Math.floor(normal.hx / 2);
+    var px = ((normal.hx * 3) * this.hexrun) + this.porigin.x;
+    var py = ((((normal.hy) * 2) - normal.hx) * this.hexrise) + this.porigin.y;
     return new Point(px, py);
 };
 
@@ -182,7 +183,9 @@ HexMapView.prototype.refloc = function(point) {
     var hx = Math.floor((point.x - this.porigin.x) / (this.hexrun * 3));
     var hy = Math.floor(((point.y - this.porigin.y) + (hx * this.hexrise)) / this.hexheight);
     //var hy = Math.floor((point.y - this.porigin.y) / this.hexheight);
-   return new HexMap.Vector(hx, hy);
+    var absolute = new HexMap.Vector(hx, hy);
+    var normal = absolute.sub(this.origin);
+    return normal;
 };
 
 /**
