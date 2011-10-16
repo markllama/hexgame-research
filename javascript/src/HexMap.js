@@ -30,36 +30,40 @@ HexMap = function(size, origin) {
 
     this.terrains = {};
 
-    if (arguments[0] instanceof Element) {
-	this.initDOM(arguments[0]);
-    } else if (arguments[0] instanceof Document) {
-        this.initDOM(arguments[0].documentElement)
-    } else {
-	/** 
-	 * @private 
-	 * @type HexMap.Vector
-	 */
-	this.size = size || HexMap.DEFAULT_SIZE;
-
-	/**
-	 * @private
-	 * @type HexMap.Vector
-	 */
-	this.origin = origin || HexMap.DEFAULT_ORIGIN;
-
-	/** @private */
-	this.terrains = {} ;
-	/** @private */
-	this.tokens = {};
-
-	if (!(this.size.equals(HexMap.Vector.ORIGIN))) {
-	    this.fill();
-	}
-    }
-    /** @private */
+    /*
+     * signature: 
+     *    HexMap() # 0     
+     *    HexMap(Document d) # 1
+     *    HexMap(Element e)  # 1
+     *    HexMap(String url) # 1
+     *    HexMap(String xml) # 1
+     *    HexMap(HexMap.Vector size, HexMap.Vector origin=HexMap.Vector.ORIGIN) # 1 or 2
+     *    HexMap(int sx, int sy, int ox=0, int oy=0) # 2 or 4
+     */
+    
+    if (arguments.length == 0) {
+        this.initVectors(HexMap.DEFAULT_SIZE, HexMap.Vector.ORIGIN);
+    } else if (arguments.length == 1) {
+        // string?
+        if (typeof arguments[0] == "string") {
+            var re = new RegExp("^\(http\s?\://\(\\S\)+)");
+            if (re.test(arguments[0])) {
+                req = new window.XMLHttpRequest();
+                req.open('GET', arguments[0], false);
+                req.send();
+                this.initDOM(req.responseXML.documentElement);
+            } else {
+                // XML document string
+                var parser = new DOMParser();
+                var mapdoc = parser.parseFromString(arguments[0], 'text/xml');
+                this.initDOM(mapdoc);
+            }
+        } else {
+            throw 'I didnt match a string:' + arguments[0];
+        }
+    } 
     this.listeners = [];
 };
-
 
 /**
  * @class
@@ -348,6 +352,29 @@ HexMap.DEFAULT_SIZE = HexMap.Vector.ORIGIN;
 HexMap.DEFAULT_ORIGIN = HexMap.Vector.ORIGIN;
 
 /**
+ * Create a hexmap from HexMap.Vectors
+ *
+ */
+HexMap.prototype.initVectors = function(size, origin) {
+    // check that they are both HexMap.Vector s
+
+    if (size) {
+        this.size = size;
+    } else {
+        this.size = HexMap.DEFAULT_SIZE;
+    }
+
+    this.size = size;
+    if (origin) { 
+        this.origin = origin;
+    } else {
+        this.origin = HexMap.Vector.ORIGIN
+    }
+
+    
+};
+
+/**
  * Create a hexmap from a DOM structure
  * @param {element} the map element of the document
  */
@@ -442,7 +469,7 @@ HexMap.prototype.initDOM = function(element) {
  * @return {Number} The first column.
  */
 HexMap.prototype.hxfirst = function() {
-    return - this.origin.hx;
+    return this.origin.hx;
 };
 
 /**
@@ -458,7 +485,7 @@ HexMap.prototype.hxcount = function() {
  * @return {Number} the hy offset of this column.
  */
 HexMap.prototype.ybias = function(hx) {
-    return Math.floor(hx / 2); 
+    return Math.floor((hx - this.hxfirst()) / 2);
 };
 
 /**
@@ -471,7 +498,7 @@ HexMap.prototype.hyfirst = function(hx) {
     if (hx < first || hx >= first + this.hxcount()) {
 	return null;
     }
-    return - this.origin.hy + this.ybias(hx + this.origin.hx);
+    return this.origin.hy + this.ybias(hx);
 };
 
 /**
@@ -544,9 +571,8 @@ HexMap.prototype.toXml = function() {
  HexMap.prototype.contains = function(hv) {
      // acount for origin
 
-     //
-     normal = hv.sub(this.origin);
-     //normal = hv;
+     //normal = hv.add(this.origin);
+     normal = hv;
 
      /* This could be more elegent */
      if (normal.hx < this.hxfirst() ||
@@ -578,7 +604,8 @@ HexMap.prototype.toXml = function() {
  	return null;
      }
 
-     normal = location.add(this.origin);
+     //normal = location.sub(this.origin);
+     normal = location;
      if (!this[normal.hx]) {
 	 throw "getHex: hx is not a valid column: " + location.toString();
      }
