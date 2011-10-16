@@ -47,7 +47,7 @@ maps = [
 function testHexMapConstructorNoArgs() {
 
     // no args: Default size, origin
-    h0 = new HexMap();
+    var h0 = new HexMap();
 
     assert(h0.size.equals(HexMap.Vector.ORIGIN));
     assert(h0.origin.equals(HexMap.Vector.ORIGIN));
@@ -56,35 +56,55 @@ function testHexMapConstructorNoArgs() {
 
 function testHexMapConstructorXMLString() {
     // one arg, XML string
-    h0 = new HexMap(mapreqs[0].responseText);
+    var h0 = new HexMap(mapreqs[0].responseText);
     assert("size = 6,6" + h0.origin.toString(), h0.size.equals(new HexMap.Vector(6, 6)));
     assert("origin = ORIGIN", h0.origin.equals(HexMap.Vector.ORIGIN));
 };
 
 function testHexMapConstructorURLString() {
     // one arg, URL string
-    h2 = new HexMap(mapurl[0]);
+    var h0 = new HexMap(mapurl[0]);
+    assert("size = 6,6" + h0.origin.toString(), h0.size.equals(new HexMap.Vector(6, 6)));
+    assert("origin = ORIGIN", h0.origin.equals(HexMap.Vector.ORIGIN));
 };
 
 function testHexMapConstructorDocument() {
 
-    // one arg, Document
-    //h3 = new HexMap(mapdocs[0]);
+    var h0 = new HexMap(mapdocs[0]);
+    assert("size = 6,6" + h0.origin.toString(), h0.size.equals(new HexMap.Vector(6, 6)));
+    assert("origin = ORIGIN", h0.origin.equals(HexMap.Vector.ORIGIN));
+};
 
+function testHexMapConstructorElement() {
     // one arg, root Element
-    //h4 = new HexMap(mapdocs[0].documentElement)
+    var h0 = new HexMap(mapdocs[0].documentElement)
+    assert("size = 6,6" + h0.origin.toString(), h0.size.equals(new HexMap.Vector(6, 6)));
+    assert("origin = ORIGIN", h0.origin.equals(HexMap.Vector.ORIGIN));
+};
 
+function testHexMapConstructorVector() {
     // one arg, HexMap.Vector
-    //h5 = new HexMap(new HexMap.Vector(3, 4));
+    var h0 = new HexMap(new HexMap.Vector(3, 4));
+    assert("size = 3,4" + h0.origin.toString(), h0.size.equals(new HexMap.Vector(3, 4)));
+    assert("origin = ORIGIN", h0.origin.equals(HexMap.Vector.ORIGIN));
 
     // two args, HexMap.Vector, HexMap.Vector
-    //h6 = new HexMap(new HexMap.Vector(5, 6), new HexMap.Vector(-2, -2));
+    var h1 = new HexMap(new HexMap.Vector(5, 6), new HexMap.Vector(-2, -2));
+    assert("size = 5,6", h1.size.equals(new HexMap.Vector(5, 6)));
+    assert("origin = -2, -2", h1.origin.equals(new HexMap.Vector(-2, -2)));
+};
 
+function testHexMapConstructorInteger() {
     // two args, int, int,
-    //h7 = new HexMap(6, 9);
+    var h0 = new HexMap(6, 9);
+    assert("size = 6,9" + h0.origin.toString(), h0.size.equals(new HexMap.Vector(6, 9)));
+    assert("origin = ORIGIN", h0.origin.equals(HexMap.Vector.ORIGIN));
 
     // four args, int, int, int, int
-    //h8 = new HexMap(5, 3, 1, -1);
+    var h1 = new HexMap(5, 3, 1, -1);
+    assert("size = 5,3 " + h1.size.toString(), 
+           h1.size.equals(new HexMap.Vector(5, 3)));
+    assert("origin = 1, -1 ", h1.origin.equals(new HexMap.Vector(1, -1)));
 
 };
 

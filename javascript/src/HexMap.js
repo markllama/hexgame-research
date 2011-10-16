@@ -46,6 +46,7 @@ HexMap = function(size, origin) {
     } else if (arguments.length == 1) {
         // string?
         if (typeof arguments[0] == "string") {
+            // check for URL pattern match
             var re = new RegExp("^\(http\s?\://\(\\S\)+)");
             if (re.test(arguments[0])) {
                 req = new window.XMLHttpRequest();
@@ -53,21 +54,47 @@ HexMap = function(size, origin) {
                 req.send();
                 this.initDOM(req.responseXML.documentElement);
             } else {
+                // could try parsing and check for error, put this first?
                 // XML document string
                 var parser = new DOMParser();
                 var mapdoc = parser.parseFromString(arguments[0], 'text/xml');
                 this.initDOM(mapdoc);
             }
+        } else if (arguments[0] instanceof Document) {
+            // XML document
+            this.initDOM(arguments[0]);
+        } else if (arguments[0] instanceof Element) {
+            // XML element
+            this.initDOM(arguments[0]);
+        } else if (arguments[0] instanceof HexMap.Vector) { 
+            this.initVectors(arguments[0], HexMap.Vector.ORIGIN);
         } else {
-            throw 'I didnt match a string:' + arguments[0];
+            throw 'invalid single argument signature: ' + argument[0];
         }
-    } 
+    } else if (arguments.length == 2) {
+        if (typeof arguments[0] == "number") {
+            var s = new HexMap.Vector(arguments[0], arguments[1]);
+            var o = HexMap.Vector.ORIGIN;
+        } else {
+            // two vectors
+            var s = arguments[0];
+            var o = arguments[1];
+        }
+        this.initVectors(s, o);
+    } else if (arguments.length == 4) {
+        // four ints, size and origin
+        var s = new HexMap.Vector(arguments[0], arguments[1]);
+        var o = new HexMap.Vector(arguments[2], arguments[3]);
+    } else {
+        // error?
+        //throw "invalid HexMap constructor signature";
+    }
     this.listeners = [];
 };
 
 /**
  * @class
- * A point in a hexagonal plane.
+ * A point in a hexagonal plane
  *
  * @constructor
  * Create a new HexMap.Vector
@@ -365,6 +392,7 @@ HexMap.prototype.initVectors = function(size, origin) {
     }
 
     this.size = size;
+
     if (origin) { 
         this.origin = origin;
     } else {
