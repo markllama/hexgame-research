@@ -37,12 +37,10 @@ mapdocs = [
     mapreqs[1].responseXML
 ];
 
-/*
 maps = [ 
     new HexMap(mapdocs[0]),
     new HexMap(mapdocs[1])
 ];
-*/
 
 function testHexMapConstructorNoArgs() {
 
@@ -102,7 +100,9 @@ function testHexMapConstructorInteger() {
 
     // four args, int, int, int, int
     var h1 = new HexMap(5, 3, 1, -1);
-    assert("size = 5,3 " + h1.size.toString(), 
+    assert("h1 is a hex vector: (5,3), (1, -1)", h1 instanceof HexMap);
+    assert("h1 has a size", h1.size instanceof HexMap.Vector);
+    assert("size = 5,3 ", 
            h1.size.equals(new HexMap.Vector(5, 3)));
     assert("origin = 1, -1 ", h1.origin.equals(new HexMap.Vector(1, -1)));
 
@@ -137,12 +137,11 @@ function testHexMapHyFirst() {
     assertEquals("map 0 hyfirst(-1) = null", null, map0.hyfirst(-1));
     assertEquals("map 0 hyfirst(0) = 0", 0, map0.hyfirst(0));
     assertEquals("map 0 hyfirst(1) = 0", 0, map0.hyfirst(1));
-    assertEquals("map 0 hyfirst(2) = 1", 0, map0.hyfirst(2));
-    assertEquals("map 0 hyfirst(3) = 1", 0, map0.hyfirst(3));
-    assertEquals("map 0 hyfirst(4) = 2", 0, map0.hyfirst(4));
-    assertEquals("map 0 hyfirst(5) = 2", 0, map0.hyfirst(5));
+    assertEquals("map 0 hyfirst(2) = 1", 1, map0.hyfirst(2));
+    assertEquals("map 0 hyfirst(3) = 1", 1, map0.hyfirst(3));
+    assertEquals("map 0 hyfirst(4) = 2", 2, map0.hyfirst(4));
+    assertEquals("map 0 hyfirst(5) = 2", 2, map0.hyfirst(5));
     assertEquals("map 0 hyfirst(6) = null", null, map0.hyfirst(6));
-
 
     assertEquals("map 1 hyfirst(-4) = null", null, map1.hyfirst(-4));
     assertEquals("map 1 hyfirst(-3) = -3", -3, map1.hyfirst(-3));
@@ -159,23 +158,24 @@ function testHexMapYBias() {
     map0 = new HexMap(new HexMap.Vector(6, 6), new HexMap.Vector(0, 0));
     map1 = new HexMap(new HexMap.Vector(7, 7), new HexMap.Vector(-3, -3));
 
-    assert("map 0 bias -1 = -1", -1, map.ybias(-1));
-    assert("map 0 bias 0 = 0", 0, map.ybias(0));
-    assert("map 0 bias 1 = 0", 0, map.ybias(1));
-    assert("map 0 bias 2 = 1", 1, map.ybias(2));
-    assert("map 0 bias 3 = 1", 1, map.ybias(3));
-    assert("map 0 bias 4 = 2", 2, map.ybias(4));
-    assert("map 0 bias 5 = 2", 2, map.ybias(5));
-    assert("map 0 bias 6 = 3", 3, map.ybias(6));
+    assertEquals("map 0 bias -1 = -1", -1, map0.ybias(-1));
+    assertEquals("map 0 bias 0 = 0", 0, map0.ybias(0));
+    assertEquals("map 0 bias 1 = 0", 0, map0.ybias(1));
+    assertEquals("map 0 bias 2 = 1", 1, map0.ybias(2));
+    assertEquals("map 0 bias 3 = 1", 1, map0.ybias(3));
+    assertEquals("map 0 bias 4 = 2", 2, map0.ybias(4));
+    assertEquals("map 0 bias 5 = 2", 2, map0.ybias(5));
+    assertEquals("map 0 bias 6 = 3", 3, map0.ybias(6));
 
-    assert("map 1 bias -4 = -4", -1, map.ybias(-1));
-    assert("map 1 bias -3 = 0", 0, map.ybias(0));
-    assert("map 1 bias 1 = 0", 0, map.ybias(1));
-    assert("map 1 bias 2 = 1", 1, map.ybias(2));
-    assert("map 1 bias 3 = 1", 1, map.ybias(3));
-    assert("map 1 bias 4 = 2", 2, map.ybias(4));
-    assert("map 1 bias 5 = 2", 2, map.ybias(5));
-    assert("map 1 bias 6 = 3", 3, map.ybias(6));
+    assertEquals("map 1 bias -4 = -1", -1, map1.ybias(-4));
+    assertEquals("map 1 bias -3 = 0", 0, map1.ybias(-3));
+    assertEquals("map 1 bias -2 = 0", 0, map1.ybias(-2));
+    assertEquals("map 1 bias -1 = 1", 1, map1.ybias(-1));
+    assertEquals("map 1 bias 0 = 1", 1, map1.ybias(0));
+    assertEquals("map 1 bias 1 = 2", 2, map1.ybias(1));
+    assertEquals("map 1 bias 2 = 2", 2, map1.ybias(2));
+    assertEquals("map 1 bias 3 = 3", 3, map1.ybias(3));
+    assertEquals("map 1 bias 4 = 3", 3, map1.ybias(4));
 
 };
 /*

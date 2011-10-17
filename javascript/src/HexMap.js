@@ -85,9 +85,10 @@ HexMap = function(size, origin) {
         // four ints, size and origin
         var s = new HexMap.Vector(arguments[0], arguments[1]);
         var o = new HexMap.Vector(arguments[2], arguments[3]);
+        this.initVectors(s, o);
     } else {
-        // error?
-        //throw "invalid HexMap constructor signature";
+        throw "invalid HexMap constructor signature" + arguments;
+        //alert("No matching signature for HexMap");
     }
     this.listeners = [];
 };
