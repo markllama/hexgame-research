@@ -64,7 +64,7 @@ HexMapView = function(hexrun, size, origin) {
  * @type HexMap
  */
 // don't populate the prototype hexes
-HexMapView.prototype = new HexMap(null, null, null);
+HexMapView.prototype = new HexMap();
 
 HexMapView.prototype.setParent = function(parent) {
     this.parent = parent;
