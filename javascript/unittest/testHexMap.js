@@ -178,7 +178,7 @@ function testHexMapYBias() {
     assertEquals("map 1 bias 4 = 3", 3, map1.ybias(4));
 
 };
-/*
+
 function testHexMap0Contains() {
     var map = maps[0];
 
@@ -209,8 +209,8 @@ function testHexMap0Contains() {
 };
 
 function testHexMap1Origin() {
-    assertEquals("map 1 origin.hx", 3, maps[1].origin.hx);
-    assertEquals("map 1 origin.hy", 3, maps[1].origin.hy);
+    assertEquals("map 1 origin.hx", -3, maps[1].origin.hx);
+    assertEquals("map 1 origin.hy", -3, maps[1].origin.hy);
 };
 
 
@@ -218,9 +218,24 @@ function testHexMap1Contains() {
     var map = maps[1];
 
     // check the internal corners
-    assertTrue("map 1 contains origin", map.contains(HexMap.Vector.ORIGIN));
-    assertTrue("map 1 contains -3, -3", map.contains(new HexMap.Vector(3, -3)));
+    assertTrue(("map 1 contains origin: " + map.origin.toString()), map.contains(HexMap.Vector.ORIGIN));
+
+    assertFalse("map 1 contains -4,-3", map.contains(new HexMap.Vector(-4,-3)));
+    assertFalse("map 1 contains -3,-4", map.contains(new HexMap.Vector(-3,-4)));
+    assertTrue("map 1 contains -3,-3", map.contains(new HexMap.Vector(-3,-3)));
+
+    assertFalse("map 1 contains -4,3", map.contains(new HexMap.Vector(-4,3))); 
+    assertFalse("map 1 contains -3,4", map.contains(new HexMap.Vector(-3,4)));
+    assertTrue("map 1 contains -3,3", map.contains(new HexMap.Vector(-3,3)));
+
+    assertFalse("map 1 contains 4,0", map.contains(new HexMap.Vector(4,0))); 
+    assertFalse("map 1 contains 3,-1", map.contains(new HexMap.Vector(3,-1)));
+    assertTrue("map 1 contains 3,0", map.contains(new HexMap.Vector(3,0)));
+
+    assertFalse("map 1 contains 4,6", map.contains(new HexMap.Vector(4,6))); 
+    assertFalse("map 1 contains 3,7", map.contains(new HexMap.Vector(3,7)));
+    assertTrue("map 1 contains 3,6", map.contains(new HexMap.Vector(3,6)));
+
 
 };
 
-*/

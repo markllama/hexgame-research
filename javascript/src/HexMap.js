@@ -317,6 +317,13 @@ HexMap.Vector.prototype.hextant = function() {
 };
 
 /**
+ * Invert this vector
+ */
+HexMap.Vector.prototype.invert = function() {
+    return new HexMap.Vector(-this.hx, -this.hy);
+};
+
+/**
  * Rotate this vector around the origin by increments of 60 degrees
  * @param hextants: the number if 60 degree increments to rotate
  * @return {HexMap.Vector} The hex rotated by N * 60 degrees.
@@ -600,7 +607,6 @@ HexMap.prototype.toXml = function() {
  HexMap.prototype.contains = function(hv) {
      // acount for origin
 
-     //normal = hv.add(this.origin);
      normal = hv;
 
      /* This could be more elegent */
