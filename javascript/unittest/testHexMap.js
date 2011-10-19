@@ -235,7 +235,14 @@ function testHexMap1Contains() {
     assertFalse("map 1 contains 4,6", map.contains(new HexMap.Vector(4,6))); 
     assertFalse("map 1 contains 3,7", map.contains(new HexMap.Vector(3,7)));
     assertTrue("map 1 contains 3,6", map.contains(new HexMap.Vector(3,6)));
-
-
 };
 
+function testHexMap0GetHex() {
+    var map = maps[0];
+
+    assert("map 0 hex 0,0 is correct", 
+           map[0][0].location.equals(HexMap.Vector.ORIGIN));
+
+    assert("map 0 hex -3,-3 is correct", 
+           map[-3][-3].location.equals(new HexMap.Vector(-3, -3)));
+};

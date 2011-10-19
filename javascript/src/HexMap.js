@@ -407,7 +407,7 @@ HexMap.prototype.initVectors = function(size, origin) {
         this.origin = HexMap.Vector.ORIGIN
     }
 
-    
+    this.fill();
 };
 
 /**
@@ -639,7 +639,7 @@ HexMap.prototype.toXml = function() {
  	return null;
      }
 
-     //normal = location.sub(this.origin);
+     //normal = location.add(this.origin.invert());
      normal = location;
      if (!this[normal.hx]) {
 	 throw "getHex: hx is not a valid column: " + location.toString();
@@ -664,7 +664,7 @@ HexMap.prototype.iterator = function() {
  * @return {HexMap.Hex} The first hex in the array
  */
 HexMap.prototype.first = function() {
-    var firsthex = this.getHex(HexMap.Vector.ORIGIN.sub(this.origin));
+    var firsthex = this.getHex(this.origin);
     return firsthex;
 };
 
