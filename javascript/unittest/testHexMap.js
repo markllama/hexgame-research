@@ -240,9 +240,73 @@ function testHexMap1Contains() {
 function testHexMap0GetHex() {
     var map = maps[0];
 
+    var h0 = map.getHex(HexMap.Vector.ORIGIN);
     assert("map 0 hex 0,0 is correct", 
-           map[0][0].location.equals(HexMap.Vector.ORIGIN));
+           h0.location.equals(HexMap.Vector.ORIGIN));
 
-    assert("map 0 hex -3,-3 is correct", 
-           map[-3][-3].location.equals(new HexMap.Vector(-3, -3)));
+    var hv1 = new HexMap.Vector(0, 5);
+    var h1 = map.getHex(hv1);
+    assert("map 0 hex 0,5 is correct", h1.location.equals(hv1));
+
+    var hv2 = new HexMap.Vector(5, 2);
+    var h2 = map.getHex(hv2);
+    assert("map 0 hex 5,2 is correct", h2.location.equals(hv2));
+
+    var hv3 = new HexMap.Vector(5, 7);
+    var h3 = map.getHex(hv3);
+    assert("map 0 hex 5,7 is correct", h3.location.equals(hv3));
+
+
+    // check the exterior corners
+    var hfail = map.getHex(new HexMap.Vector(-1, 0));
+    assertEquals("not in map: (-1, 0)", null, hfail);
+    
+    var hfail = map.getHex(new HexMap.Vector(0, -1));
+    assertEquals("not in map: (0, -1)", null, hfail);
+
+    var hfail = map.getHex(new HexMap.Vector(-1, 5));
+    assertEquals("not in map: (-1, 5)", null, hfail);
+
+    var hfail = map.getHex(new HexMap.Vector(0, 6));
+    assertEquals("not in map: (0, 6)", null, hfail);
+
+    // the other end
+    var hfail = map.getHex(new HexMap.Vector(5, 1));
+    assertEquals("not in map: (5, 1)", null, hfail);
+    
+    var hfail = map.getHex(new HexMap.Vector(6, 3));
+    assertEquals("not in map: (6, 3)", null, hfail);
+
+    var hfail = map.getHex(new HexMap.Vector(5, 8));
+    assertEquals("not in map: (5, 8)", null, hfail);
+
+    var hfail = map.getHex(new HexMap.Vector(6, 7));
+    assertEquals("not in map: (6, 7)", null, hfail);
+
+};
+
+function testHexMap1GetHex() {
+    var map = maps[1];
+
+    var h0 = map.getHex(HexMap.Vector.ORIGIN);
+    assert("map 0 hex 0,0 is correct", 
+           h0.location.equals(HexMap.Vector.ORIGIN));
+
+    var hv1 = new HexMap.Vector(-3, -3);
+    var h1 = map.getHex(hv1);
+    assert("map 1 hex -3,-3 is correct", h1.location.equals(hv1));
+
+    var hv2 = new HexMap.Vector(-3, 3);
+    var h2 = map.getHex(hv2);
+    assert("map 1 hex -3,3 is correct", h2.location.equals(hv2));
+
+    var hv3 = new HexMap.Vector(3, 0);
+    var h3 = map.getHex(hv3);
+    assert("map 1 hex 3,0 is correct", h3.location.equals(hv3));
+
+    var hv4 = new HexMap.Vector(3, 6);
+    var h4 = map.getHex(hv4);
+    assert("map 1 hex 3,6 is correct", h4.location.equals(hv4));
+
+
 };
