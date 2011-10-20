@@ -308,5 +308,17 @@ function testHexMap1GetHex() {
     var h4 = map.getHex(hv4);
     assert("map 1 hex 3,6 is correct", h4.location.equals(hv4));
 
+};
 
+function testHexMapIterator() {
+    var map = maps[0];
+
+    var i = map.iterator();
+    var h = i.next();
+    assertTrue(h.location.equals(HexMap.Vector.ORIGIN));
+    var n = 1
+    while (h = i.next()) { 
+        n += 1;
+    }
+    assertEquals("should be 36", 36, n);
 };
