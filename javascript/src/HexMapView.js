@@ -31,7 +31,7 @@ HexMapView = function(hexrun, size, origin) {
     this.images = [];
 
     // if size is a Document and origin is null, this still works
-    HexMap.call(this, size, origin);
+    HexMap.apply( this, Array.prototype.slice.call( arguments, 1 ) );
     
     /**
      * The parent element of the new canvas

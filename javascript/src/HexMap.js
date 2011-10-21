@@ -69,7 +69,7 @@ HexMap = function(size, origin) {
         } else if (arguments[0] instanceof HexMap.Vector) { 
             this.initVectors(arguments[0], HexMap.Vector.ORIGIN);
         } else {
-            throw 'invalid single argument signature: ' + argument[0];
+            throw 'invalid single argument signature: ' + arguments[0];
         }
     } else if (arguments.length == 2) {
         if (typeof arguments[0] == "number") {

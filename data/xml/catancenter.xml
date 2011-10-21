@@ -2,10 +2,11 @@
 <map name="center" game="center">
   <copyright>reserved</copyright>
   <size><vector hx="13" hy="11" /></size>
-  <origin><vector hx="6" hy="7" /></origin>
+  <origin><vector hx="-6" hy="-7" /></origin>
 
   <terrains>
-
+    
+    <!-- Add when I have the object created.
     <terrain type="HexMapView.Terrain.SuperEdge" id="sea" name="sea" depth="0">
       <locations>
 	<vector hx="-6" hy="-3"/>
@@ -31,8 +32,9 @@
       </locations>
     </terrain>
 
+    -->
 
-    <terrain type="HexMapView.Terrain.SuperHex" id="superhex" name="superhex" depth="1">
+    <terrain type="HexMapView.Terrain.SuperBorder" id="superhex" name="superhex" depth="1">
       <locations>
 	<vector hx="-4" hy="-2"/>
 
@@ -64,7 +66,11 @@
 
       </locations>
     </terrain>
+
+    <!-- Uncomment when the special Vertex object is ready
     <terrain type="HexMapView.Terrain.Vertex" id="vertex" name="vertex" depth="0">
+    -->
+    <terrain type="HexMapView.Terrain.Center" id="vertex" name="vertex" depth="0">
       <locations>
 	<vector hx="-5" hy="-3"/>
 	<vector hx="-5" hy="-2"/>
