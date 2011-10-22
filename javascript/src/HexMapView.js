@@ -184,8 +184,9 @@ HexMapView.prototype.refloc = function(point) {
     var hy = Math.floor(((point.y - this.porigin.y) + (hx * this.hexrise)) / this.hexheight);
     //var hy = Math.floor((point.y - this.porigin.y) / this.hexheight);
     var absolute = new HexMap.Vector(hx, hy);
-    var normal = absolute.sub(this.origin);
-    return normal;
+    return absolute
+    //var normal = absolute.sub(this.origin);
+    //return normal;
 };
 
 /**
