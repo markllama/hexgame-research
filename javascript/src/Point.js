@@ -14,7 +14,7 @@ function Point(x, y) {
  * Test equality of two points
  * @return boolean
  */
-Point.prototype.eq = function(other) {
+Point.prototype.equals = function(other) {
     return ((this.x == other.x) && (this.y == other.y));
 };
 
