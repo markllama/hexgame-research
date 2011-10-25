@@ -182,11 +182,11 @@ HexMapView.prototype.refloc = function(point) {
     // determine the reference hex
     var hx = Math.floor((point.x - this.porigin.x) / (this.hexrun * 3));
     var hy = Math.floor(((point.y - this.porigin.y) + (hx * this.hexrise)) / this.hexheight);
-    //var hy = Math.floor((point.y - this.porigin.y) / this.hexheight);
+
     var absolute = new HexMap.Vector(hx, hy);
-    return absolute
-    //var normal = absolute.sub(this.origin);
-    //return normal;
+
+    var normal = absolute.add(this.origin);
+    return normal;
 };
 
 /**
