@@ -2,7 +2,7 @@
 <map name="sample" game="sample">
   <copyright>reserved</copyright>
   <size><vector hx="7" hy="7" /></size>
-  <origin><vector hx="-1" hy="-1" /></origin>
+  <origin><vector hx="-3" hy="-3" /></origin>
 
   <terrains>
     <terrain type="HexMapView.Terrain.Border" id="border" name="border">
