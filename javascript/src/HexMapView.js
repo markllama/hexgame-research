@@ -133,7 +133,7 @@ HexMapView.prototype.canvasSize = function() {
 HexMapView.prototype.hexcenter = function(vector) {
     // 0,0 is at map.hexwidth, map.hexheight
     // (fx, fy)
-    var normal = vector.add(this.origin);
+    var normal = vector.add(this.origin.invert());
     var ybias = Math.floor(normal.hx / 2);
     var px = ((normal.hx * 3) * this.hexrun) + this.porigin.x;
     var py = ((((normal.hy) * 2) - normal.hx) * this.hexrise) + this.porigin.y;
