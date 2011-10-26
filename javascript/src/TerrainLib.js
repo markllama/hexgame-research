@@ -130,8 +130,13 @@ HexMapView.Terrain.Border.prototype.toString = function() {
 HexMapView.Terrain.SuperBorder.prototype.drawHex = function(hex) {
     // get the map graphics context
     var ctx = this.map.canvas.getContext('2d');
-    //var vertices = hex.vertices();
-    //var vertices = [center for hex.point in hex.neighbors()]
+    var vertices = hex.vertices();
+    //var vertices = [];
+    //for (var vu in HexMap.Vector.UNIT) {
+    //    var vh = hex.location.add(vu);
+    //    vertices.push(this.map.hexcenter(vh));
+    //};
+
     ctx.strokeStyle = "black";
     ctx.lineWidth = 1;
     ctx.beginPath();

@@ -2,45 +2,18 @@
 <map name="sample" game="sample">
   <copyright>reserved</copyright>
   <size><vector hx="13" hy="11" /></size>
-  <origin><vector hx="0" hy="0" /></origin>
+  <origin><vector hx="-6" hy="-7" /></origin>
 
   <terrains>
-    <terrain type="HexMapView.Terrain.SuperHex" id="border" name="border" depth="1">
+    <terrain type="HexMapView.Terrain.SuperBorder" id="border" name="border" depth="1">
       <locations>
-
-	<vector hx="2" hy="5"/>
-
-	<vector hx="3" hy="4"/>
-	<vector hx="3" hy="7"/>
-
-	<vector hx="4" hy="3"/>
-	<vector hx="4" hy="6"/>
-	<vector hx="4" hy="9"/>
-
-	<vector hx="5" hy="5"/>
-	<vector hx="5" hy="8"/>
-
-	<vector hx="6" hy="4"/>
-	<vector hx="6" hy="7"/>
-	<vector hx="6" hy="10"/>
-
-	<vector hx="7" hy="6"/>
-	<vector hx="7" hy="9"/>
-
-	<vector hx="8" hy="5"/>
-	<vector hx="8" hy="8"/>
-	<vector hx="8" hy="11"/>
-
-	<vector hx="9" hy="7"/>
-	<vector hx="9" hy="10"/>
-
-	<vector hx="10" hy="9"/>
-
+        <vector hx="0" hy="0" />
       </locations>
     </terrain>
-    <terrain type="HexMapView.Terrain.Vertex" id="center" name="center" depth="0">
+    <terrain type="HexMapView.Terrain.Center" id="center" name="center" depth="0">
       <locations>
-	<vector hx="5" hy="4"/>
+        <vector hx="1" hy="1" />
+
       </locations>
     </terrain>
   </terrains>
