@@ -130,12 +130,8 @@ HexMapView.Terrain.Border.prototype.toString = function() {
 HexMapView.Terrain.SuperBorder.prototype.drawHex = function(hex) {
     // get the map graphics context
     var ctx = this.map.canvas.getContext('2d');
-    var vertices = hex.vertices();
-    //var vertices = [];
-    //for (var vu in HexMap.Vector.UNIT) {
-    //    var vh = hex.location.add(vu);
-    //    vertices.push(this.map.hexcenter(vh));
-    //};
+    //var vertices = this.vertices(hex);
+    var vertices = this.vertices(hex);
 
     ctx.strokeStyle = "black";
     ctx.lineWidth = 1;
@@ -150,6 +146,16 @@ HexMapView.Terrain.SuperBorder.prototype.drawHex = function(hex) {
     ctx.stroke();
 };
 
+HexMapView.Terrain.SuperBorder.prototype.vertices = function(hex) {
+    var vlist = [];
+    for (var vu in HexMap.Vector.UNIT) {
+        var vh = hex.location.add(HexMap.Vector.UNIT[vu]);
+        var vp = this.map.hexcenter(vh);
+        vlist.push(vp);
+    };
+
+    return vlist;
+}
 
 /**
  *
