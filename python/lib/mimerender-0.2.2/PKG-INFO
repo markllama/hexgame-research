@@ -1,0 +1,21 @@
+Metadata-Version: 1.1
+Name: mimerender
+Version: 0.2.2
+Summary: RESTful resource variant rendering using MIME Media-Types
+Home-page: http://code.google.com/p/mimerender/
+Author: Martin Blech
+Author-email: mblech@bmat.com
+License: MIT
+Description: 
+        This module allows, with the use of python decorators, to transparently select a render function for an HTTP request handler's result. It uses mimeparse to parse the HTTP Accept header and select the best available representation. Currently it only supports (web.py), but other web frameworks can be considered.
+        
+Platform: all
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Requires: mimeparse
+Requires: web.py
