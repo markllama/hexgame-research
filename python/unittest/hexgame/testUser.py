@@ -35,6 +35,7 @@ class TestUser(unittest.TestCase):
         self.session.add(u0)
         self.session.add(u1)
         self.session.add(u2)
+
         self.session.commit()
 
         u3 = self.session.query(User).filter_by(name="testuser1").first()
