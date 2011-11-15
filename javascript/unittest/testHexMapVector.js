@@ -70,36 +70,6 @@ function testHexMapVectorToXml() {
     assertEquals(hv0Xml, hv0.toXml());
 };
 
-// add
-function testHexMapVectorAdd() {
-    hv0 = new HexMap.Vector(2, 5);
-    hv1 = new HexMap.Vector(-4, 6);
-    hv2 = hv0.add(hv1);
-    hv3 = new HexMap.Vector(-2, 11);
-
-    assertTrue(hv3.equals(hv2));
-
-};
-
-// sub
-function testHexMapVectorSub() {
-    hv0 = new HexMap.Vector(2, 5);
-    hv1 = new HexMap.Vector(-4, 6);
-    hv2 = hv0.sub(hv1);
-    hv3 = new HexMap.Vector(6, -1);
-
-    assertTrue(hv3.equals(hv2));
-};
-
-// mul
-function testHexMapVectorMul() {
-    hv0 = new HexMap.Vector(-6, 7);
-    hv1 = hv0.mul(3);
-    hv2 = new HexMap.Vector(-18, 21);
-    assertTrue(hv2.equals(hv1));
-
-};
-
 // length
 function testHexMapVectorLength() {
 
@@ -140,6 +110,37 @@ function testHexMapVectorLength() {
     assertEquals("-1, -2", 3, new HexMap.Vector(-1, -3).length());
 
 };
+
+// add
+function testHexMapVectorAdd() {
+    hv0 = new HexMap.Vector(2, 5);
+    hv1 = new HexMap.Vector(-4, 6);
+    hv2 = hv0.add(hv1);
+    hv3 = new HexMap.Vector(-2, 11);
+
+    assertTrue(hv3.equals(hv2));
+
+};
+
+// sub
+function testHexMapVectorSub() {
+    hv0 = new HexMap.Vector(2, 5);
+    hv1 = new HexMap.Vector(-4, 6);
+    hv2 = hv0.sub(hv1);
+    hv3 = new HexMap.Vector(6, -1);
+
+    assertTrue(hv3.equals(hv2));
+};
+
+// mul
+function testHexMapVectorMul() {
+    hv0 = new HexMap.Vector(-6, 7);
+    hv1 = hv0.mul(3);
+    hv2 = new HexMap.Vector(-18, 21);
+    assertTrue(hv2.equals(hv1));
+
+};
+
 
 // distance
 function testHexMapVectorDistance() {
