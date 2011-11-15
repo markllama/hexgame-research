@@ -78,6 +78,43 @@ class TestVector(unittest.TestCase):
         self.assertEquals(4, v4.hx)
         self.assertEquals(5, v4.hy)
 
+    def testORIGIN(self):
+        self.assertEquals(0, Vector.ORIGIN.hx)
+        self.assertEquals(0, Vector.ORIGIN.hy)
+        self.assertEquals(0, Vector.ORIGIN.hz)
+
+    def testUNIT(self):
+        self.assertEquals(0, Vector.UNIT[0].hx);
+        self.assertEquals(-1, Vector.UNIT[0].hy);
+
+        self.assertEquals(1, Vector.UNIT[1].hx);
+        self.assertEquals(0, Vector.UNIT[1].hy);
+
+        self.assertEquals(1, Vector.UNIT[2].hx);
+        self.assertEquals(1, Vector.UNIT[2].hy);
+
+        self.assertEquals(0, Vector.UNIT[3].hx);
+        self.assertEquals(1, Vector.UNIT[3].hy);
+
+        self.assertEquals(-1,Vector.UNIT[4].hx);
+        self.assertEquals(0, Vector.UNIT[4].hy);
+
+        self.assertEquals(-1, Vector.UNIT[5].hx);
+        self.assertEquals(-1, Vector.UNIT[5].hy);
+
+    def testEqual(self):
+        self.assertEquals(Vector.ORIGIN, Vector())
+        self.assertEquals(Vector.UNIT[0], Vector(Vector.UNIT[0]))
+        self.assertEquals(Vector.UNIT[3], Vector(Vector.UNIT[3]))
+
+        hv0 = Vector(3, 4)
+        hv1 = Vector(3, 4)
+        hv2 = Vector(-5, 12)
+
+        self.assertEquals(hv0, hv1)
+        self.assertNotEquals(hv0, hv2)
+
+        
     def testFromElement(self):
         e5 = etree.fromstring('<vector hx="-5" hy="14"/>')
         v5 = Vector.fromelement(e5)
@@ -113,11 +150,6 @@ class TestVector(unittest.TestCase):
         self.assertEquals(12, len(Vector(6, -6)))
         self.assertEquals(8, len(Vector(-4, 4)))
 
-
-    def testEqual(self):
-        self.assertEquals(Vector.ORIGIN, Vector())
-        self.assertEquals(Vector.UNIT[0], Vector(Vector.UNIT[0]))
-        self.assertEquals(Vector.UNIT[3], Vector(Vector.UNIT[3]))
 
 
     def testAdd(self):
@@ -192,6 +224,10 @@ class TestVector(unittest.TestCase):
         self.assertEquals(v0, v0.rotate(-6))
         self.assertEquals(Vector(-5, -4), v0.rotate(-1))
 
+
+    def testAngle(self):
+        # pending
+        pass
 
     def testBearing(self):
 

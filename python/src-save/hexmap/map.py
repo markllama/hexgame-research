@@ -32,6 +32,12 @@ class MapError(Exception): pass
 class Map(object):
     """
     This represents the state of a game map
+
+    Vector size
+    Vector origin
+    Terrain terrains[]
+    Token tokens[]
+    Hex hexes[]
     """
 
     _hexclass = Hex
@@ -39,6 +45,17 @@ class Map(object):
     def __init__(self, size, origin=Vector.ORIGIN, terrains=None, tokens=None, 
                  name=None, game=None, copyright=None):
 
+        """
+        Constructor:
+          Map(): defaults
+          Map.fromDocument(document)
+          Map.fromElement(element)
+          Map.fromUrl(string)
+          Map.fromString(string)
+          Map(size, origin)
+          Map(sx, sy)
+          Map(sx, sy, ox, oy)
+        """
         logger = logging.getLogger(self.__class__.__name__ + ".__init__")
         # name
         # game

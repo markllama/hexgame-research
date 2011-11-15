@@ -42,18 +42,18 @@ import lxml.etree as etree
 
 import unittest
 
-from hexmap import HexMap, Vector, Token
+from hexmap import Map, Vector, Token
 
 class TestHexMap(unittest.TestCase):
 
     def testHexMap(self):
-        hm0 = HexMap(Vector(15, 22), name="Sample", copyright="GPL")
+        hm0 = Map(Vector(15, 22), name="Sample", copyright="GPL")
 
         self.assertEquals(Vector.ORIGIN, hm0.origin)
         self.assertEquals(Vector(15,22), hm0.size)
 
     def testElement(self):
-        hm0 = HexMap(Vector(15, 22), name="Sample", copyright="GPL")
+        hm0 = Map(Vector(15, 22), name="Sample", copyright="GPL")
 
         e = hm0.element
         print etree.tostring(e, pretty_print=True)
@@ -61,7 +61,7 @@ class TestHexMap(unittest.TestCase):
 
     def testDimensions(self):
 
-        hm0 = HexMap(Vector(6,8))
+        hm0 = Map(Vector(6,8))
         self.assertEquals(None, hm0.hyfirst(Vector(-1, 0)))
         self.assertEquals(0, hm0.hyfirst(Vector(0, 0)))
         self.assertEquals(1, hm0.hyfirst(Vector(3, 0)))
@@ -70,7 +70,7 @@ class TestHexMap(unittest.TestCase):
 
     def testContains(self):
 
-        hm0 = HexMap(Vector(6,8))
+        hm0 = Map(Vector(6,8))
 
         self.assertEquals(False, Vector(-1, 2) in hm0)
         
@@ -89,7 +89,7 @@ class TestHexMap(unittest.TestCase):
         # add tests with alternate origin
 
     def testAddToken(self):
-        hm0 = HexMap(Vector(6,8))
+        hm0 = Map(Vector(6,8))
 
         t0 = Token("dummy1")
 
@@ -103,7 +103,7 @@ class TestHexMap(unittest.TestCase):
         del t0
 
     def testDelToken(self):
-        hm1 = HexMap(Vector(6,8))
+        hm1 = Map(Vector(6,8))
 
         t0 = Token("dummy")
 
