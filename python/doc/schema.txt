@@ -1,0 +1,31 @@
+The Hex Game database schema
+
+This maps objects to SQL database schema
+
+TABLE maps
+  id
+  name
+  size
+  origin
+
+TABLE terrains
+  id
+  name
+  class
+  map_id
+  
+TABLE terrain_hex_links
+
+  id
+  map_id
+  terrain_id
+  hex_id
+
+TABLE units
+
+  id
+  name
+  class
+  map_id
+  hex_id
+  
