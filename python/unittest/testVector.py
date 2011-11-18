@@ -248,7 +248,15 @@ class TestVector(unittest.TestCase):
             ]
 
         self.assertEquals(neighbors, v0.neighbors)
-        
+
+    def testSqlAlchemy(self):
+        v0 = Vector(5, 8)
+
+        self.assertEquals("5,8", v0.process_bind_param(v0, None))
+        self.assertEquals("5,8", v0.process_bind_param(None, None))
+        self.assertEquals(v0, v0.process_result_value("5,8", None))
+        self.assertEquals(v0, v0.process_result_value(None, None))
+
 if __name__ == "__main__":
     unittest.main()
 

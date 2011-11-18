@@ -69,12 +69,19 @@ class Vector(TypeDecorator):
     # sqlalchemy conversion methods
     def process_bind_param(self, value, dialect):
         if value is not None:
-            value = "%d,%d" % value.hx, value.hy
+            value = "%d,%d" % (value.hx, value.hy)
+        else:
+            value = "%d,%d" % (self.hx, self.hy)
+            
         return value
 
     def process_result_value(self, value, dialect):
         if value is not None:
-            value = Vector(map(int, value.split(",")))
+            # deref the list so it's two args
+            value = Vector(*map(int, value.split(",")))
+        else:
+            value = Vector(self)
+        
         return value
 
     @staticmethod
