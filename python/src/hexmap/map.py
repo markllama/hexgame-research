@@ -5,23 +5,24 @@ A hex map
 
 from math import floor
 
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
-
+from sqlalchemy.orm import relationship, backref
 from sqlalchemy import Column, Integer, String
 
-from vector import Vector
-from terrain import Terrain
+from hexmap.sqlbase import SqlBase
+from hexmap.vector import Vector
+from hexmap.terrain import Terrain
+from hexmap.token import Token
 
-class Map(object):
+class Map(SqlBase):
     __tablename__ = "maps"
 
- 
     _id = Column(Integer, primary_key=True)
     _name = Column(String)
-    _size = Column(Vector)
-    _origin = Column(Vector)
+    #_size = Column(Vector)
+    #_origin = Column(Vector)
+
+    _terrains = relationship('Terrain', backref="map")
+    _tokens = relationship('Token', backref="map")
     
     # Map Constructor signatures
     # Map(String name)
@@ -115,6 +116,18 @@ class Map(object):
 
     @property
     def terrains(self): return self._terrains
+
+    def addToken(self, token):
+        
+        # check that it is a token
+        if not isinstance(token, Token):
+            raise TypeError("Must be a Token, not %s: %s" % (type(token), token))
+        
+        self._tokens.append(token)
+        token.map = self
+
+    @property
+    def tokens(self): return self._tokens
 
 
     

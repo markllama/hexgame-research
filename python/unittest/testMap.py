@@ -41,7 +41,7 @@ if opt.debug:
 #import xml.etree.ElementTree as etree
 import lxml.etree as etree
 
-from hexmap import Vector, Map, Terrain
+from hexmap import Vector, Map, Terrain, Token
 
 import unittest
 
@@ -185,6 +185,22 @@ class TestMap(unittest.TestCase):
 
         # try adding an invalid terrain?
         self.assertRaises(TypeError, m0.addTerrain, 2)
+
+    def testMapAddToken(self):
+        """
+        
+        """
+
+        m0 = Map(size=Vector(6,5))
+
+        # add a valid terrain
+        t0 = Token(name="t0")
+        m0.addToken(t0)
+        self.assertEqual(1, len(m0.tokens))
+        self.assertEqual(m0, t0.map)
+
+        # try adding an invalid terrain?
+        self.assertRaises(TypeError, m0.addToken, 2)
 
     def testMapGetHex(self):
         self.fail("Pending")

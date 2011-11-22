@@ -2,10 +2,21 @@
 # A single terrain
 #
 
-class Terrain():
+from sqlalchemy.orm import relationship, backref
+from sqlalchemy import Column, Integer, String, ForeignKey
+
+from hexmap.sqlbase import SqlBase
+
+class Terrain(SqlBase):
     """
     a hex modifier
     """
+
+    __tablename__ = 'terrains'
+
+    _id = Column(Integer, primary_key=True)
+    _name = Column(String)
+    _map = Column(Integer, ForeignKey('maps._id'))
 
     def __init__(self, name, map=None, locations=[]):
         self._name = name

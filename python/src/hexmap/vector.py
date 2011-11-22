@@ -84,6 +84,9 @@ class Vector(TypeDecorator):
         
         return value
 
+    def copy(self):
+        return Vector(self)
+
     @staticmethod
     def fromelement(element):
         """
