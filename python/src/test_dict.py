@@ -14,9 +14,9 @@ class Map(SqlBase):
     # proxy to 'user_keywords', instantiating UserKeyword
     # assigning the new key to 'special_key', values to
     # 'keyword'.
-    keywords = association_proxy('map_terrains', 'keyword',
-                    creator=lambda k, v:
-                                UserKeyword(special_key=k, keyword=v)
+    terrains = association_proxy('map_terrains', 'keyword',
+                                 creator=lambda k, v:
+                                     UserKeyword(special_key=k, keyword=v)
                 )
 
     def __init__(self, name):
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     
     user = Map('log')
 
-    user.keywords['sk1'] = Keyword('kw1')
-    user.keywords['sk2'] = Keyword('kw2')
+    user.terrains['sk1'] = Keyword('kw1')
+    user.terrains['sk2'] = Keyword('kw2')
 
-    print(user.keywords)
+    print(user.terrains)
