@@ -4,9 +4,9 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm.collections import attribute_mapped_collection
 
-Base = declarative_base()
+SqlBase = declarative_base()
 
-class User(Base):
+class User(SqlBase):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
     name = Column(String(64))
@@ -22,7 +22,7 @@ class User(Base):
     def __init__(self, name):
         self.name = name
 
-class UserKeyword(Base):
+class UserKeyword(SqlBase):
     __tablename__ = 'user_keyword'
     user_id = Column(Integer, ForeignKey('user.id'), primary_key=True)
     keyword_id = Column(Integer, ForeignKey('keyword.id'), primary_key=True)
@@ -38,7 +38,7 @@ class UserKeyword(Base):
                 )
     keyword = relationship("Keyword")
 
-class Keyword(Base):
+class Keyword(SqlBase):
     __tablename__ = 'keyword'
     id = Column(Integer, primary_key=True)
     keyword = Column('keyword', String(64))
