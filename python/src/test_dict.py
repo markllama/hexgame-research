@@ -25,7 +25,7 @@ class Map(SqlBase):
 class UserKeyword(SqlBase):
     __tablename__ = 'user_keyword'
     user_id = Column(Integer, ForeignKey('map.id'), primary_key=True)
-    keyword_id = Column(Integer, ForeignKey('keyword.id'), primary_key=True)
+    keyword_id = Column(Integer, ForeignKey('terrain.id'), primary_key=True)
     special_key = Column(String)
 
     # bidirectional user/user_keywords relationships, mapping
@@ -39,7 +39,7 @@ class UserKeyword(SqlBase):
     keyword = relationship("Terrain")
 
 class Terrain(SqlBase):
-    __tablename__ = 'keyword'
+    __tablename__ = 'terrain'
     id = Column(Integer, primary_key=True)
     keyword = Column('keyword', String(64))
 
@@ -47,7 +47,7 @@ class Terrain(SqlBase):
         self.keyword = keyword
 
     def __repr__(self):
-        return 'Keyword(%s)' % repr(self.keyword)
+        return 'Terrain(%s)' % repr(self.keyword)
 
 if __name__ == "__main__":
     
