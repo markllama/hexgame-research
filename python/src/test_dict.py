@@ -6,7 +6,7 @@ from sqlalchemy.orm.collections import attribute_mapped_collection
 
 SqlBase = declarative_base()
 
-class User(SqlBase):
+class Map(SqlBase):
     __tablename__ = 'map'
     id = Column(Integer, primary_key=True)
     name = Column(String(64))
@@ -14,7 +14,7 @@ class User(SqlBase):
     # proxy to 'user_keywords', instantiating UserKeyword
     # assigning the new key to 'special_key', values to
     # 'keyword'.
-    keywords = association_proxy('user_keywords', 'keyword',
+    keywords = association_proxy('map_terrains', 'keyword',
                     creator=lambda k, v:
                                 UserKeyword(special_key=k, keyword=v)
                 )
@@ -30,8 +30,8 @@ class UserKeyword(SqlBase):
 
     # bidirectional user/user_keywords relationships, mapping
     # user_keywords with a dictionary against "special_key" as key.
-    user = relationship(User, backref=backref(
-                    "user_keywords",
+    user = relationship(Map, backref=backref(
+                    "map_terrains",
                     collection_class=attribute_mapped_collection("special_key"),
                     cascade="all, delete-orphan"
                     )
@@ -51,7 +51,7 @@ class Keyword(SqlBase):
 
 if __name__ == "__main__":
     
-    user = User('log')
+    user = Map('log')
 
     user.keywords['sk1'] = Keyword('kw1')
     user.keywords['sk2'] = Keyword('kw2')
