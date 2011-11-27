@@ -38,7 +38,7 @@ class UserKeyword(SqlBase):
                 )
     keyword = relationship("Keyword")
 
-class Keyword(SqlBase):
+class Terrain(SqlBase):
     __tablename__ = 'keyword'
     id = Column(Integer, primary_key=True)
     keyword = Column('keyword', String(64))
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     
     user = Map('log')
 
-    user.terrains['sk1'] = Keyword('kw1')
-    user.terrains['sk2'] = Keyword('kw2')
+    user.terrains['sk1'] = Terrain('kw1')
+    user.terrains['sk2'] = Terrain('kw2')
 
     print(user.terrains)
