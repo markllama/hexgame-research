@@ -7,7 +7,7 @@ from sqlalchemy.orm.collections import attribute_mapped_collection
 SqlBase = declarative_base()
 
 class User(SqlBase):
-    __tablename__ = 'user'
+    __tablename__ = 'map'
     id = Column(Integer, primary_key=True)
     name = Column(String(64))
 
@@ -24,7 +24,7 @@ class User(SqlBase):
 
 class UserKeyword(SqlBase):
     __tablename__ = 'user_keyword'
-    user_id = Column(Integer, ForeignKey('user.id'), primary_key=True)
+    user_id = Column(Integer, ForeignKey('map.id'), primary_key=True)
     keyword_id = Column(Integer, ForeignKey('keyword.id'), primary_key=True)
     special_key = Column(String)
 
