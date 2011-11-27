@@ -36,7 +36,7 @@ class UserKeyword(SqlBase):
                     cascade="all, delete-orphan"
                     )
                 )
-    keyword = relationship("Keyword")
+    keyword = relationship("Terrain")
 
 class Terrain(SqlBase):
     __tablename__ = 'keyword'
