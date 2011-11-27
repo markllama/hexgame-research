@@ -14,9 +14,9 @@ class Map(SqlBase):
     # proxy to 'user_keywords', instantiating UserKeyword
     # assigning the new key to 'special_key', values to
     # 'keyword'.
-    terrains = association_proxy('map_terrains', 'keyword',
+    terrains = association_proxy('map_terrains', 'terrain',
                                  creator=lambda k, v:
-                                     UserKeyword(special_key=k, keyword=v)
+                                     UserKeyword(special_key=k, terrain=v)
                 )
 
     def __init__(self, name):
@@ -36,7 +36,7 @@ class UserKeyword(SqlBase):
                     cascade="all, delete-orphan"
                     )
                 )
-    keyword = relationship("Terrain")
+    terrain = relationship("Terrain")
 
 class Terrain(SqlBase):
     __tablename__ = 'terrain'
