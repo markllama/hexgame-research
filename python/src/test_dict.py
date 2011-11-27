@@ -12,27 +12,27 @@ class Map(SqlBase):
     name = Column(String(64))
 
     # proxy to 'user_keywords', instantiating UserKeyword
-    # assigning the new key to 'special_key', values to
+    # assigning the new key to 'terrain_name', values to
     # 'keyword'.
     terrains = association_proxy('map_terrains', 'terrain',
                                  creator=lambda k, v:
-                                     UserKeyword(special_key=k, terrain=v)
+                                     MapTerrain(terrain_name=k, terrain=v)
                 )
 
     def __init__(self, name):
         self.name = name
 
-class UserKeyword(SqlBase):
-    __tablename__ = 'user_keyword'
+class MapTerrain(SqlBase):
+    __tablename__ = 'map_terrain'
     user_id = Column(Integer, ForeignKey('map.id'), primary_key=True)
     keyword_id = Column(Integer, ForeignKey('terrain.id'), primary_key=True)
-    special_key = Column(String)
+    terrain_name = Column(String)
 
     # bidirectional user/user_keywords relationships, mapping
-    # user_keywords with a dictionary against "special_key" as key.
+    # user_keywords with a dictionary against "terrain_name" as key.
     user = relationship(Map, backref=backref(
                     "map_terrains",
-                    collection_class=attribute_mapped_collection("special_key"),
+                    collection_class=attribute_mapped_collection("terrain_name"),
                     cascade="all, delete-orphan"
                     )
                 )
@@ -41,13 +41,13 @@ class UserKeyword(SqlBase):
 class Terrain(SqlBase):
     __tablename__ = 'terrain'
     id = Column(Integer, primary_key=True)
-    keyword = Column('keyword', String(64))
+    name = Column('name', String(64))
 
-    def __init__(self, keyword):
-        self.keyword = keyword
+    def __init__(self, name):
+        self.name = name
 
     def __repr__(self):
-        return 'Terrain(%s)' % repr(self.keyword)
+        return 'Terrain(%s)' % repr(self.name)
 
 if __name__ == "__main__":
     
