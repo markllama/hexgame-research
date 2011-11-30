@@ -6,6 +6,7 @@ A hex map
 from math import floor
 
 from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm.collections import attribute_mapped_collection
 from sqlalchemy import Column, Integer, String
 
 from hexmap.sqlbase import SqlBase
@@ -21,8 +22,20 @@ class Map(SqlBase):
     #_size = Column(Vector)
     #_origin = Column(Vector)
 
-    _terrains = relationship('Terrain', backref="map")
-    _tokens = relationship('Token', backref="map")
+    terrains = relationship(
+        'Terrain', 
+        backref="map",
+        collection_class=attribute_mapped_collection('name'),
+        cascade="all, delete-orphan"
+        )
+
+
+    tokens = relationship(
+        'Token', 
+        backref="map",
+        collection_class=attribute_mapped_collection('name'),
+        cascade="all, delete-orphan"
+        )
     
     # Map Constructor signatures
     # Map(String name)
@@ -44,13 +57,11 @@ class Map(SqlBase):
 
         assert(isinstance(terrains, list))
         for t in terrains:
-            assert(isinstance(t, Terrain))
-        self._terrains = terrains
+            self.terrains[t.name] = t
 
         assert(isinstance(tokens, list))
         for t in tokens:
-            assert(isinstance(t, Token))
-        self._tokens = tokens
+            self.tokens[t.name] = t
 
     @classmethod
     def fromElement(cls, element):
@@ -103,31 +114,3 @@ class Map(SqlBase):
             return False
 
         return True
-
-
-    def addTerrain(self, terrain):
-        
-        # check that it is a terrain
-        if not isinstance(terrain, Terrain):
-            raise TypeError("Must be a terrain, not %s: %s" % (type(terrain), terrain))
-        
-        self._terrains.append(terrain)
-        terrain.map = self
-
-    @property
-    def terrains(self): return self._terrains
-
-    def addToken(self, token):
-        
-        # check that it is a token
-        if not isinstance(token, Token):
-            raise TypeError("Must be a Token, not %s: %s" % (type(token), token))
-        
-        self._tokens.append(token)
-        token.map = self
-
-    @property
-    def tokens(self): return self._tokens
-
-
-    

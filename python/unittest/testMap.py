@@ -56,6 +56,15 @@ class TestMap(unittest.TestCase):
         self.assertEqual('unset', m0.name)
         self.assertEqual(Vector(15,22), m0.size)
         self.assertEqual(Vector.ORIGIN, m0.origin)
+        self.assertEqual({}, m0.terrains)
+        self.assertEqual({}, m0.tokens)
+
+        t0 = Terrain('test0')
+        t1 = Terrain('test1')
+        m0.terrains[t0.name] = t0
+        m0.terrains[t1.name] = t1
+
+        print ("terrains = %s" % m0.terrains)
 
     def testMapConstructorXMLString(self):
         pass
