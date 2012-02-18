@@ -33,3 +33,40 @@ class Map(SqlBase):
         self.name = name
         self.size = size
         self.origin = origin
+
+
+    def hxfirst(self):
+        return self.origin.hx
+
+    def hxcount(self):
+        return self._size.hx
+
+
+    def ybias(self, hx):
+        return int(floor((hx - self.hxfirst()) / 2))
+
+
+    def hyfirst(self, hx):
+        first = self.hxfirst()
+        if hx < first or hx >= first + self.hxcount():
+            return None
+        return self.origin.hy + self.ybias(hx)
+
+    def hycount(self, hx):
+        first = self.hxfirst();
+        if hx < first or hx >= first + self.hxcount():
+            return None;
+        return self.size.hy;
+
+    def contains(self, hv):
+        normal = hv
+        hxfirst = self.hxfirst();
+
+        if normal.hx < hxfirst or normal.hx >= hxfirst + self.hxcount():
+            return False
+
+        hyfirst = self.hyfirst(normal.hx)
+        if normal.hy < hyfirst or normal.hy >= hyfirst + self.hycount(normal.hx):
+            return False
+
+        return True
