@@ -26,8 +26,8 @@ class Map(SqlBase):
     size = composite(Vector, size_hx, size_hy)
     
     locations = relationship("Location", backref=backref("map"))
-    terrains = relationship("Terrain", backref=backref("map"))
-    tokens = relationship("Token", backref=backref("map"))
+    _terrains = relationship("Terrain", backref=backref("map"))
+    _tokens = relationship("Token", backref=backref("map"))
     
 
     def __init__(self, name="unset", size=Vector(15,22), origin=Vector()):
@@ -35,7 +35,8 @@ class Map(SqlBase):
         self.name = name
         self.size = size
         self.origin = origin
-
+        self.terrains = TerrainList(self)
+        self.tokens = TokenList(self)
 
     def hxfirst(self):
         return self.origin.hx
@@ -78,26 +79,63 @@ class Map(SqlBase):
         # check that t is a Terrain
 
         # check that t is not already present
-        self.terrains.append(t)
+        self._terrains.append(t)
 
     def addToken(self, t):
         # check that t is a Token
 
         # check that t is not already present
-        self.tokens.append(t)
+        self._tokens.append(t)
 
 class TerrainList():
     """
     A list of terrains which can control what's added
     """
 
+    def __init__(self, map):
+        self.map = map
+
+    def __len__(self):
+        return len(self.map._terrains)
 
     def __getitem__(self, key):
         
         # check that the key is a Vector or Iterator
 
         # find the right 
-        pass
+        return self.map._terrains[key]
 
     def __setitem__(self, key, value):
         pass
+
+
+    def append(self, value):
+        self.map._terrains.append(value)
+
+
+class TokenList():
+    """
+    A list of tokens which can control what's added
+    """
+
+    def __init__(self, map):
+        self.map = map
+
+    def __len__(self):
+        return len(self.map._tokens)
+
+    def __getitem__(self, key):
+        
+        # check that the key is a Vector or Iterator
+
+        # find the right 
+        return self.map._tokens[key]
+
+    def __setitem__(self, key, value):
+        pass
+
+
+    def append(self, value):
+        self.map._tokens.append(value)
+
+
