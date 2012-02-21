@@ -2,6 +2,8 @@
 #
 # 
 
+from math import floor
+
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship, backref, composite
 
@@ -24,11 +26,11 @@ class Map(SqlBase):
     size = composite(Vector, size_hx, size_hy)
     
     locations = relationship("Location", backref=backref("maps"))
-    terrains = relationship("Terrain", backref=backref("maps"))
+    terrains = relationship("Terrain", backref=backref("map"))
     tokens = relationship("Token", backref=backref("maps"))
     
 
-    def __init__(self, name, size=Vector(15,22), origin=Vector()):
+    def __init__(self, name="unset", size=Vector(15,22), origin=Vector()):
 
         self.name = name
         self.size = size
@@ -39,7 +41,7 @@ class Map(SqlBase):
         return self.origin.hx
 
     def hxcount(self):
-        return self._size.hx
+        return self.size.hx
 
 
     def ybias(self, hx):
@@ -70,3 +72,5 @@ class Map(SqlBase):
             return False
 
         return True
+
+
