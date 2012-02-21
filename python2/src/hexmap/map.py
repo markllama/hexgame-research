@@ -25,9 +25,9 @@ class Map(SqlBase):
     size_hy = Column(Integer)
     size = composite(Vector, size_hx, size_hy)
     
-    locations = relationship("Location", backref=backref("maps"))
+    locations = relationship("Location", backref=backref("map"))
     terrains = relationship("Terrain", backref=backref("map"))
-    tokens = relationship("Token", backref=backref("maps"))
+    tokens = relationship("Token", backref=backref("map"))
     
 
     def __init__(self, name="unset", size=Vector(15,22), origin=Vector()):
@@ -74,3 +74,30 @@ class Map(SqlBase):
         return True
 
 
+    def addTerrain(self, t):
+        # check that t is a Terrain
+
+        # check that t is not already present
+        self.terrains.append(t)
+
+    def addToken(self, t):
+        # check that t is a Token
+
+        # check that t is not already present
+        self.tokens.append(t)
+
+class TerrainList():
+    """
+    A list of terrains which can control what's added
+    """
+
+
+    def __getitem__(self, key):
+        
+        # check that the key is a Vector or Iterator
+
+        # find the right 
+        pass
+
+    def __setitem__(self, key, value):
+        pass
