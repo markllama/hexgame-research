@@ -42,7 +42,7 @@ class TestMap(unittest.TestCase):
         
         t = Terrain("terrain")
 
-        m.terrains.append(t)
+        m.terrains[t.name] = t
 
         self.assertEqual(1, len(m.terrains))
 
@@ -199,7 +199,7 @@ class TestMap(unittest.TestCase):
         self.session.add(m0)
         # add a valid terrain
         t0 = Terrain(name="t0")
-        #m0.addTerrain(t0)
+
         m0.addTerrain(t0)
 
         self.assertEqual(1, len(m0.terrains))

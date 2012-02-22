@@ -6,6 +6,7 @@ from math import floor
 
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship, backref, composite
+from sqlalchemy.orm.collections import attribute_mapped_collection
 
 from sqlbase import SqlBase
 from vector import Vector
@@ -26,7 +27,10 @@ class Map(SqlBase):
     size = composite(Vector, size_hx, size_hy)
     
     locations = relationship("Location", backref=backref("map"))
-    _terrains = relationship("Terrain", backref=backref("map"))
+    _terrains = relationship(
+        "Terrain", 
+        collection_class=attribute_mapped_collection('name'),
+        backref=backref("map"))
     _tokens = relationship("Token", backref=backref("map"))
     
 
@@ -79,7 +83,8 @@ class Map(SqlBase):
         # check that t is a Terrain
 
         # check that t is not already present
-        self._terrains.append(t)
+        #self._terrains.append(t)
+        self._terrains[t.name] = t
 
     def addToken(self, t):
         # check that t is a Token
@@ -106,11 +111,11 @@ class TerrainList():
         return self.map._terrains[key]
 
     def __setitem__(self, key, value):
-        pass
+        self.map._terrains[value.name] = value
 
 
-    def append(self, value):
-        self.map._terrains.append(value)
+    #def append(self, value):
+    #    self.map._terrains.append(value)
 
 
 class TokenList():
