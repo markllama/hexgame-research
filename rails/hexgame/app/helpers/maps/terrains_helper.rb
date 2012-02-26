@@ -1,0 +1,2 @@
+module Maps::TerrainsHelper
+end
