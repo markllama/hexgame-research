@@ -107,7 +107,9 @@ try {
 
 mapelement = sample.getElementsByTagName("map")[0];
 
-mapview = new HexMapView(args.hexrun, mapelement);
+canvas = document.createElement('canvas');
+
+mapview = new HexMapView(canvas, args.hexrun, mapelement);
 mapview.canvas.onmousemove=canvasclick;
 
 // create and add the standard terrains

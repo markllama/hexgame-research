@@ -16,7 +16,7 @@
  * @extends HexMap
  * @constructor
  */
-HexMapView = function(hexrun, size, origin) {
+HexMapView = function(canvas, hexrun, size, origin) {
 
     // the default hex is a standard HexMapView.Hex
     this.hex = HexMapView.Hex;
@@ -31,7 +31,7 @@ HexMapView = function(hexrun, size, origin) {
     this.images = [];
 
     // if size is a Document and origin is null, this still works
-    HexMap.apply( this, Array.prototype.slice.call( arguments, 1 ) );
+    HexMap.apply( this, Array.prototype.slice.call( arguments, 2 ) );
     
     /**
      * The parent element of the new canvas
@@ -50,7 +50,11 @@ HexMapView = function(hexrun, size, origin) {
     this.porigin = this.hexcenter(this.origin);
 
     // Create a new canvas element and add it to the parent
-    this.canvas = document.createElement('canvas');
+    if (canvas == undefined) {
+        this.canvas = document.createElement('canvas');
+    } else {
+        this.canvas = canvas;
+    }
     this.canvas.setAttribute('id', 'hexmap');
 
     var csize = this.canvasSize();
