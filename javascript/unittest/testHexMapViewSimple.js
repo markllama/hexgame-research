@@ -52,6 +52,8 @@ function canvasclick(event) {
     var hextext = document.getElementById('clickhex');
     hextext.innerHTML = clickhex.toString();
 
+    // 
+
     if (refhex && mapview.contains(refhex) && (!mapview.refhex || (!refhex.equals(mapview.refhex || !clickhex.equals(mapview.clickhex))))) {
 	var r = mapview.terrains.redcenter;
 	if (mapview.refboxlist) {
@@ -100,16 +102,17 @@ try {
     sampleRequest = new window.XMLHttpRequest();
     sampleRequest.open('GET', args.mapurl, false);
     sampleRequest.send(null);
-    sample = sampleRequest.responseXML;
+    mapdoc = sampleRequest.responseXML;
 } catch (e) {
     error(e);
 }
 
-mapelement = sample.getElementsByTagName("map")[0];
+//mapelement = sample.getElementsByTagName("map")[0];
 
 canvas = document.createElement('canvas');
 
-mapview = new HexMapView(canvas, args.hexrun, mapelement);
+//mapview = new HexMapView(canvas, args.hexrun, mapelement);
+mapview = new HexMapView(canvas, args.hexrun, mapdoc);
 mapview.canvas.onmousemove=canvasclick;
 
 // create and add the standard terrains

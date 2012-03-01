@@ -90,43 +90,51 @@ function canvasclick(event) {
 };
 
 
-args = getArgs(defaults);
+function init() {
+    var args = getArgs(defaults);
 
-// you can get XML docs using document.load() in some browsers
-// but this is more universal and it really IS an XML document.
-// AND you can request XML documents from locations outside the
-// document domain.
-try {
-    sampleRequest = new window.XMLHttpRequest();
-    sampleRequest.open('GET', args.mapurl, false);
-    sampleRequest.send(null);
-    sample = sampleRequest.responseXML;
-} catch (e) {
-    error(e);
-}
-
-mapelement = sample.getElementsByTagName("map")[0];
-
-mapview = new HexMapView(args.hexrun, mapelement);
-mapview.canvas.onmousemove=canvasclick;
-
-// create and add the standard terrains
+    // you can get XML docs using document.load() in some browsers
+    // but this is more universal and it really IS an XML document.
+    // AND you can request XML documents from locations outside the
+    // document domain.
+    try {
+        sampleRequest = new window.XMLHttpRequest();
+        sampleRequest.open('GET', args.mapurl, false);
+        sampleRequest.send(null);
+        sample = sampleRequest.responseXML;
+    } catch (e) {
+        error(e);
+    }
 
 
-// create a blue and a red center terrain
-var blue = new HexMapView.Terrain.Center(mapview);
-blue.name = "bluecenter";
-blue.color = "blue";
+    var canvas = document.getElementById('mapcanvas');
 
-// create a blue and a red center terrain
-var red = new HexMapView.Terrain.Center(mapview);
-red.name = "redcenter";
-red.color = "red";
+    // becomes global.  Better place?
+    var mapview = new HexMapView(canvas, args.hexrun, sample);
+    mapview.canvas.onmousemove=canvasclick;
 
-var circle = new HexMapView.Terrain.CenterCircle(mapview);
-circle.name = "circle";
-circle.color = "green";
+    // create and add the standard terrains
 
-mapview.addTerrain(red);
-mapview.addTerrain(blue);
-mapview.addTerrain(circle);
+
+    // create a blue and a red center terrain
+    var blue = new HexMapView.Terrain.Center(mapview);
+    blue.name = "bluecenter";
+    blue.color = "blue";
+
+    // create a blue and a red center terrain
+    var red = new HexMapView.Terrain.Center(mapview);
+    red.name = "redcenter";
+    red.color = "red";
+
+    var circle = new HexMapView.Terrain.CenterCircle(mapview);
+    circle.name = "circle";
+    circle.color = "green";
+
+    mapview.addTerrain(red);
+    mapview.addTerrain(blue);
+    mapview.addTerrain(circle);
+
+    //mapview.draw();
+
+    return mapview;
+};

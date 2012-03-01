@@ -27,16 +27,17 @@
     </style>
 
   </head>
-  <body style="text-align: center;" 
-	onload="mapview.setParent(document.getElementById('mapcanvas')) ; mapview.draw();"
-	>
+  <body style="text-align: center;" onload="mapview = init(); mapview.draw();">
 
 
     <!-- this has to be included in the body of the HTML document -->
     <script type="text/javascript" src="../lib/Geometry.js"></script>
 
     <h1>Testing Catan Map</h1>
-    <div id='mapcanvas' style="float: left;"></div>
+    <div id="mapdiv" style="float: left;">
+      <canvas id="mapcanvas">
+      </canvas>
+    </div>
     <!--
     <hr />
     -->

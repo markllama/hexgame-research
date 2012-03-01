@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
 <html>
   <head>
-    <title>Simple Map Test</title>
+    <title>Catan Map Test</title>
 
     <!-- parseUri provided bt Steven Levithan 
 	 http://stevenlevithan.com/demo/parseuri/js/assets/parseuri.js
@@ -16,8 +16,11 @@
     <script type="text/javascript" src="../src/HexMapView.js" ></script>
     <script type="text/javascript" src="../src/TerrainLib.js" ></script>
 
+    <!-- sepcial for Catan -->
+    <script type="text/javascript" src="../src/CatanLib.js" ></script>
+
     <!-- special for this page -->
-    <script type="text/javascript" src="testHexMapViewSimple.js" ></script>    
+    <script type="text/javascript" src="../unittest/testCatan.js" ></script>    
 
     <style type="text/css">
       canvas {
@@ -27,21 +30,22 @@
     </style>
 
   </head>
-  <body style="text-align: center;" 
-	onload="mapview.setParent(document.getElementById('mapcanvas')) ; mapview.draw();"
-	>
+  <body style="text-align: center;" onload="init();">
 
 
     <!-- this has to be included in the body of the HTML document -->
     <script type="text/javascript" src="../lib/Geometry.js"></script>
 
-    <h1>Testing Hexmap View Simple</h1>
-    <div id='mapcanvas' style="float: left;"></div>
+    <h1>Testing Catan Map</h1>
+    <div id='mapcanvas' style="float: left;">
+      <canvas id="catanmap"></canvas>            
+    </div>
     <!--
     <hr />
     -->
     <h1>Status</h1>
-    <div id='status'></div>
+    <div id='status'>
+    </div>
     <p>
     Click Point: <span id="clickpoint">No click yet</span><br>
     Canvas Corner: <span id="canvascorner">No click yet</span><br>
@@ -51,6 +55,9 @@
     Reference Triangle: <span id="reftriangle">No click yet</span><br>
     Click Hex: <span id="clickhex">No click yet</span>
     </p>
+    
+
+
 
   </body>
 </html>
