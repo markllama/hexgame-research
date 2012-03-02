@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map name="sample" game="sample">
   <copyright>reserved</copyright>
-  <size><vector hx="13" hy="10" /></size>
-  <origin><vector hx="-6" hy="-7" /></origin>
+  <size><vector hx="15" hy="11" /></size>
+  <origin><vector hx="-7" hy="-8" /></origin>
 
   <terrains>
     <terrain type="HexMapView.Terrain.SuperBorder" id="border" name="border" depth="1">
@@ -35,6 +35,36 @@
         <vector hx="3" hy="3" />
 
         <vector hx="4" hy="2" />
+
+        <!-- sea hexes -->
+
+        <vector hx="-6" hy="-3" />
+
+        <vector hx="-5" hy="-4" />
+        <vector hx="-5" hy="-1" />
+
+        <vector hx="-4" hy="-5" />
+        <vector hx="-4" hy="1" />
+
+        <vector hx="-3" hy="-6" />
+        <vector hx="-3" hy="3" />
+
+        <vector hx="-1" hy="-5" />
+        <vector hx="-1" hy="4" />
+
+        <vector hx="1" hy="-4" />
+        <vector hx="1" hy="5" />
+
+        <vector hx="3" hy="-3" />
+        <vector hx="3" hy="6" />
+
+        <vector hx="4" hy="-1" />
+        <vector hx="4" hy="5" />
+
+        <vector hx="5" hy="1" />
+        <vector hx="5" hy="4" />
+
+        <vector hx="6" hy="3" />
 
       </locations>
     </terrain>
