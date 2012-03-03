@@ -135,6 +135,12 @@ HexMapView.Terrain.SuperBorder.prototype.drawHex = function(hex) {
 
     ctx.strokeStyle = "black";
     ctx.lineWidth = 1;
+
+    this.setPath(ctx, vertices);
+    ctx.stroke();
+};
+
+HexMapView.Terrain.SuperBorder.prototype.setPath = function(ctx, vertices) {
     ctx.beginPath();
     ctx.moveTo(vertices[0].x, vertices[0].y);
     ctx.lineTo(vertices[1].x, vertices[1].y);
@@ -143,8 +149,7 @@ HexMapView.Terrain.SuperBorder.prototype.drawHex = function(hex) {
     ctx.lineTo(vertices[4].x, vertices[4].y);
     ctx.lineTo(vertices[5].x, vertices[5].y);
     ctx.closePath();
-    ctx.stroke();
-};
+}
 
 HexMapView.Terrain.SuperBorder.prototype.vertices = function(hex) {
     var vlist = [];
