@@ -116,6 +116,7 @@ HexMapView.Terrain.CenterCircle.prototype.drawHex = function(hex) {
 HexMapView.Terrain.SuperBorder = function() {
     this.isborder = true;
     HexMapView.Terrain.apply(this, arguments);
+    this.fillStyle = undefined ;
 };
 
 HexMapView.Terrain.SuperBorder.prototype = new HexMapView.Terrain();
@@ -136,8 +137,16 @@ HexMapView.Terrain.SuperBorder.prototype.drawHex = function(hex) {
     ctx.strokeStyle = "black";
     ctx.lineWidth = 1;
 
+    if (this.fillStyle) {
+        ctx.fillStyle = this.fillStyle;
+    }
+
     this.setPath(ctx, vertices);
     ctx.stroke();
+
+    if (this.fillStyle) {
+        ctx.fill();
+    }
 };
 
 HexMapView.Terrain.SuperBorder.prototype.setPath = function(ctx, vertices) {
