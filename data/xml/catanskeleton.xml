@@ -36,8 +36,12 @@
 
         <vector hx="4" hy="2" />
 
-        <!-- sea hexes -->
+      </locations>
+    </terrain>
 
+    <terrain type="CatanMapView.Terrain.Sea" id="sea" name="sea" depth="0">
+      <!-- sea hexes -->
+      <locations>
         <vector hx="-6" hy="-3" />
 
         <vector hx="-5" hy="-4" />
@@ -68,6 +72,8 @@
 
       </locations>
     </terrain>
+
+
     <terrain type="HexMapView.Terrain.Center" id="center" name="center" depth="0">
       <locations>
 
