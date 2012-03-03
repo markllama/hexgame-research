@@ -79,6 +79,7 @@ class hello:
 class favicon:
     def GET(self, name=None):
         f = open(opt.webroot + "/favicon.ico")
+
 class WebFile(object):
 
     def GET(self, name="/"):
@@ -94,6 +95,7 @@ class WebFile(object):
                            
         # root = opt['webroot']
         fullname = opt.webroot + (name)
+        print "looking for %s" % fullname
 
         if os.path.isfile(fullname):
             f = open(fullname)
@@ -246,6 +248,7 @@ class RestApi(object):
             method(**kargs)
 
         return "<result status='success'/>\n"
+
 """
 
 urls = ("/hello", "hello", "/webfile(/.*)", "WebFile")
