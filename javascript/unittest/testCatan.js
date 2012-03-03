@@ -1,7 +1,8 @@
 // get the sample map definition
-sampleUrl="https://lamourine.homeunix.org/~mark/hexgame/data/xml/catanskeleton.xml";
+//mapUrl="https://lamourine.homeunix.org/~mark/hexgame/data/xml/catanskeleton.xml";
+mapUrl="../../data/xml/catanskeleton.xml";
 
-defaults = {hexrun: 15, mapurl: sampleUrl};
+defaults = {hexrun: 15, mapurl: mapUrl};
 
       
 
