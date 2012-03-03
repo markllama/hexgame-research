@@ -75,7 +75,7 @@ CatanMapView.Terrain.Hills.prototype = new HexMapView.Terrain.SuperBorder() ;
 CatanMapView.Terrain.Pasture = function () {
     // call the superclass constructor
     HexMapView.Terrain.SuperBorder.apply(this, arguments);    
-    this.fillStyle = "green";
+    this.fillStyle = "olive";
 }
 
 CatanMapView.Terrain.Pasture.prototype = new HexMapView.Terrain.SuperBorder() ;
@@ -85,7 +85,7 @@ CatanMapView.Terrain.Pasture.prototype = new HexMapView.Terrain.SuperBorder() ;
 CatanMapView.Terrain.Fields = function () {
     // call the superclass constructor
     HexMapView.Terrain.SuperBorder.apply(this, arguments);
-    this.fillStyle = "lightgreen";
+    this.fillStyle = "tan";
 }
 CatanMapView.Terrain.Fields.prototype = new HexMapView.Terrain.SuperBorder() ;
 
@@ -93,7 +93,7 @@ CatanMapView.Terrain.Fields.prototype = new HexMapView.Terrain.SuperBorder() ;
 CatanMapView.Terrain.Forest = function () {
     // call the superclass constructor
     HexMapView.Terrain.SuperBorder.apply(this, arguments);
-    this.fillStyle = "darkgreen";
+    this.fillStyle = "green";
 }
 
 CatanMapView.Terrain.Forest.prototype = new HexMapView.Terrain.SuperBorder() ;
@@ -102,7 +102,7 @@ CatanMapView.Terrain.Forest.prototype = new HexMapView.Terrain.SuperBorder() ;
 CatanMapView.Terrain.Desert = function () {
     // call the superclass constructor
     HexMapView.Terrain.SuperBorder.apply(this, arguments);
-    this.fillStyle = "tan";
+    this.fillStyle = "yellow";
 }
 
 CatanMapView.Terrain.Desert.prototype = new HexMapView.Terrain.SuperBorder() ;
