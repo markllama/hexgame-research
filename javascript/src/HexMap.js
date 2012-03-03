@@ -29,6 +29,7 @@ HexMap = function(size, origin) {
     }
 
     this.terrains = {};
+    this.tokens = {} ;
 
     /*
      * signature: 
