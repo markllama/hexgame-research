@@ -41,34 +41,70 @@ CatanMapView.Terrain = function() {
 CatanMapView.Terrain.prototype = new HexMapView.Terrain();
 
 
-CatanMapView.Terrain.Mountain = function() {
-    // call the superclass constructor
-    HexMapView.Terrain.SuperBorder.apply(this, arguments);
-}
-
-CatanMapView.Terrain.Mountain.prototype = new HexMapView.Terrain.SuperBorder() ;
-
 // subclass code....
 CatanMapView.Terrain.Sea = function () {
     // call the superclass constructor
     HexMapView.Terrain.SuperBorder.apply(this, arguments);    
+    this.fillStyle = "lightblue";
 }
 
 CatanMapView.Terrain.Sea.prototype = new HexMapView.Terrain.SuperBorder() ;
 
-CatanMapView.Terrain.Sea.prototype.drawHex = function (hex) {
-    // get the map graphics context
-    var ctx = this.map.canvas.getContext('2d');
-    //var vertices = this.vertices(hex);
-    var vertices = this.vertices(hex);
 
-    ctx.strokeStyle = "black";
-    ctx.lineWidth = 1;
-    ctx.fillStyle = "lightblue";
+// subclass code....
+CatanMapView.Terrain.Mountain = function () {
+    // call the superclass constructor
+    HexMapView.Terrain.SuperBorder.apply(this, arguments);    
+    this.fillStyle = "grey";
+}
 
-    //HexMapView.Terrain.SuperBorder.setPath.call(self, ctx, vertices);
-    this.setPath.call(self, ctx, vertices);
+CatanMapView.Terrain.Mountain.prototype = new HexMapView.Terrain.SuperBorder() ;
 
-    ctx.fill();
-    ctx.stroke();
-};
+
+// subclass code....
+CatanMapView.Terrain.Hills = function () {
+    // call the superclass constructor
+    HexMapView.Terrain.SuperBorder.apply(this, arguments);    
+    this.fillStyle = "brown";
+}
+
+CatanMapView.Terrain.Hills.prototype = new HexMapView.Terrain.SuperBorder() ;
+
+
+// subclass code....
+CatanMapView.Terrain.Pasture = function () {
+    // call the superclass constructor
+    HexMapView.Terrain.SuperBorder.apply(this, arguments);    
+    this.fillStyle = "green";
+}
+
+CatanMapView.Terrain.Pasture.prototype = new HexMapView.Terrain.SuperBorder() ;
+
+
+// subclass code....
+CatanMapView.Terrain.Fields = function () {
+    // call the superclass constructor
+    HexMapView.Terrain.SuperBorder.apply(this, arguments);
+    this.fillStyle = "lightgreen";
+}
+CatanMapView.Terrain.Fields.prototype = new HexMapView.Terrain.SuperBorder() ;
+
+// subclass code....
+CatanMapView.Terrain.Forest = function () {
+    // call the superclass constructor
+    HexMapView.Terrain.SuperBorder.apply(this, arguments);
+    this.fillStyle = "darkgreen";
+}
+
+CatanMapView.Terrain.Forest.prototype = new HexMapView.Terrain.SuperBorder() ;
+
+// subclass code....
+CatanMapView.Terrain.Desert = function () {
+    // call the superclass constructor
+    HexMapView.Terrain.SuperBorder.apply(this, arguments);
+    this.fillStyle = "tan";
+}
+
+CatanMapView.Terrain.Desert.prototype = new HexMapView.Terrain.SuperBorder() ;
+
+
