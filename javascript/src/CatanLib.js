@@ -108,3 +108,28 @@ CatanMapView.Terrain.Desert = function () {
 CatanMapView.Terrain.Desert.prototype = new HexMapView.Terrain.SuperBorder() ;
 
 
+/*************************************************************************
+ *
+ * Tokens
+ *
+ *************************************************************************
+ */
+
+// generic
+CatanMapView.Token = function () {
+    HexMapView.Token.apply(this, arguments);
+};
+
+/**
+ * @private
+ * @type CatanMapView.Terrain
+ */
+CatanMapView.Token.prototype = new HexMapView.Token();
+
+// robber
+CatanMapView.Token.Robber = function () {
+    CatanMapView.Token.apply(this, arguments);
+};
+
+CatanMapView.Token.Robber.prototype = new CatanMapView.Token();
+
