@@ -188,4 +188,92 @@
     </terrain>
 
   </terrains>
+
+  <tokens>
+
+    <token type="CatanMapView.Token.Robber" id="robber" name="robber" depth="">
+      <locations>
+        <vector hx="-4" hy="-2" />
+      </locations>
+    </token>
+
+    <!--
+
+    <token type="CatanMapView.Token.Resource" id="chit_a" name="chit_a" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_b" name="chit_b" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_c" name="chit_c" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_d" name="chit_d" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_e" name="chit_e" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_f" name="chit_f" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_g" name="chit_g" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_h" name="chit_h" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_i" name="chit_i" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_j" name="chit_j" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_j" name="chit_k" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_l" name="chit_l" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_m" name="chit_m" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_n" name="chit_n" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_o" name="chit_o" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_p" name="chit_p" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_q" name="chit_q" >
+    </token>
+
+    <token type="CatanMapView.Token.Resource" id="chit_r" name="chit_r" >
+    </token>
+    -->
+
+    <!-- player 1 = red
+         player 2 = blue
+         player 3 = orange
+         player 4 = white
+
+         Initial settlements and roads
+    -->
+
+
+    <!--
+
+    <token type="CatanMapView.Token.Settlement"
+           id="set_1"
+           name="settlement_1"
+           depth="0">
+    </token>
+
+    -->
+
+  </tokens>
+
+  
 </map>
