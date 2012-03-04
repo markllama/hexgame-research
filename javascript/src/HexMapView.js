@@ -433,7 +433,7 @@ HexMapView.Token.prototype.toString = function() {
  * A token is square and takes 1/2 the height of a hex
  */
 HexMapView.Token.prototype.size = function() {
-    if (map) {
+    if (this.map) {
 	return new Point(this.map.hexrise, this.map.hexrise);
     } else {
 	return null;
@@ -448,7 +448,7 @@ HexMapView.Token.prototype.center = function(vector) {
 };
 
 /**
- * Locate the drawinig corner of a token image
+ * Locate the drawing corner of a token image
  * The corner is offset from the center by 1/2 the width and height
  * of a token.
  */

@@ -126,10 +126,39 @@ CatanMapView.Token = function () {
  */
 CatanMapView.Token.prototype = new HexMapView.Token();
 
+CatanMapView.Token.prototype.size = function() {
+    if (this.map) {
+	return new Point(this.map.hexheight, this.map.hexheight);
+    } else {
+	return null;
+    }
+}
+
 // robber
 CatanMapView.Token.Robber = function () {
     CatanMapView.Token.apply(this, arguments);
 };
 
 CatanMapView.Token.Robber.prototype = new CatanMapView.Token();
+
+CatanMapView.Token.Robber.prototype.draw = function () {
+    var ctx = this.map.canvas.getContext('2d');
+    var center = this.center();
+    var corners = this.corners();
+
+    ctx.fillStyle = "black";
+
+    // draw the robber token shape
+    ctx.beginPath();
+    
+    ctx.moveTo(center.x-this.map.hexrun, center.y+this.map.hexrise);
+    ctx.lineTo(center.x+this.map.hexrun, center.y+this.map.hexrise);
+    ctx.quadraticCurveTo(
+        center.x, center.y-this.map.hexrise*3,
+        center.x-this.map.hexrun, center.y+this.map.hexrise
+    );
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+}
 
