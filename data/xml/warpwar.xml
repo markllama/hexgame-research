@@ -180,6 +180,9 @@
       </locations>
     </terrain>
 
+
+    <!-- Warp Lines -->
+
     <terrain type="WarpWarMapView.Terrain.WarpLine" name="mosul2sippur" id="">
       <locations>
         <!-- -->
@@ -199,7 +202,7 @@
     <terrain type="WarpWarMapView.Terrain.WarpLine" name="erech2adab" id="">
       <locations>
         <!-- -->
-        <vector hx="7" hy="5" />
+        <vector hx="4" hy="6" />
         <vector hx="6" hy="9" />
       </locations>
     </terrain>
@@ -209,6 +212,14 @@
         <!-- -->
         <vector hx="6" hy="9" />
         <vector hx="2" hy="7" />
+      </locations>
+    </terrain>
+
+    <terrain type="WarpWarMapView.Terrain.WarpLine" name="adab2khafa" id="">
+      <locations>
+        <!-- -->
+        <vector hx="6" hy="9" />
+        <vector hx="7" hy="12" />
       </locations>
     </terrain>
 
@@ -303,7 +314,7 @@
     <terrain type="WarpWarMapView.Terrain.WarpLine" name="umma2girsu" id="">
       <locations>
         <!-- -->
-        <vector hx="2" hy="13" />
+        <vector hx="5" hy="16" />
         <vector hx="8" hy="17" />
       </locations>
     </terrain>
@@ -311,7 +322,7 @@
     <terrain type="WarpWarMapView.Terrain.WarpLine" name="umma2sumer" id="">
       <locations>
         <!-- -->
-        <vector hx="2" hy="13" />
+        <vector hx="5" hy="16" />
         <vector hx="4" hy="18" />
       </locations>
     </terrain>
@@ -319,7 +330,7 @@
     <terrain type="WarpWarMapView.Terrain.WarpLine" name="sumer2babylon" id="">
       <locations>
         <!-- -->
-        <vector hx="2" hy="13" />
+        <vector hx="4" hy="18" />
         <vector hx="6" hy="21" />
       </locations>
     </terrain>
