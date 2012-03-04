@@ -59,8 +59,8 @@ HexMapView = function(canvas, hexrun, size, origin) {
 
     var csize = this.canvasSize();
     // set the size of the canvas space
-    this.canvas.setAttribute('width', csize.x.toString());
-    this.canvas.setAttribute('height', csize.y.toString());
+    this.canvas.setAttribute('width', csize.x);
+    this.canvas.setAttribute('height', csize.y);
 };
 
 /**
