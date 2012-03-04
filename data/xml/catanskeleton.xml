@@ -406,8 +406,6 @@
       </locations>
     </token>
 
-    <!--
-
     <token type="CatanMapView.Token.Road"
            id="road_red_1"
            name="road_red_1"
@@ -420,8 +418,6 @@
       </locations>
     </token>
 
-    -->
-
     <token type="CatanMapView.Token.Settlement"
            id="settlement_red_2"
            name="settlement_red_2"
@@ -432,8 +428,6 @@
         <vector hx="1" hy="1"/>
       </locations>
     </token>
-
-    <!--
 
     <token type="CatanMapView.Token.Road"
            id="road_red_2"
@@ -447,9 +441,6 @@
       </locations>
     </token>
 
-    -->
-
-
     <token type="CatanMapView.Token.Settlement"
            id="settlement_white_1"
            name="settlement_white_1"
@@ -458,6 +449,18 @@
  
       <locations>
         <vector hx="-2" hy="-3"/>
+      </locations>
+    </token>
+
+    <token type="CatanMapView.Token.Road"
+           id="road_white_1"
+           name="road_white_1"
+           depth="0"
+           player="white">
+ 
+      <locations>
+        <vector hx="-2" hy="-3"/>
+        <vector hx="-1" hy="-3"/>
       </locations>
     </token>
 
@@ -472,6 +475,19 @@
       </locations>
     </token>
 
+    <token type="CatanMapView.Token.Road"
+           id="road_white_2"
+           name="road_white_2"
+           depth="0"
+           player="white">
+ 
+      <locations>
+        <vector hx="2" hy="3"/>
+        <vector hx="1" hy="3"/>
+      </locations>
+    </token>
+
+
     <token type="CatanMapView.Token.Settlement"
            id="settlement_blue_1"
            name="settlement_blue_1"
@@ -482,6 +498,19 @@
         <vector hx="-2" hy="1"/>
       </locations>
     </token>
+
+    <token type="CatanMapView.Token.Road"
+           id="road_blue_1"
+           name="road_blue_1"
+           depth="0"
+           player="blue">
+ 
+      <locations>
+        <vector hx="-2" hy="1"/>
+        <vector hx="-2" hy="0"/>
+      </locations>
+    </token>
+
 
     <token type="CatanMapView.Token.Settlement"
            id="settlement_blue_2"
@@ -494,6 +523,19 @@
       </locations>
     </token>
 
+    <token type="CatanMapView.Token.Road"
+           id="road_blue_2"
+           name="road_blue_2"
+           depth="0"
+           player="blue">
+ 
+      <locations>
+        <vector hx="1" hy="4"/>
+        <vector hx="0" hy="4"/>
+      </locations>
+    </token>
+
+
     <token type="CatanMapView.Token.Settlement"
            id="settlement_orange_1"
            name="settlement_orange_1"
@@ -504,6 +546,19 @@
         <vector hx="3" hy="-1"/>
       </locations>
     </token>
+
+    <token type="CatanMapView.Token.Road"
+           id="road_orange_1"
+           name="road_orange_1"
+           depth="0"
+           player="orange">
+ 
+      <locations>
+        <vector hx="3" hy="-1"/>
+        <vector hx="2" hy="-1"/>
+      </locations>
+    </token>
+
 
     <token type="CatanMapView.Token.Settlement"
            id="settlement_orange_2"
@@ -519,5 +574,16 @@
 
   </tokens>
 
+    <token type="CatanMapView.Token.Road"
+           id="road_orange_2"
+           name="road_orange_2"
+           depth="0"
+           player="orange">
+ 
+      <locations>
+        <vector hx="3" hy="1"/>
+        <vector hx="3" hy="2"/>
+      </locations>
+    </token>
   
 </map>

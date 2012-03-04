@@ -267,6 +267,15 @@ CatanMapView.Token.Road.prototype.draw = function () {
     var ctx = this.map.canvas.getContext('2d');
 
     // roads belong in two adjacent hexes
-    var hexcenter = this.center();
+    var start = this.center(this.locations[0]);
+    var end = this.center(this.locations[1]);
+
+    ctx.strokeStyle = this.player;
+    ctx.lineWidth = 7;
+
+    ctx.beginPath();
+    ctx.moveTo(start.x, start.y);
+    ctx.lineTo(end.x, end.y);
+    ctx.stroke();
 
 }
