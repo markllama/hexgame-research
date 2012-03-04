@@ -198,10 +198,15 @@
       </locations>
     </token>
 
-    <!--
 
-    <token type="CatanMapView.Token.Resource" id="chit_a" name="chit_a" >
+    <!-- resource tokens -->
+    <token type="CatanMapView.Token.Resource" id="chit_a" name="chit_a" roll="5" >
+      <locations>
+        <vector hx="-2" hy="2" />
+      </locations>
     </token>
+
+    <!--
 
     <token type="CatanMapView.Token.Resource" id="chit_b" name="chit_b" >
     </token>
