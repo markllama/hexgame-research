@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map name="sample" game="sample">
-  <copyright>reserved</copyright>
+<map name="catan" game="catan">
+  <copyright>Copyright 1997 Catan Gmbh and Mayfair Games</copyright>
   <size><vector hx="15" hy="11" /></size>
   <origin><vector hx="-7" hy="-8" /></origin>
 
