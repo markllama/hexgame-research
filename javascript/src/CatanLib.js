@@ -162,3 +162,48 @@ CatanMapView.Token.Robber.prototype.draw = function () {
     ctx.stroke();
 }
 
+
+// Resource Token
+
+// robber
+CatanMapView.Token.Resource = function () {
+    CatanMapView.Token.apply(this, arguments);
+
+    // get the roll value from the element attributes
+};
+
+CatanMapView.Token.Resource.prototype = new CatanMapView.Token();
+
+CatanMapView.Token.Resource.prototype.initDOM = function (element) {
+    HexMap.Token.prototype.initDOM.call(this, element);
+    if (element instanceof Element) {
+        if (element.hasAttribute("roll")) {
+            this.roll = element.getAttribute('roll');
+        } 
+    }
+};
+
+CatanMapView.Token.Resource.prototype.draw = function () {
+    var ctx = this.map.canvas.getContext('2d');
+    var hexcenter = this.center();
+
+    var resource_center = new Point(hexcenter.x, hexcenter.y+this.map.hexrise);
+
+    ctx.fillStyle = "white";
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 1;
+
+    ctx.beginPath();
+    ctx.arc(resource_center.x, resource_center.y, 
+            this.map.hexrise/2, 0, Math.PI*2, false);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.fill();
+
+    // print the roll number that gets the resource in the center
+    ctx.fillStyle = "black";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "center";
+    ctx.fillText(this.roll, resource_center.x, resource_center.y);
+};
+
