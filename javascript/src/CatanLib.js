@@ -151,15 +151,14 @@ CatanMapView.Token.Robber.prototype.draw = function () {
     // draw the robber token shape
     ctx.beginPath();
     
-    ctx.moveTo(center.x-this.map.hexrun, center.y+this.map.hexrise);
-    ctx.lineTo(center.x+this.map.hexrun, center.y+this.map.hexrise);
+    ctx.moveTo(center.x+this.map.hexrun, center.y+this.map.hexrise);
     ctx.quadraticCurveTo(
         center.x, center.y-this.map.hexrise*3,
         center.x-this.map.hexrun, center.y+this.map.hexrise
     );
     ctx.closePath();
     ctx.fill();
-    ctx.stroke();
+    //ctx.stroke();
 }
 
 
