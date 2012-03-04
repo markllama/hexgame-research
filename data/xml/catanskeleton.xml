@@ -188,6 +188,82 @@
       </locations>
     </terrain>
 
+
+    <!-- Harbors -->
+    <!--
+    <terrain type="CatanMapView.Terrain.Harbor" id="harbor_1" 
+             resource="ore" ratio="2:1">
+      <locations>
+        <vector hx="-4" hy="-4"/>
+        <vector hx="-4" hy="-3"/>
+      </locations>      
+    </terrain>
+
+    <terrain type="CatanMapView.Terrain.Harbor" id="harbor_2" 
+             resource="grain" ratio="2:1">
+      <locations>
+        <vector hx="-4" hy="-1"/>
+        <vector hx="-4" hy="0"/>
+      </locations>      
+    </terrain>
+
+    <terrain type="CatanMapView.Terrain.Harbor" id="harbor_3" 
+             resource="any" ratio="3:1">
+      <locations>
+        <vector hx="-3" hy="-5"/>
+        <vector hx="-2" hy="-5"/>
+      </locations>      
+    </terrain>
+
+    <terrain type="CatanMapView.Terrain.Harbor" id="harbor_4" 
+             resource="any" ratio="3:1">
+      <locations>
+        <vector hx="-3" hy="2"/>
+        <vector hx="-2" hy="3"/>
+      </locations>      
+    </terrain>
+
+    <terrain type="CatanMapView.Terrain.Harbor" id="harbor_5" 
+             resource="wool" ratio="2:1">
+      <locations>
+        <vector hx="0" hy="-4"/>
+        <vector hx="1" hy="-3"/>
+      </locations>      
+    </terrain>
+
+    <terrain type="CatanMapView.Terrain.Harbor" id="harbor_6" 
+             resource="lumber" ratio="2:1">
+      <locations>
+        <vector hx="0" hy="4"/>
+        <vector hx="1" hy="4"/>
+      </locations>      
+    </terrain>
+
+    <terrain type="CatanMapView.Terrain.Harbor" id="harbor_7" 
+             resource="any" ratio="3:1">
+      <locations>
+        <vector hx="3" hy="-1"/>
+        <vector hx="4" hy="0"/>
+      </locations>      
+    </terrain>
+
+    <terrain type="CatanMapView.Terrain.Harbor" id="harbor_8" 
+             resource="brick" ratio="2:1">
+      <locations>
+        <vector hx="3" hy="4"/>
+        <vector hx="4" hy="4"/>
+      </locations>      
+    </terrain>
+
+    <terrain type="CatanMapView.Terrain.Harbor" id="harbor_9" 
+             resource="any" ratio="3:1">
+      <locations>
+        <vector hx="5" hy="2"/>
+        <vector hx="5" hy="3"/>
+      </locations>      
+    </terrain>
+
+    -->
   </terrains>
 
   <tokens>
@@ -319,15 +395,127 @@
     -->
 
 
+    <token type="CatanMapView.Token.Settlement"
+           id="settlement_red_1"
+           name="settlement_red_1"
+           depth="0"
+           player="red">
+ 
+      <locations>
+        <vector hx="0" hy="-1"/>
+      </locations>
+    </token>
+
     <!--
 
-    <token type="CatanMapView.Token.Settlement"
-           id="set_1"
-           name="settlement_1"
-           depth="0">
+    <token type="CatanMapView.Token.Road"
+           id="road_red_1"
+           name="road_red_1"
+           depth="0"
+           player="red">
+ 
+      <locations>
+        <vector hx="0" hy="-1"/>
+        <vector hx="0" hy="-2"/>
+      </locations>
     </token>
 
     -->
+
+    <token type="CatanMapView.Token.Settlement"
+           id="settlement_red_2"
+           name="settlement_red_2"
+           depth="0"
+           player="red">
+ 
+      <locations>
+        <vector hx="1" hy="1"/>
+      </locations>
+    </token>
+
+    <!--
+
+    <token type="CatanMapView.Token.Road"
+           id="road_red_2"
+           name="road_red_2"
+           depth="0"
+           player="red">
+ 
+      <locations>
+        <vector hx="1" hy="1"/>
+        <vector hx="1" hy="0"/>
+      </locations>
+    </token>
+
+    -->
+
+
+    <token type="CatanMapView.Token.Settlement"
+           id="settlement_white_1"
+           name="settlement_white_1"
+           depth="0"
+           player="white">
+ 
+      <locations>
+        <vector hx="-2" hy="-3"/>
+      </locations>
+    </token>
+
+    <token type="CatanMapView.Token.Settlement"
+           id="settlement_white_2"
+           name="settlement_white_2"
+           depth="0"
+           player="white">
+ 
+      <locations>
+        <vector hx="2" hy="3"/>
+      </locations>
+    </token>
+
+    <token type="CatanMapView.Token.Settlement"
+           id="settlement_blue_1"
+           name="settlement_blue_1"
+           depth="0"
+           player="blue">
+ 
+      <locations>
+        <vector hx="-2" hy="1"/>
+      </locations>
+    </token>
+
+    <token type="CatanMapView.Token.Settlement"
+           id="settlement_blue_2"
+           name="settlement_blue_2"
+           depth="0"
+           player="blue">
+ 
+      <locations>
+        <vector hx="1" hy="4"/>
+      </locations>
+    </token>
+
+    <token type="CatanMapView.Token.Settlement"
+           id="settlement_orange_1"
+           name="settlement_orange_1"
+           depth="0"
+           player="orange">
+ 
+      <locations>
+        <vector hx="3" hy="-1"/>
+      </locations>
+    </token>
+
+    <token type="CatanMapView.Token.Settlement"
+           id="settlement_orange_2"
+           name="settlement_orange_2"
+           depth="0"
+           player="orange">
+ 
+      <locations>
+        <vector hx="3" hy="1"/>
+      </locations>
+    </token>
+
 
   </tokens>
 

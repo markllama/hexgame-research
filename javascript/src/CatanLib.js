@@ -207,3 +207,66 @@ CatanMapView.Token.Resource.prototype.draw = function () {
     ctx.fillText(this.roll, resource_center.x, resource_center.y);
 };
 
+// Settlement
+CatanMapView.Token.Settlement = function () {
+    CatanMapView.Token.apply(this, arguments);
+
+    // get the roll value from the element attributes
+};
+
+CatanMapView.Token.Settlement.prototype = new CatanMapView.Token();
+
+CatanMapView.Token.Settlement.prototype.initDOM = function (element) {
+    HexMap.Token.prototype.initDOM.call(this, element);
+    if (element instanceof Element) {
+        if (element.hasAttribute("player")) {
+            this.player = element.getAttribute('player');
+        } 
+    }
+};
+
+CatanMapView.Token.Settlement.prototype.draw = function () {
+    var ctx = this.map.canvas.getContext('2d');
+    var hexcenter = this.center();
+
+    ctx.fillStyle = this.player;
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
+    
+    var boxwidth = this.map.hexrun / 2;
+
+    ctx.beginPath();
+    ctx.moveTo(hexcenter.x - boxwidth, hexcenter.y - boxwidth);
+    ctx.lineTo(hexcenter.x - boxwidth, hexcenter.y + boxwidth);
+    ctx.lineTo(hexcenter.x + boxwidth, hexcenter.y + boxwidth);
+    ctx.lineTo(hexcenter.x + boxwidth, hexcenter.y - boxwidth);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+}
+
+// roads
+CatanMapView.Token.Road = function () {
+    CatanMapView.Token.apply(this, arguments);
+
+    // get the roll value from the element attributes
+};
+
+CatanMapView.Token.Road.prototype = new CatanMapView.Token();
+
+CatanMapView.Token.Road.prototype.initDOM = function (element) {
+    HexMap.Token.prototype.initDOM.call(this, element);
+    if (element instanceof Element) {
+        if (element.hasAttribute("player")) {
+            this.player = element.getAttribute('player');
+        } 
+    }
+};
+
+CatanMapView.Token.Road.prototype.draw = function () {
+    var ctx = this.map.canvas.getContext('2d');
+
+    // roads belong in two adjacent hexes
+    var hexcenter = this.center();
+
+}
