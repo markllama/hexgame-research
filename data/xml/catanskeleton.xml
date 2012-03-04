@@ -206,59 +206,109 @@
       </locations>
     </token>
 
-    <!--
-
-    <token type="CatanMapView.Token.Resource" id="chit_b" name="chit_b" >
+    <token type="CatanMapView.Token.Resource" id="chit_b" name="chit_b" roll="2" >
+      <locations>
+        <vector hx="0" hy="3" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_c" name="chit_c" >
+    <token type="CatanMapView.Token.Resource" id="chit_c" name="chit_c" roll="6" >
+      <locations>
+        <vector hx="2" hy="4" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_d" name="chit_d" >
+    <token type="CatanMapView.Token.Resource" id="chit_d" name="chit_d" roll="3" >
+      <locations>
+        <vector hx="3" hy="3" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_e" name="chit_e" >
+    <token type="CatanMapView.Token.Resource" id="chit_e" name="chit_e" roll="8" >
+      <locations>
+        <vector hx="4" hy="2" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_f" name="chit_f" >
+    <token type="CatanMapView.Token.Resource" id="chit_f" name="chit_f" roll="10" >
+      <locations>
+        <vector hx="3" hy="0" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_g" name="chit_g" >
+    <token type="CatanMapView.Token.Resource" id="chit_g" name="chit_g" roll="9" >
+      <locations>
+        <vector hx="2" hy="-2" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_h" name="chit_h" >
+    <token type="CatanMapView.Token.Resource" id="chit_h" name="chit_h" roll="12" >
+      <locations>
+        <vector hx="0" hy="-3" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_i" name="chit_i" >
+    <token type="CatanMapView.Token.Resource" id="chit_i" name="chit_i" roll="11" >
+      <locations>
+        <vector hx="-2" hy="-4" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_j" name="chit_j" >
+    <token type="CatanMapView.Token.Resource" id="chit_j" name="chit_j" roll="4" >
+      <locations>
+        <vector hx="-3" hy="-3" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_j" name="chit_k" >
+    <token type="CatanMapView.Token.Resource" id="chit_k" name="chit_k" roll="8" >
+      <locations>
+        <vector hx="-3" hy="0" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_l" name="chit_l" >
+    <token type="CatanMapView.Token.Resource" id="chit_l" name="chit_l" roll="10" >
+      <locations>
+        <vector hx="-1" hy="1" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_m" name="chit_m" >
+    <token type="CatanMapView.Token.Resource" id="chit_m" name="chit_m" roll="9" >
+      <locations>
+        <vector hx="1" hy="2" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_n" name="chit_n" >
+    <token type="CatanMapView.Token.Resource" id="chit_n" name="chit_n" roll="4" >
+      <locations>
+        <vector hx="2" hy="1" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_o" name="chit_o" >
+    <token type="CatanMapView.Token.Resource" id="chit_o" name="chit_o" roll="5" >
+      <locations>
+        <vector hx="1" hy="-1" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_p" name="chit_p" >
+    <token type="CatanMapView.Token.Resource" id="chit_p" name="chit_p" roll="6" >
+      <locations>
+        <vector hx="-1" hy="-2" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_q" name="chit_q" >
+    <token type="CatanMapView.Token.Resource" id="chit_q" name="chit_q" roll="3" >
+      <locations>
+        <vector hx="-2" hy="-1" />
+      </locations>
     </token>
 
-    <token type="CatanMapView.Token.Resource" id="chit_r" name="chit_r" >
+    <token type="CatanMapView.Token.Resource" id="chit_r" name="chit_r" roll="11" >
+      <locations>
+        <vector hx="0" hy="0" />
+      </locations>
     </token>
-    -->
+
+
 
     <!-- player 1 = red
          player 2 = blue
