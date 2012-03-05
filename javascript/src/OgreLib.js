@@ -42,7 +42,6 @@ OgreMapView.Terrain.Crater.prototype.drawHex = function(hex) {
     var ctx = this.map.canvas.getContext("2d");
     var center = hex.center();
 
-    ctx.strokeStyle = "black";
     ctx.fillStyle = "brown";
     ctx.lineWidth = 4;
 
@@ -76,21 +75,35 @@ OgreMapView.Terrain.Rubble.prototype.drawHex = function(hex) {
     var ctx = this.map.canvas.getContext("2d");
     var center = hex.center();
 
-    ctx.strokeStyle = "brown";
+    var facing = parseInt(this.hexside);
+    var colors = ['red', 'green', 'yellow', 'blue', 'orange', 'purple'];
+    var dec = [
+        [new Point(4, 0), new Point(0, 4)],
+        [new Point(4, 2), new Point(-4, 2)],
+        [new Point(0, 4), new Point(-4, 0)],
+
+        [new Point(-4, 4), new Point(-2, -4)],
+        [new Point(-4, -2), new Point(4, -2)],
+        [new Point(2, -2), new Point(2, 0)],
+    ];
+
+    ctx.strokeStyle = colors[facing];
+
+    //ctx.strokeStyle = "brown";
     ctx.lineWidth = 4;
 
     // get the border vertices
     var vertices = hex.vertices();
-    var v0 = vertices[parseInt(this.hexside)];
-    var v1 = vertices[parseInt(this.hexside) + 1];
+    var v0 = vertices[facing];
+    var v1 = vertices[facing + 1];
     if (v1 == undefined) {
         v1 = vertices[0];
     }
         
     ctx.beginPath();
 
-    ctx.moveTo(v0.x, v0.y);
-    ctx.lineTo(v1.x, v1.y);
+    ctx.moveTo(v0.x + dec[facing][0].x, v0.y + dec[facing][0].y);
+    ctx.lineTo(v1.x + dec[facing][1].x, v1.y + dec[facing][1].y);
 
     ctx.closePath();
 
