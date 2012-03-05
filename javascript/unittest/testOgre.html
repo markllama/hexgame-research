@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+  <head>
+    <title>Ogre Map Test</title>
+
+    <!-- parseUri provided bt Steven Levithan 
+	 http://stevenlevithan.com/demo/parseuri/js/assets/parseuri.js
+    -->
+    <script type="text/javascript" src="../lib/parseuri.js"></script>
+
+    <!-- Load the code to be tested -->
+    
+    <script type="text/javascript" src="../src/Iterator.js" ></script>
+    <script type="text/javascript" src="../src/HexMap.js" ></script>
+    <script type="text/javascript" src="../src/Point.js" ></script>
+    <script type="text/javascript" src="../src/HexMapView.js" ></script>
+    <script type="text/javascript" src="../src/TerrainLib.js" ></script>
+
+    <!-- Catan classes -->
+    <script type="text/javascript" src="../src/OgreLib.js" ></script>
+
+    <!-- special for this page -->
+    <script type="text/javascript" src="testOgre.js" ></script>    
+
+    <style type="text/css">
+      canvas {
+        border-style: solid;
+        border-width: 2px;
+      }
+    </style>
+
+  </head>
+
+  <body style="text-align: center;" onload="mapview = init(); mapview.draw();">
+
+    <!-- this has to be included in the body of the HTML document -->
+    <script type="text/javascript" src="../lib/Geometry.js"></script>
+
+    <h1>Testing Ogre Map</h1>
+    <div id="mapdiv" style="float: left;">
+      <canvas id="mapcanvas">
+      </canvas>
+    </div>
+    <!--
+    <hr />
+    -->
+    <h1>Status</h1>
+    <div id='status'></div>
+    <p>
+    Click Point: <span id="clickpoint">No click yet</span><br>
+    Canvas Corner: <span id="canvascorner">No click yet</span><br>
+    Scroll Corner: <span id="scrollcorner">No click yet</span><br>
+    Canvas Point: <span id="canvaspoint">No click yet</span><br>
+    Reference Hex: <span id="refhex">No click yet</span><br>
+    Reference Triangle: <span id="reftriangle">No click yet</span><br>
+    Click Hex: <span id="clickhex">No click yet</span>
+    </p>
+    
+  </body>
+</html>
