@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  game: MyString
+  size_hx: 1
+  size_hy: 1
+  origin_hx: 1
+  origin_hy: 1
+
+two:
+  name: MyString
+  game: MyString
+  size_hx: 1
+  size_hy: 1
+  origin_hx: 1
+  origin_hy: 1

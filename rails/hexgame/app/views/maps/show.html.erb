@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @map.name %>
+</p>
+
+<p>
+  <b>Game:</b>
+  <%= @map.game %>
+</p>
+
+<p>
+  <b>Size hx:</b>
+  <%= @map.size_hx %>
+</p>
+
+<p>
+  <b>Size hy:</b>
+  <%= @map.size_hy %>
+</p>
+
+<p>
+  <b>Origin hx:</b>
+  <%= @map.origin_hx %>
+</p>
+
+<p>
+  <b>Origin hy:</b>
+  <%= @map.origin_hy %>
+</p>
+
+
+<%= link_to 'Edit', edit_map_path(@map) %> |
+<%= link_to 'Back', maps_path %>
