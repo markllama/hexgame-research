@@ -74,7 +74,7 @@ OgreMapView.Terrain.Rubble.prototype.initDOM = function(element) {
 OgreMapView.Terrain.Rubble.prototype.draw = function() {
     var ctx = this.map.canvas.getContext("2d");
     ctx.strokeStyle = "brown";
-    ctx.lineWidth = 4;
+    ctx.lineWidth = 6;
 
     var vertices0 = this.map.getHex(this.locations[0]).vertices();
     var vertices1 = this.map.getHex(this.locations[1]).vertices();
