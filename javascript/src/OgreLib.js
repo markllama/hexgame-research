@@ -71,6 +71,36 @@ OgreMapView.Terrain.Rubble.prototype.initDOM = function(element) {
     }
 };
 
+OgreMapView.Terrain.Rubble.prototype.draw = function() {
+    var ctx = this.map.canvas.getContext("2d");
+    ctx.strokeStyle = "brown";
+    ctx.lineWidth = 4;
+
+    var vertices0 = this.map.getHex(this.locations[0]).vertices();
+    var vertices1 = this.map.getHex(this.locations[1]).vertices();
+
+    var common = [];
+
+    for (var i = 0 ; i < vertices0.length ; i++) {
+        var p0 = vertices0[i];
+        for (var j = 0 ; j < vertices1.length ; j++) {
+            var p1 = vertices1[j];
+            if (p0.equals(p1)) {
+                common.push(p0);
+            }
+        }
+    }
+
+    if (common.length == 2) {
+        ctx.beginPath();
+        ctx.moveTo(common[0].x, common[0].y);
+        ctx.lineTo(common[1].x, common[1].y);
+        ctx.closePath();
+        ctx.stroke();
+    }
+
+};
+
 OgreMapView.Terrain.Rubble.prototype.drawHex = function(hex) {
     var ctx = this.map.canvas.getContext("2d");
     var center = hex.center();
