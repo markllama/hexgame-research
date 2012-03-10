@@ -266,12 +266,12 @@ HexMapView.prototype.draw = function() {
 
 	// write the message to the console in the middle
 	ctx.textalign = 'center';
-	ctx.moveTo(map.canvas.width/2, ctx.canvas.height/2);
-	ctx.fillText(message);
+	//ctx.moveTo(ctx.canvas.width/2, ctx.canvas.height/2);
+	ctx.fillText(message, ctx.canvas.width/2, ctx.canvas.height/2);
 	
 	// set a timer to try again
 	// how do you get it to use an arbitrary object?
-	setTimeout('map.draw()', 100);
+	setTimeout('mapview.draw()', 100);
     } else {
 	this.canvas.width = this.canvas.width; // clears the canvas
 
