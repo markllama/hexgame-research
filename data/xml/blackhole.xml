@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map name="ogre" size="15,22" copyright="Steve Jackson Games">
+  <size><vector hx="15" hy="31"/></size>
+  <origin><vector hx="0" hy="0"/></origin>
+
+  <terrains>
+    
+    <!-- border -->
+    <terrain type="HexMapView.Terrain.Border" name="plain">
+      <locations all="true" />
+    </terrain>
+
+
+    <!-- mountain -->
+    <terrain type="BlackHole.Terrain.Mountain" name="mountain">
+      <locations>
+      </locations>
+    </terrain>
+    
+
+    <!-- crater -->
+    <terrain type="BlackHole.Terrain.Crater" name="crater">
+      <locations>
+      </locations>
+    </terrain>
+
+    <!-- the next three refer to the topology of the toroidal map -->
+    <!--exterior -->
+    <terrain type="BlackHole.Terrain.Exterior" name="exterior">
+      <locations>
+      </locations>
+    </terrain>
+
+    <!-- interior -->
+    <terrain type="BlackHole.Terrain.Interior" name="interior">
+      <locations>
+      </locations>
+    </terrain>
+
+    <!-- wrap -->
+    <!-- these are hexes which are actually the same hex on the map -->
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap0">
+      <locations>
+        <vector hx="0" hy="0"/>
+        <vector hx="0" hy="29"/>
+        <vector hx="15" hy="7"/>
+        <vector hx="15" hy="37"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap1">
+      <locations>
+        <vector hx="0" hy="1"/>
+        <vector hx="15" hy="8"/>
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap2">
+      <locations>
+        <vector hx="0" hy="2"/>
+        <vector hx="15" hy="9"/>
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap3">
+      <locations>
+        <vector hx="0" hy="3"/>
+        <vector hx="15" hy="10"/>
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap4">
+      <locations>
+        <vector hx="0" hy="4"/>
+        <vector hx="15" hy="11"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap5">
+      <locations>
+        <vector hx="0" hy="5"/>
+        <vector hx="15" hy="12"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap6">
+      <locations>
+        <vector hx="0" hy="6"/>
+        <vector hx="15" hy="13"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap7">
+      <locations>
+        <vector hx="0" hy="7"/>
+        <vector hx="15" hy="14"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap8">
+      <locations>
+        <vector hx="0" hy="8"/>
+        <vector hx="15" hy="15"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap9">
+      <locations>
+        <vector hx="0" hy="9"/>
+        <vector hx="15" hy="16"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap10">
+      <locations>
+        <vector hx="0" hy="10"/>
+        <vector hx="15" hy="17"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap11">
+      <locations>
+        <vector hx="0" hy="11"/>
+        <vector hx="15" hy="18"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap12">
+      <locations>
+        <vector hx="0" hy="12"/>
+        <vector hx="15" hy="19"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap13">
+      <locations>
+        <vector hx="0" hy="13"/>
+        <vector hx="15" hy="20"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap14">
+      <locations>
+        <vector hx="0" hy="14"/>
+        <vector hx="15" hy="21"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap15">
+      <locations>
+        <vector hx="0" hy="15"/>
+        <vector hx="15" hy="22"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap16">
+      <locations>
+        <vector hx="0" hy="16"/>
+        <vector hx="15" hy="23"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap17">
+      <locations>
+        <vector hx="0" hy="17"/>
+        <vector hx="15" hy="24"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap18">
+      <locations>
+        <vector hx="0" hy="18"/>
+        <vector hx="15" hy="25"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap19">
+      <locations>
+        <vector hx="0" hy="19"/>
+        <vector hx="15" hy="26"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap20">
+      <locations>
+        <vector hx="0" hy="20"/>
+        <vector hx="15" hy="27"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap21">
+      <locations>
+        <vector hx="0" hy="21"/>
+        <vector hx="15" hy="28"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap22">
+      <locations>
+        <vector hx="0" hy="22"/>
+        <vector hx="15" hy="29"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap23">
+      <locations>
+        <vector hx="0" hy="23"/>
+        <vector hx="15" hy="30"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap24">
+      <locations>
+        <vector hx="0" hy="24"/>
+        <vector hx="15" hy="31"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap25">
+      <locations>
+        <vector hx="0" hy="25"/>
+        <vector hx="15" hy="32"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap26">
+      <locations>
+        <vector hx="0" hy="26"/>
+        <vector hx="15" hy="33"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap27">
+      <locations>
+        <vector hx="0" hy="27"/>
+        <vector hx="15" hy="34"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap28">
+      <locations>
+        <vector hx="0" hy="28"/>
+        <vector hx="15" hy="35"/>        
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Wrap" name="wrap29">
+      <locations>
+        <vector hx="0" hy="29"/>
+        <vector hx="15" hy="36"/>        
+      </locations>
+    </terrain>
+
+  </terrains>
+</map>
