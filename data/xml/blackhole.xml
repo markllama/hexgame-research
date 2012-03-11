@@ -251,5 +251,61 @@
       </locations>
     </terrain>
 
+    <!-- mountains -->
+
+    <terrain type="BlackHole.Terrain.Mountain" name="mountain">
+      <locations>
+        <vector hx="0" hy="4"/>
+        <vector hx="0" hy="19"/>
+        <vector hx="1" hy="11"/>
+        <vector hx="2" hy="26"/>
+        <vector hx="3" hy="22"/>
+        <vector hx="4" hy="8"/>
+        <vector hx="5" hy="11"/>
+        <vector hx="6" hy="26"/>
+        <vector hx="8" hy="12"/>
+        <vector hx="9" hy="28"/>
+        <vector hx="10" hy="26"/>
+        <vector hx="11" hy="11"/>
+        <vector hx="12" hy="16"/>
+        <vector hx="13" hy="33"/>
+      </locations>
+    </terrain>
+
+    <!-- craters -->
+
+    <terrain type="BlackHole.Terrain.Crater" name="crater">
+      <locations>
+        <vector hx="0" hy="8"/>
+        <vector hx="0" hy="23"/>
+        <vector hx="1" hy="15"/>
+        <vector hx="2" hy="5"/>
+        <vector hx="12" hy="23"/>
+        <vector hx="13" hy="8"/>
+      </locations>
+    </terrain>
+
+    <!-- bases -->
+
+    <!--
+    <terrain type="BlackHole.Terrain.Base" name="base1">
+      <locations>
+        <vector hx="7" hy="4"/>
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Base" name="base2">
+      <locations>
+        <vector hx="7" hy="14"/>
+      </locations>
+    </terrain>
+
+    <terrain type="BlackHole.Terrain.Base" name="base3">
+      <locations>
+        <vector hx="7" hy="24"/>
+      </locations>
+    </terrain>
+    -->
+
   </terrains>
 </map>
