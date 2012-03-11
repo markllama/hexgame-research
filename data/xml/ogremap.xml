@@ -36,69 +36,309 @@
     </locations>
   </terrain>
 
-  <terrain type="OgreMapView.Terrain.Rubble" name="rubble0" id="1" hexside="0">
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble1" id="1">
     <locations>
-      <!--
-      <vector hx="" hy="" />
-      -->
+      <vector hx="0" hy="1"/>
+      <vector hx="1" hy="2"/>
+    </locations>
+  </terrain>
 
-      <vector hx="0" hy="0"/>
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble2" id="2">
+    <locations>
+      <vector hx="0" hy="2"/>
+      <vector hx="1" hy="2"/>
+    </locations>
+  </terrain>
 
-      <vector hx="1" hy="2" />
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble3" id="2">
+    <locations>
+      <vector hx="1" hy="6"/>
+      <vector hx="2" hy="7"/>
+    </locations>
+  </terrain>
 
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble4" id="2">
+    <locations>
+      <vector hx="1" hy="9"/>
+      <vector hx="2" hy="10"/>
+    </locations>
+  </terrain>
 
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble5" id="2">
+    <locations>
+      <vector hx="1" hy="10"/>
+      <vector hx="2" hy="11"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble6" id="2">
+    <locations>
+      <vector hx="1" hy="11"/>
+      <vector hx="2" hy="11"/>
     </locations>
   </terrain>
 
 
-  <terrain type="OgreMapView.Terrain.Rubble" name="rubble1" id="2" hexside="1">
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble7" id="2">
     <locations>
-      <vector hx="0" hy="0"/>
-
+      <vector hx="2" hy="4"/>
+      <vector hx="3" hy="5"/>
     </locations>
   </terrain>
 
-  <terrain type="OgreMapView.Terrain.Rubble" name="rubble2" id="3" hexside="2">
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble8" id="2">
     <locations>
-      <vector hx="0" hy="0"/>
-
-      <vector hx="0" hy="2" />
-
-      <vector hx="1" hy="11" />
-
-
+      <vector hx="2" hy="6"/>
+      <vector hx="2" hy="7"/>
     </locations>
   </terrain>
 
-  <terrain type="OgreMapView.Terrain.Rubble" name="rubble3" id="4" hexside="3">
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble9" id="2">
     <locations>
-      <vector hx="0" hy="0"/>
-
-      <vector hx="0" hy="1" />
-
-      <vector hx="1" hy="6" />
-      <vector hx="1" hy="9" />
-      <vector hx="1" hy="10" />
-
-
+      <vector hx="2" hy="8"/>
+      <vector hx="3" hy="9"/>
     </locations>
   </terrain>
 
-  <terrain type="OgreMapView.Terrain.Rubble" name="rubble4" id="5" hexside="4">
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble10" id="2">
     <locations>
-      <vector hx="0" hy="0"/>
-
-
+      <vector hx="2" hy="9"/>
+      <vector hx="3" hy="10"/>
     </locations>
   </terrain>
 
-  <terrain type="OgreMapView.Terrain.Rubble" name="rubble5" id="6" hexside="5">
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble11" id="2">
     <locations>
-      <vector hx="0" hy="0"/>
-
-      <vector hx="1" hy="2" />
-
+      <vector hx="2" hy="10"/>
+      <vector hx="2" hy="11"/>
     </locations>
   </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble12" id="2">
+    <locations>
+      <vector hx="2" hy="11"/>
+      <vector hx="3" hy="11"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble13" id="2">
+    <locations>
+      <vector hx="2" hy="15"/>
+      <vector hx="3" hy="16"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble14" id="2">
+    <locations>
+      <vector hx="2" hy="15"/>
+      <vector hx="2" hy="16"/>
+    </locations>
+  </terrain>
+
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble15" id="2">
+    <locations>
+      <vector hx="3" hy="4"/>
+      <vector hx="4" hy="5"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble16" id="2">
+    <locations>
+      <vector hx="3" hy="4"/>
+      <vector hx="3" hy="5"/>
+    </locations>
+  </terrain>
+
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble17" id="2">
+    <locations>
+      <vector hx="3" hy="8"/>
+      <vector hx="4" hy="9"/>
+    </locations>
+  </terrain>
+
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble18" id="2">
+    <locations>
+      <vector hx="4" hy="3"/>
+      <vector hx="5" hy="3"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble19" id="2">
+    <locations>
+      <vector hx="4" hy="14"/>
+      <vector hx="5" hy="15"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble20" id="2">
+    <locations>
+      <vector hx="4" hy="15"/>
+      <vector hx="5" hy="15"/>
+    </locations>
+  </terrain>
+
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble21" id="2">
+    <locations>
+      <vector hx="5" hy="3"/>
+      <vector hx="5" hy="4"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble22" id="2">
+    <locations>
+      <vector hx="5" hy="4"/>
+      <vector hx="6" hy="4"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble23" id="2">
+    <locations>
+      <vector hx="5" hy="8"/>
+      <vector hx="6" hy="8"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble24" id="2">
+    <locations>
+      <vector hx="5" hy="8"/>
+      <vector hx="6" hy="9"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble25" id="2">
+    <locations>
+      <vector hx="5" hy="14"/>
+      <vector hx="5" hy="15"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble26" id="2">
+    <locations>
+      <vector hx="6" hy="9"/>
+      <vector hx="6" hy="10"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble27" id="2">
+    <locations>
+      <vector hx="6" hy="15"/>
+      <vector hx="7" hy="15"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble28" id="2">
+    <locations>
+      <vector hx="6" hy="15"/>
+      <vector hx="7" hy="16"/>
+    </locations>
+  </terrain>
+
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble28" id="2">
+    <locations>
+      <vector hx="6" hy="17"/>
+      <vector hx="7" hy="18"/>
+    </locations>
+  </terrain>
+
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble29" id="2">
+    <locations>
+      <vector hx="7" hy="3"/>
+      <vector hx="8" hy="4"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble30" id="2">
+    <locations>
+      <vector hx="7" hy="10"/>
+      <vector hx="8" hy="11"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble31" id="2">
+    <locations>
+      <vector hx="7" hy="14"/>
+      <vector hx="8" hy="14"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble32" id="2">
+    <locations>
+      <vector hx="7" hy="14"/>
+      <vector hx="8" hy="15"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble33" id="2">
+    <locations>
+      <vector hx="7" hy="17"/>
+      <vector hx="7" hy="18"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble34" id="2">
+    <locations>
+      <vector hx="7" hy="18"/>
+      <vector hx="8" hy="18"/>
+    </locations>
+  </terrain>
+
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble35" id="2">
+    <locations>
+      <vector hx="8" hy="6"/>
+      <vector hx="9" hy="6"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble36" id="2">
+    <locations>
+      <vector hx="8" hy="6"/>
+      <vector hx="8" hy="7"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble37" id="2">
+    <locations>
+      <vector hx="8" hy="7"/>
+      <vector hx="9" hy="8"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble38" id="2">
+    <locations>
+      <vector hx="8" hy="7"/>
+      <vector hx="8" hy="8"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble39" id="2">
+    <locations>
+      <vector hx="8" hy="9"/>
+      <vector hx="9" hy="10"/>
+    </locations>
+  </terrain>
+
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble39" id="2">
+    <locations>
+      <vector hx="8" hy="13"/>
+      <vector hx="9" hy="13"/>
+    </locations>
+  </terrain>
+
+  <terrain type="OgreMapView.Terrain.Rubble" name="rubble40" id="2">
+    <locations>
+      <vector hx="8" hy="18"/>
+      <vector hx="8" hy="19"/>
+    </locations>
+  </terrain>
+
+
 </terrains>
 </map>
