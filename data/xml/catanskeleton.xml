@@ -5,7 +5,7 @@
   <origin><vector hx="-7" hy="-8" /></origin>
 
   <terrains>
-    <terrain type="HexMapView.Terrain.SuperBorder" id="border" name="border" depth="1">
+    <terrain type="superborder" id="border" name="border" depth="1">
       <locations>
 
         <vector hx="-4" hy="-2" />
@@ -33,7 +33,7 @@
     </terrain>
 
 
-    <terrain type="CatanMapView.Terrain.Mountain" id="mountain" name="mountain" depth="0">
+    <terrain type="mountain" id="mountain" name="mountain" depth="0">
       <locations>
         <vector hx="-2" hy="2" />
         <vector hx="-1" hy="-2" />
@@ -41,7 +41,7 @@
       </locations>
     </terrain>
 
-    <terrain type="CatanMapView.Terrain.Hills" id="hills" name="hills" depth="0">
+    <terrain type="hills" id="hills" name="hills" depth="0">
       <locations>
         <vector hx="-3" hy="-3" />
         <vector hx="-3" hy="0" />
@@ -49,7 +49,7 @@
       </locations>
     </terrain>
 
-    <terrain type="CatanMapView.Terrain.Pasture" id="pasture" name="pasture" depth="0">
+    <terrain type="pasture" id="pasture" name="pasture" depth="0">
       <locations>
         <vector hx="-1" hy="1" />
         <vector hx="0" hy="-3" />
@@ -58,7 +58,7 @@
       </locations>
     </terrain>
 
-    <terrain type="CatanMapView.Terrain.Fields" id="fields" name="fields" depth="0">
+    <terrain type="pasture" id="fields" name="fields" depth="0">
       <locations>
         <vector hx="0" hy="0" />
         <vector hx="0" hy="3" />
@@ -67,7 +67,7 @@
       </locations>
     </terrain>
 
-    <terrain type="CatanMapView.Terrain.Forest" id="forest" name="forest" depth="0">
+    <terrain type="forest" id="forest" name="forest" depth="0">
       <locations>
         <vector hx="-2" hy="-4" />
         <vector hx="-2" hy="-1" />
@@ -76,13 +76,13 @@
       </locations>
     </terrain>
 
-    <terrain type="CatanMapView.Terrain.Desert" id="desert" name="desert" depth="0">
+    <terrain type="desert" id="desert" name="desert" depth="0">
       <locations>
         <vector hx="-4" hy="-2" />
       </locations>
     </terrain>
 
-    <terrain type="CatanMapView.Terrain.Sea" id="sea" name="sea" depth="0">
+    <terrain type="sea" id="sea" name="sea" depth="0">
       <!-- sea hexes -->
       <locations>
         <vector hx="-6" hy="-3" />
@@ -117,7 +117,7 @@
     </terrain>
 
 
-    <terrain type="HexMapView.Terrain.Center" id="center" name="center" depth="0">
+    <terrain type="center" id="center" name="center" depth="0">
       <locations>
 
         <vector hx="-5" hy="-3" />

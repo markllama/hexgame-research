@@ -8,173 +8,173 @@
 
     <!-- shape is really sawtooth -->
 
-    <terrain type="HexMapView.Terrain.Border" id="border" name="border">
+    <terrain type="border" id="border" name="border">
       <locations all="true" />
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.BaseStar" name="Mosul" id="0">
+    <terrain type="basestar" name="Mosul" id="0">
       <locations>
         <vector hx="3" hy="2" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.BaseStar" name="Ur" id="0">
+    <terrain type="basestar" name="Ur" id="0">
       <locations>
         <vector hx="7" hy="5" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.BaseStar" name="Larsu" id="0">
+    <terrain type="basestar" name="Larsu" id="0">
       <locations>
         <vector hx="11" hy="7" />
       </locations>
     </terrain>
   
-    <terrain type="WarpWarMapView.Terrain.BaseStar" name="Ninevah" id="0">
+    <terrain type="basestar" name="Ninevah" id="0">
       <locations>
         <vector hx="3" hy="20" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.BaseStar" name="Babylon" id="0">
+    <terrain type="basestar" name="Babylon" id="0">
       <locations>
         <vector hx="6" hy="21" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.BaseStar" name="Ugarit" id="0">
+    <terrain type="basestar" name="Ugarit" id="0">
       <locations>
         <vector hx="11" hy="25" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Sippur" id="0">
+    <terrain type="star" name="Sippur" id="0">
       <locations>
         <vector hx="2" hy="5" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Erech" id="0">
+    <terrain type="star" name="Erech" id="0">
       <locations>
         <vector hx="4" hy="6" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Calah" id="0">
+    <terrain type="star" name="Calah" id="0">
       <locations>
         <vector hx="8" hy="8" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Susa" id="0">
+    <terrain type="star" name="Susa" id="0">
       <locations>
         <vector hx="12" hy="11" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Byblos" id="0">
+    <terrain type="star" name="Byblos" id="0">
       <locations>
         <vector hx="2" hy="7" />
       </locations>
     </terrain>
     
-    <terrain type="WarpWarMapView.Terrain.Star" name="Adab" id="0">
+    <terrain type="star" name="Adab" id="0">
       <locations>
         <vector hx="6" hy="9" />
       </locations>
     </terrain>
     
-    <terrain type="WarpWarMapView.Terrain.Star" name="Nippur" id="0">
+    <terrain type="star" name="Nippur" id="0">
       <locations>
         <vector hx="11" hy="12" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Ubaid" id="0">
+    <terrain type="star" name="Ubaid" id="0">
       <locations>
         <vector hx="3" hy="9" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Khafa" id="0">
+    <terrain type="star" name="Khafa" id="0">
       <locations>
         <vector hx="7" hy="12" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Mari" id="0">
+    <terrain type="star" name="Mari" id="0">
       <locations>
         <vector hx="6" hy="13" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Lagash" id="0">
+    <terrain type="star" name="Lagash" id="0">
       <locations>
         <vector hx="9" hy="15" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Assur" id="0">
+    <terrain type="star" name="Assur" id="0">
       <locations>
         <vector hx="12" hy="16" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Elam" id="0">
+    <terrain type="star" name="Elam" id="0">
       <locations>
         <vector hx="7" hy="15" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Jarmo" id="0">
+    <terrain type="star" name="Jarmo" id="0">
       <locations>
         <vector hx="11" hy="17" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Sumarra" id="0">
+    <terrain type="star" name="Sumarra" id="0">
       <locations>
         <vector hx="2" hy="13" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Umma" id="0">
+    <terrain type="star" name="Umma" id="0">
       <locations>
         <vector hx="5" hy="16" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Girsu" id="0">
+    <terrain type="star" name="Girsu" id="0">
       <locations>
         <vector hx="8" hy="17" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Isin" id="0">
+    <terrain type="star" name="Isin" id="0">
       <locations>
         <vector hx="1" hy="15" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Sumer" id="0">
+    <terrain type="star" name="Sumer" id="0">
       <locations>
         <vector hx="4" hy="18" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Akkad" id="0">
+    <terrain type="star" name="Akkad" id="0">
       <locations>
         <vector hx="7" hy="19" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Kish" id="0">
+    <terrain type="star" name="Kish" id="0">
       <locations>
         <vector hx="10" hy="20" />
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.Star" name="Eridu" id="0">
+    <terrain type="star" name="Eridu" id="0">
       <locations>
         <vector hx="12" hy="22" />
       </locations>
@@ -183,7 +183,7 @@
 
     <!-- Warp Lines -->
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="mosul2sippur" id="">
+    <terrain type="warpline" name="mosul2sippur" id="">
       <locations>
         <!-- -->
         <vector hx="3" hy="2" />
@@ -191,7 +191,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="ur2erech" id="">
+    <terrain type="warpline" name="ur2erech" id="">
       <locations>
         <!-- -->
         <vector hx="7" hy="5" />
@@ -199,7 +199,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="erech2adab" id="">
+    <terrain type="warpline" name="erech2adab" id="">
       <locations>
         <!-- -->
         <vector hx="4" hy="6" />
@@ -207,7 +207,7 @@
       </locations>
     </terrain>
     
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="adab2byblos" id="">
+    <terrain type="warpline" name="adab2byblos" id="">
       <locations>
         <!-- -->
         <vector hx="6" hy="9" />
@@ -215,7 +215,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="adab2khafa" id="">
+    <terrain type="warpline" name="adab2khafa" id="">
       <locations>
         <!-- -->
         <vector hx="6" hy="9" />
@@ -223,7 +223,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="larsu2susa" id="">
+    <terrain type="warpline" name="larsu2susa" id="">
       <locations>
         <!-- -->
         <vector hx="11" hy="7" />
@@ -231,7 +231,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="susa2nippur" id="">
+    <terrain type="warpline" name="susa2nippur" id="">
       <locations>
         <!-- -->
         <vector hx="12" hy="11" />
@@ -239,7 +239,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="calah2nippur" id="">
+    <terrain type="warpline" name="calah2nippur" id="">
       <locations>
         <!-- -->
         <vector hx="8" hy="8" />
@@ -247,7 +247,7 @@
       </locations>
     </terrain>
     
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="nippur2lagash" id="">
+    <terrain type="warpline" name="nippur2lagash" id="">
       <locations>
         <!-- -->
         <vector hx="11" hy="12" />
@@ -255,7 +255,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="nippur2assur" id="">
+    <terrain type="warpline" name="nippur2assur" id="">
       <locations>
         <!-- -->
         <vector hx="11" hy="12" />
@@ -263,7 +263,7 @@
       </locations>
     </terrain>
     
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="lagash2assur" id="">
+    <terrain type="warpline" name="lagash2assur" id="">
       <locations>
         <!-- -->
         <vector hx="9" hy="15" />
@@ -271,7 +271,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="lagash2elam" id="">
+    <terrain type="warpline" name="lagash2elam" id="">
       <locations>
         <!-- -->
         <vector hx="9" hy="15" />
@@ -279,7 +279,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="ubaid2mari" id="">
+    <terrain type="warpline" name="ubaid2mari" id="">
       <locations>
         <!-- -->
         <vector hx="3" hy="9" />
@@ -287,7 +287,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="ubaid2sumarra" id="">
+    <terrain type="warpline" name="ubaid2sumarra" id="">
       <locations>
         <!-- -->
         <vector hx="3" hy="9" />
@@ -295,7 +295,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="mari2umma" id="">
+    <terrain type="warpline" name="mari2umma" id="">
       <locations>
         <!-- -->
         <vector hx="6" hy="13" />
@@ -303,7 +303,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="sumarra2umma" id="">
+    <terrain type="warpline" name="sumarra2umma" id="">
       <locations>
         <!-- -->
         <vector hx="2" hy="13" />
@@ -311,7 +311,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="umma2girsu" id="">
+    <terrain type="warpline" name="umma2girsu" id="">
       <locations>
         <!-- -->
         <vector hx="5" hy="16" />
@@ -319,7 +319,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="umma2sumer" id="">
+    <terrain type="warpline" name="umma2sumer" id="">
       <locations>
         <!-- -->
         <vector hx="5" hy="16" />
@@ -327,7 +327,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="sumer2babylon" id="">
+    <terrain type="warpline" name="sumer2babylon" id="">
       <locations>
         <!-- -->
         <vector hx="4" hy="18" />
@@ -335,7 +335,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="jarmo2kish" id="">
+    <terrain type="warpline" name="jarmo2kish" id="">
       <locations>
         <!-- -->
         <vector hx="11" hy="17" />
@@ -343,7 +343,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="kish2akkid" id="">
+    <terrain type="warpline" name="kish2akkid" id="">
       <locations>
         <!-- -->
         <vector hx="10" hy="20" />
@@ -351,7 +351,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="kish2eridu" id="">
+    <terrain type="warpline" name="kish2eridu" id="">
       <locations>
         <!-- -->
         <vector hx="10" hy="20" />
@@ -359,7 +359,7 @@
       </locations>
     </terrain>
     
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="eridu2ugarit" id="">
+    <terrain type="warpline" name="eridu2ugarit" id="">
       <locations>
         <!-- -->
         <vector hx="12" hy="22" />
@@ -367,7 +367,7 @@
       </locations>
     </terrain>
 
-    <terrain type="WarpWarMapView.Terrain.WarpLine" name="isin2nineveh" id="">
+    <terrain type="warpline" name="isin2nineveh" id="">
       <locations>
         <!-- -->
         <vector hx="1" hy="15" />
