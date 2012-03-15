@@ -40,7 +40,7 @@ WarpWarMapView.Terrain.BaseStar = function() {
 
 WarpWarMapView.Terrain.BaseStar.prototype = new WarpWarMapView.Terrain();
 
-WarpWarMapView.prototype.terrain_types['basestar'] = WarpWarMapView.BaseStar;
+WarpWarMapView.prototype.terrain_types['basestar'] = WarpWarMapView.Terrain.BaseStar;
 
 WarpWarMapView.Terrain.BaseStar.prototype.drawHex = function(hex) {
     var ctx = this.map.canvas.getContext("2d");
@@ -75,7 +75,7 @@ WarpWarMapView.Terrain.Star = function() {
 
 WarpWarMapView.Terrain.Star.prototype = new WarpWarMapView.Terrain();
 
-WarpWarMapView.prototype.terrain_types['star'] = WarpWarMapView.Star;
+WarpWarMapView.prototype.terrain_types['star'] = WarpWarMapView.Terrain.Star;
 
 WarpWarMapView.Terrain.Star.prototype.drawHex = function(hex) {
     var ctx = this.map.canvas.getContext("2d");
@@ -110,7 +110,7 @@ WarpWarMapView.Terrain.WarpLine = function() {
 
 WarpWarMapView.Terrain.WarpLine.prototype = new WarpWarMapView.Terrain();
 
-WarpWarMapView.prototype.terrain_types['warpline'] = WarpWarMapView.WarpLine;
+WarpWarMapView.prototype.terrain_types['warpline'] = WarpWarMapView.Terrain.WarpLine;
 
 WarpWarMapView.Terrain.WarpLine.prototype.draw = function() {
     var ctx = this.map.canvas.getContext("2d");
