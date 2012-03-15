@@ -382,6 +382,7 @@ HexMapView.Terrain = function() {
  */
 HexMapView.Terrain.prototype = new HexMap.Terrain();
 
+HexMapView.prototype.terrain_types['terrain'] = HexMapView.Terrain;
 /**
  * Draw the terrain in all hexes
  */

@@ -9,6 +9,8 @@ HexMapView.Terrain.Border = function() {
 
 HexMapView.Terrain.Border.prototype = new HexMapView.Terrain();
 
+HexMapView.prototype.terrain_types['border'] = HexMapView.Terrain.Border;
+
 HexMapView.Terrain.Border.prototype.toString = function() {
     return "[object HexMapView.Terrain.Border]";
 };
@@ -48,6 +50,8 @@ HexMapView.Terrain.Center = function() {
 
 HexMapView.Terrain.Center.prototype = new HexMapView.Terrain();
 
+HexMapView.prototype.terrain_types['center'] = HexMapView.Terrain.Center;
+
 HexMapView.Terrain.Center.prototype.toString = function() {
     return "[object HexMapView.Terrain.Center]";
 };
@@ -86,6 +90,8 @@ HexMapView.Terrain.CenterCircle = function() {
 
 HexMapView.Terrain.CenterCircle.prototype = new HexMapView.Terrain();
 
+HexMapView.prototype.terrain_types['centercircle'] = HexMapView.Terrain.CenterCircle;
+
 HexMapView.Terrain.CenterCircle.prototype.toString = function() {
     return "[object HexMapView.Terrain.CenterCircle]";
 };
@@ -121,8 +127,10 @@ HexMapView.Terrain.SuperBorder = function() {
 
 HexMapView.Terrain.SuperBorder.prototype = new HexMapView.Terrain();
 
-HexMapView.Terrain.Border.prototype.toString = function() {
-    return "[object HexMapView.Terrain.Border]";
+HexMapView.prototype.terrain_types['superborder'] = HexMapView.Terrain.SuperBorder;
+
+HexMapView.Terrain.SuperBorder.prototype.toString = function() {
+    return "[object HexMapView.Terrain.SuperBorder]";
 };
 
 /**
@@ -210,6 +218,8 @@ HexMapView.Terrain.Image = function() {
 };
 
 HexMapView.Terrain.Image.prototype = new HexMapView.Terrain();
+
+HexMapView.prototype.terrain_types['image'] = HexMapView.Terrain.Image;
 
 HexMapView.Terrain.Image.prototype.toString = function() {
     return "[object HexMapView.Terrain.Image]";

@@ -28,9 +28,6 @@ HexMap = function(size, origin) {
 	this.hex = HexMap.Hex;
     }
 
-    this.terrains = {};
-    this.tokens = {} ;
-
     /*
      * signature: 
      *    HexMap() # 0     
@@ -93,6 +90,12 @@ HexMap = function(size, origin) {
     }
     this.listeners = [];
 };
+
+HexMap.prototype.terrain_types = {};
+HexMap.prototype.token_types = {};
+
+HexMap.prototype.terrains = {};
+HexMap.prototype.tokens = {} ;
 
 /**
  * @class
@@ -471,7 +474,10 @@ HexMap.prototype.initDOM = function(element) {
 	
 	if (telement.hasAttribute('type')) {
             ttypestr = telement.getAttribute('type');
-	    var ttype = eval(ttypestr);
+            var ttype = this.terrain_types[ttypestr];
+            if (ttype == undefined) {
+	        var ttype = eval(ttypestr);
+            }
 	} else {
 	    ttype = HexMap.Terrain;
 	}
@@ -885,6 +891,9 @@ HexMap.Terrain = function(map) {
     }
 };
 
+// register with the map
+HexMap.prototype.terrain_types['terrain'] = HexMap.Terrain;
+
 /**
  *
  * @private
@@ -1015,6 +1024,8 @@ HexMap.Token = function(map) {
 	this.location = null;
     }
 };
+
+HexMap.prototype.token_types['token'] = HexMap.Token;
 
 HexMap.Token.prototype.initDOM = function(element) {
     this.fromdom = true;

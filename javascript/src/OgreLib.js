@@ -13,12 +13,22 @@ OgreMapView.prototype.toString = function() {
     return "[object OgreMapView]";
 };
 
-// Generic Warp War Terrain
+/*
+OgreMapView.prototype.terrain_types = {
+    'plain': HexMapView.Terrain.Border,
+    'crater': OgreMapView.Terrain.Crater,
+    'rubble': OgreMapView.Terrain.Rubble
+};
+*/
+
+// Generic Ogre Terrain
 OgreMapView.Terrain = function() {
     HexMapView.Terrain.apply(this, arguments);
 };
 
 OgreMapView.Terrain.prototype = new HexMapView.Terrain();
+
+OgreMapView.prototype.terrain_types['terrain'] = OgreMapView.Terrain;
 
 // Generic Warp War Token
 OgreMapView.Token = function() {
@@ -31,10 +41,15 @@ OgreMapView.Token.prototype = new HexMapView.Token();
  * Terrains
  */
 
+OgreMapView.prototype.terrain_types['plain'] = HexMapView.Terrain.Border;
+
+
 // base star
 OgreMapView.Terrain.Crater = function() {
     OgreMapView.Terrain.apply(this, arguments);
 };
+
+OgreMapView.prototype.terrain_types['crater'] = OgreMapView.Terrain.Crater;
 
 OgreMapView.Terrain.Crater.prototype = new OgreMapView.Terrain();
 
@@ -59,6 +74,8 @@ OgreMapView.Terrain.Crater.prototype.drawHex = function(hex) {
 OgreMapView.Terrain.Rubble = function() {
     OgreMapView.Terrain.apply(this, arguments);
 };
+
+OgreMapView.prototype.terrain_types['rubble'] = OgreMapView.Terrain.Rubble;
 
 OgreMapView.Terrain.Rubble.prototype = new OgreMapView.Terrain();
 
