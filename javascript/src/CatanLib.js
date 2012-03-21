@@ -40,7 +40,7 @@ CatanMapView.Terrain = function() {
  */
 CatanMapView.Terrain.prototype = new HexMapView.Terrain();
 
-CatanMapView.prototype.terrain_type['terrain'] = CatanMapView.Terrain;
+CatanMapView.prototype.terrain_types['terrain'] = CatanMapView.Terrain;
 
 // subclass code....
 CatanMapView.Terrain.Sea = function () {
@@ -51,7 +51,7 @@ CatanMapView.Terrain.Sea = function () {
 
 CatanMapView.Terrain.Sea.prototype = new HexMapView.Terrain.SuperBorder() ;
 
-CatanMapView.prototype.terrain_type['sea'] = CatanMapView.Terrain.Sea;
+CatanMapView.prototype.terrain_types['sea'] = CatanMapView.Terrain.Sea;
 
 // subclass code....
 CatanMapView.Terrain.Mountain = function () {
@@ -62,7 +62,7 @@ CatanMapView.Terrain.Mountain = function () {
 
 CatanMapView.Terrain.Mountain.prototype = new HexMapView.Terrain.SuperBorder() ;
 
-CatanMapView.prototype.terrain_type['mountain'] = CatanMapView.Terrain.Mountain;
+CatanMapView.prototype.terrain_types['mountain'] = CatanMapView.Terrain.Mountain;
 
 
 // subclass code....
@@ -74,7 +74,7 @@ CatanMapView.Terrain.Hills = function () {
 
 CatanMapView.Terrain.Hills.prototype = new HexMapView.Terrain.SuperBorder() ;
 
-CatanMapView.prototype.terrain_type['hills'] = CatanMapView.Terrain.Hills;
+CatanMapView.prototype.terrain_types['hills'] = CatanMapView.Terrain.Hills;
 
 // subclass code....
 CatanMapView.Terrain.Pasture = function () {
@@ -85,7 +85,7 @@ CatanMapView.Terrain.Pasture = function () {
 
 CatanMapView.Terrain.Pasture.prototype = new HexMapView.Terrain.SuperBorder() ;
 
-CatanMapView.prototype.terrain_type['pasture'] = CatanMapView.Terrain.Pasture;
+CatanMapView.prototype.terrain_types['pasture'] = CatanMapView.Terrain.Pasture;
 
 
 // subclass code....
@@ -96,7 +96,7 @@ CatanMapView.Terrain.Fields = function () {
 }
 CatanMapView.Terrain.Fields.prototype = new HexMapView.Terrain.SuperBorder() ;
 
-CatanMapView.prototype.terrain_type['fields'] = CatanMapView.Terrain.Fields;
+CatanMapView.prototype.terrain_types['fields'] = CatanMapView.Terrain.Fields;
 
 // subclass code....
 CatanMapView.Terrain.Forest = function () {
@@ -107,7 +107,7 @@ CatanMapView.Terrain.Forest = function () {
 
 CatanMapView.Terrain.Forest.prototype = new HexMapView.Terrain.SuperBorder() ;
 
-CatanMapView.prototype.terrain_type['forest'] = CatanMapView.Terrain.Forest;
+CatanMapView.prototype.terrain_types['forest'] = CatanMapView.Terrain.Forest;
 
 
 // subclass code....
@@ -119,7 +119,7 @@ CatanMapView.Terrain.Desert = function () {
 
 CatanMapView.Terrain.Desert.prototype = new HexMapView.Terrain.SuperBorder() ;
 
-CatanMapView.prototype.terrain_type['desert'] = CatanMapView.Terrain.Desert;
+CatanMapView.prototype.terrain_types['desert'] = CatanMapView.Terrain.Desert;
 
 
 /*************************************************************************
