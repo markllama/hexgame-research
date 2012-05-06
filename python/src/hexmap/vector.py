@@ -50,7 +50,7 @@ class Vector(object):
             (self._hx, self._hy) = (kargs['hv'].hx, kargs['hv'].hy)
 
         if self._hx is None:
-            raise AttributeException("unable to determine hx or hy")
+            raise AttributeError("unable to determine hx or hy")
 
     @property
     def hx(self): return self._hx

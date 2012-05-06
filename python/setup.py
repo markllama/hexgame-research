@@ -3,8 +3,8 @@
 
 from distutils.core import setup
 
-setup(name='HexMap',
-      version='0.1',
+setup(name='python-hexmap',
+      version='0.2',
       description='Hex Map Library',
       author='Mark Lamourine',
       author_email='markllama@gmail.com',
