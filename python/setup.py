@@ -4,7 +4,7 @@
 from distutils.core import setup
 
 setup(name='python-hexmap',
-      version='0.2',
+      version='0.4',
       description='Hex Map Library',
       author='Mark Lamourine',
       author_email='markllama@gmail.com',

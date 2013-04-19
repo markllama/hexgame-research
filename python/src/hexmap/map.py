@@ -42,7 +42,7 @@ class Map(object):
 
     _hexclass = Hex
 
-    def __init__(self, size, origin=Vector.ORIGIN, terrains=None, tokens=None, 
+    def __init__(self, size=Vector.ORIGIN, origin=Vector.ORIGIN, terrains=None, tokens=None, 
                  name=None, game=None, copyright=None):
 
         """
