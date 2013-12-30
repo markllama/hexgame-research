@@ -34,14 +34,14 @@ from optparse import OptionParser, Option
 
 import web
 import json
-from mimerender import mimerender
+import mimerender
 
 import pickle
 import pprint
 
 # Define user controllable defaults
 defaults = {
-    "webroot": "/home/mark/public_html",
+    "webroot": "./",
 }
 
 for key in defaults:
@@ -251,7 +251,7 @@ class RestApi(object):
 
 """
 
-urls = ("/hello", "hello", "/webfile(/.*)", "WebFile")
+urls = ("/hello", "hello", "(/.*)", "WebFile")
 
 # Parse the command line argments
 (opt, args) = OptionParser(option_list=all_options).parse_args()
